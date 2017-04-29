@@ -1,0 +1,5 @@
+File affinity.h
+===============
+
+.. doxygenfile:: affinity.h
+   :project: bifrost

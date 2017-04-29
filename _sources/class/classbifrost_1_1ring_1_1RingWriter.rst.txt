@@ -1,0 +1,5 @@
+Class bifrost::ring::RingWriter
+===============================
+
+.. doxygenclass:: bifrost::ring::RingWriter
+   :project: bifrost

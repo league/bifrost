@@ -1,0 +1,5 @@
+Class bifrost::ring::WriteSpan
+==============================
+
+.. doxygenclass:: bifrost::ring::WriteSpan
+   :project: bifrost

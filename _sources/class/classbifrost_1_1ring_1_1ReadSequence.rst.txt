@@ -1,0 +1,5 @@
+Class bifrost::ring::ReadSequence
+=================================
+
+.. doxygenclass:: bifrost::ring::ReadSequence
+   :project: bifrost

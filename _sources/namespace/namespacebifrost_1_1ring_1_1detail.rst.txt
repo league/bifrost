@@ -1,0 +1,5 @@
+Namespace bifrost::ring::detail
+===============================
+
+.. doxygennamespace:: bifrost::ring::detail
+   :project: bifrost

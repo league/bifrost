@@ -1,0 +1,5 @@
+Class bifrost::ring::WriteSequence
+==================================
+
+.. doxygenclass:: bifrost::ring::WriteSequence
+   :project: bifrost

@@ -1,0 +1,5 @@
+Class bifrost::ring::ReadSpan
+=============================
+
+.. doxygenclass:: bifrost::ring::ReadSpan
+   :project: bifrost

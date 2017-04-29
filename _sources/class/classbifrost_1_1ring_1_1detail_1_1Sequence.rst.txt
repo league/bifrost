@@ -1,0 +1,5 @@
+Class bifrost::ring::detail::Sequence
+=====================================
+
+.. doxygenclass:: bifrost::ring::detail::Sequence
+   :project: bifrost

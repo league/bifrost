@@ -1,0 +1,5 @@
+File proclog.h
+==============
+
+.. doxygenfile:: proclog.h
+   :project: bifrost

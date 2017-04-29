@@ -1,0 +1,5 @@
+Class bifrost::ring::Ring
+=========================
+
+.. doxygenclass:: bifrost::ring::Ring
+   :project: bifrost

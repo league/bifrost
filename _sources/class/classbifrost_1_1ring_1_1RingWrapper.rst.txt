@@ -1,0 +1,5 @@
+Class bifrost::ring::RingWrapper
+================================
+
+.. doxygenclass:: bifrost::ring::RingWrapper
+   :project: bifrost

@@ -1,0 +1,5 @@
+Class bifrost::ring::detail::Span
+=================================
+
+.. doxygenclass:: bifrost::ring::detail::Span
+   :project: bifrost

@@ -1,0 +1,5 @@
+Struct BFspan_info
+==================
+
+.. doxygenstruct:: BFspan_info
+   :project: bifrost
