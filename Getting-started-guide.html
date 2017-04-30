@@ -44,15 +44,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <!---
-Currently using this book of tips : https://jacobian.org/writing/great-documentation/
--->
-
-<!---
-Should get a new user up and running in about 30 minutes.
---><div class="section" id="getting-started-guide">
+  <div class="section" id="getting-started-guide">
 <h1>2. Getting started guide<a class="headerlink" href="#getting-started-guide" title="Permalink to this headline">¶</a></h1>
-<!--- For a quick demo of Bifrost to whet your appetite, please check out our online demo at [GitHub Pages](bifrost.github.io). --><p>If you have already installed Bifrost, look below to <a class="reference external" href="#tutorial">Creating your
+<p>If you have already installed Bifrost, look below to <a class="reference external" href="#tutorial">Creating your
 first pipeline</a></p>
 <div class="section" id="installation">
 <h2>2.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
@@ -79,11 +73,10 @@ as follows:</p>
 of pip and setuptools.</li>
 </ol>
 </div>
-<div class="section" id="numpy">
-<h4>2.1.1.2. <a class="reference external" href="http://docs.scipy.org/doc/numpy/index.html">NumPy</a><a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="numpy-matplotlib-contextlib2-simplejson-pint-graphviz">
+<h4>2.1.1.2. numpy, matplotlib, contextlib2, simplejson, pint, graphviz<a class="headerlink" href="#numpy-matplotlib-contextlib2-simplejson-pint-graphviz" title="Permalink to this headline">¶</a></h4>
 <p>If you have already installed pip, this step should be as simple as
-<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span></code>. NumPy is used in the Python front end of Bifrost,
-and is very helpful for quick testing of pipeline ideas.</p>
+<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span> <span class="pre">contextlib2</span> <span class="pre">simplejson</span> <span class="pre">pint</span> <span class="pre">graphviz</span></code>.</p>
 </div>
 <div class="section" id="pyclibrary-modified">
 <h4>2.1.1.3. <a class="reference external" href="https://github.com/MatthieuDartiailh/pyclibrary">PyCLibrary (modified)</a><a class="headerlink" href="#pyclibrary-modified" title="Permalink to this headline">¶</a></h4>
@@ -117,8 +110,16 @@ experience, you can come back here for a speedup.</p>
 <a class="reference external" href="https://developer.nvidia.com/cuda-downloads">CUDA toolkit</a>. Follow
 the operating system-specific instructions to install.</p>
 </div>
-<div class="section" id="openmp">
-<h4>2.1.2.2. <a class="reference external" href="http://openmp.org/wp/openmp-compilers/">OpenMP</a><a class="headerlink" href="#openmp" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="other-dependencies">
+<h4>2.1.2.2. Other Dependencies<a class="headerlink" href="#other-dependencies" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>exuberant-ctags</li>
+<li>Basic build tools (make, gcc, etc.)</li>
+</ul>
+<dl class="docutils">
+<dt>On Ubuntu, the following command should grab everything you need:</dt>
+<dd><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">build-essential</span> <span class="pre">software-properties-common</span> <span class="pre">exuberant-ctags</span></code></dd>
+</dl>
 </div>
 </div>
 <div class="section" id="bifrost-install">
@@ -129,16 +130,11 @@ with</p>
 <p>You will want to edit <code class="docutils literal"><span class="pre">user.mk</span></code> to suit your system. For example, if
 you are not working with GPUs, uncomment the line:</p>
 <p><code class="docutils literal"><span class="pre">#NOCUDA</span>&#160;&#160; <span class="pre">=</span> <span class="pre">1</span> <span class="pre">#</span> <span class="pre">Disable</span> <span class="pre">CUDA</span> <span class="pre">support</span></code>.</p>
-<p>Now you can call <code class="docutils literal"><span class="pre">make</span></code>, and <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> to install the C backend
-of Bifrost to your computer.</p>
-<p>After this, navigate to <code class="docutils literal"><span class="pre">bifrost/python</span></code>, and run
-<code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--user</span></code>, to install the Python interface.</p>
+<p>Now you can call <code class="docutils literal"><span class="pre">make</span></code>, and <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> to install
+Bifrost.</p>
 <p>Trying to call <code class="docutils literal"><span class="pre">import</span> <span class="pre">bifrost</span></code> inside of a Python program will tell
 you if your install was successful or not.</p>
 </div>
-</div>
-<div class="section" id="create-your-first-pipeline">
-<h2>2.2. Create your first pipeline<a class="headerlink" href="#create-your-first-pipeline" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -154,19 +150,18 @@ you if your install was successful or not.</p>
 <li><a class="reference internal" href="#installation">2.1. Installation</a><ul>
 <li><a class="reference internal" href="#python-dependencies">2.1.1. Python dependencies</a><ul>
 <li><a class="reference internal" href="#pip">2.1.1.1. pip</a></li>
-<li><a class="reference internal" href="#numpy">2.1.1.2. NumPy</a></li>
+<li><a class="reference internal" href="#numpy-matplotlib-contextlib2-simplejson-pint-graphviz">2.1.1.2. numpy, matplotlib, contextlib2, simplejson, pint, graphviz</a></li>
 <li><a class="reference internal" href="#pyclibrary-modified">2.1.1.3. PyCLibrary (modified)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#c-dependencies">2.1.2. C++ dependencies</a><ul>
 <li><a class="reference internal" href="#cuda">2.1.2.1. CUDA</a></li>
-<li><a class="reference internal" href="#openmp">2.1.2.2. OpenMP</a></li>
+<li><a class="reference internal" href="#other-dependencies">2.1.2.2. Other Dependencies</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bifrost-install">2.1.3. Bifrost install</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#create-your-first-pipeline">2.2. Create your first pipeline</a></li>
 </ul>
 </li>
 </ul>
