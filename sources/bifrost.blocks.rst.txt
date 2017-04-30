@@ -1,4 +1,4 @@
-bifrost\.blocks package
+Block Library Reference
 =======================
 
 Submodules

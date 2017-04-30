@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7.1.1. bifrost.blocks package &#8212; bifrost 0.6 documentation</title>
+    <title>7. Block Library Reference &#8212; bifrost 0.6 documentation</title>
     
     <link rel="stylesheet" href="static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7.1.2. bifrost.views package" href="bifrost.views.html" />
-    <link rel="prev" title="7. Python Reference" href="bifrost.html" />
+    <link rel="next" title="8. Python Reference" href="bifrost.html" />
+    <link rel="prev" title="6. Python API" href="Python-API.html" />
    
   <link rel="stylesheet" href="static/custom.css" type="text/css" />
   
@@ -44,13 +44,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="bifrost-blocks-package">
-<h1>7.1.1. bifrost.blocks package<a class="headerlink" href="#bifrost-blocks-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="block-library-reference">
+<h1>7. Block Library Reference<a class="headerlink" href="#block-library-reference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
-<h2>7.1.1.1. Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>7.1. Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost.blocks.accumulate">
-<span id="bifrost-blocks-accumulate-module"></span><h2>7.1.1.2. bifrost.blocks.accumulate module<a class="headerlink" href="#module-bifrost.blocks.accumulate" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-accumulate-module"></span><h2>7.2. bifrost.blocks.accumulate module<a class="headerlink" href="#module-bifrost.blocks.accumulate" title="Permalink to this headline">¶</a></h2>
 <p>A simple block that accepts 1 frame at a time and accumulates them
 nframe times before outputting the accumulated result.</p>
 <dl class="class">
@@ -82,10 +82,10 @@ nframe times before outputting the accumulated result.</p>
 
 </div>
 <div class="section" id="bifrost-blocks-audio-module">
-<h2>7.1.1.3. bifrost.blocks.audio module<a class="headerlink" href="#bifrost-blocks-audio-module" title="Permalink to this headline">¶</a></h2>
+<h2>7.3. bifrost.blocks.audio module<a class="headerlink" href="#bifrost-blocks-audio-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost.blocks.copy">
-<span id="bifrost-blocks-copy-module"></span><h2>7.1.1.4. bifrost.blocks.copy module<a class="headerlink" href="#module-bifrost.blocks.copy" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-copy-module"></span><h2>7.4. bifrost.blocks.copy module<a class="headerlink" href="#module-bifrost.blocks.copy" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.copy.CopyBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.copy.</code><code class="descname">CopyBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock" title="Permalink to this definition">¶</a></dt>
@@ -109,7 +109,7 @@ nframe times before outputting the accumulated result.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.detect">
-<span id="bifrost-blocks-detect-module"></span><h2>7.1.1.5. bifrost.blocks.detect module<a class="headerlink" href="#module-bifrost.blocks.detect" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-detect-module"></span><h2>7.5. bifrost.blocks.detect module<a class="headerlink" href="#module-bifrost.blocks.detect" title="Permalink to this headline">¶</a></h2>
 <p>Detect block
 data = detect(data, mode=&#8217;jones/stokes&#8217;, axis=None)
 If axis is None, default to &#8216;polarisation&#8217;, and if this is not found, default to single-pol data (i.e., simple square)
@@ -144,7 +144,7 @@ Jones:  complex x,y -&gt; complex (XX*,YY*),XY*</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.fdmt">
-<span id="bifrost-blocks-fdmt-module"></span><h2>7.1.1.6. bifrost.blocks.fdmt module<a class="headerlink" href="#module-bifrost.blocks.fdmt" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-fdmt-module"></span><h2>7.6. bifrost.blocks.fdmt module<a class="headerlink" href="#module-bifrost.blocks.fdmt" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fdmt.FdmtBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">FdmtBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock" title="Permalink to this definition">¶</a></dt>
@@ -174,7 +174,7 @@ Jones:  complex x,y -&gt; complex (XX*,YY*),XY*</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.fft">
-<span id="bifrost-blocks-fft-module"></span><h2>7.1.1.7. bifrost.blocks.fft module<a class="headerlink" href="#module-bifrost.blocks.fft" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-fft-module"></span><h2>7.7. bifrost.blocks.fft module<a class="headerlink" href="#module-bifrost.blocks.fft" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fft.FftBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.fft.</code><code class="descname">FftBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>real_output=False</em>, <em>axis_labels=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fft.FftBlock" title="Permalink to this definition">¶</a></dt>
@@ -210,7 +210,7 @@ axes.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.fftshift">
-<span id="bifrost-blocks-fftshift-module"></span><h2>7.1.1.8. bifrost.blocks.fftshift module<a class="headerlink" href="#module-bifrost.blocks.fftshift" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-fftshift-module"></span><h2>7.8. bifrost.blocks.fftshift module<a class="headerlink" href="#module-bifrost.blocks.fftshift" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fftshift.FftShiftBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.fftshift.</code><code class="descname">FftShiftBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock" title="Permalink to this definition">¶</a></dt>
@@ -240,7 +240,7 @@ axes.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.guppi_raw">
-<span id="bifrost-blocks-guppi-raw-module"></span><h2>7.1.1.9. bifrost.blocks.guppi_raw module<a class="headerlink" href="#module-bifrost.blocks.guppi_raw" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-guppi-raw-module"></span><h2>7.9. bifrost.blocks.guppi_raw module<a class="headerlink" href="#module-bifrost.blocks.guppi_raw" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.guppi_raw.GuppiRawSourceBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.guppi_raw.</code><code class="descname">GuppiRawSourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock" title="Permalink to this definition">¶</a></dt>
@@ -279,7 +279,7 @@ axes.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.quantize">
-<span id="bifrost-blocks-quantize-module"></span><h2>7.1.1.10. bifrost.blocks.quantize module<a class="headerlink" href="#module-bifrost.blocks.quantize" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-quantize-module"></span><h2>7.10. bifrost.blocks.quantize module<a class="headerlink" href="#module-bifrost.blocks.quantize" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.quantize.QuantizeBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.quantize.</code><code class="descname">QuantizeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>scale=1.0</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock" title="Permalink to this definition">¶</a></dt>
@@ -309,7 +309,7 @@ axes.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.reverse">
-<span id="bifrost-blocks-reverse-module"></span><h2>7.1.1.11. bifrost.blocks.reverse module<a class="headerlink" href="#module-bifrost.blocks.reverse" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-reverse-module"></span><h2>7.11. bifrost.blocks.reverse module<a class="headerlink" href="#module-bifrost.blocks.reverse" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.reverse.ReverseBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.reverse.</code><code class="descname">ReverseBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock" title="Permalink to this definition">¶</a></dt>
@@ -339,7 +339,7 @@ axes.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.scrunch">
-<span id="bifrost-blocks-scrunch-module"></span><h2>7.1.1.12. bifrost.blocks.scrunch module<a class="headerlink" href="#module-bifrost.blocks.scrunch" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-scrunch-module"></span><h2>7.12. bifrost.blocks.scrunch module<a class="headerlink" href="#module-bifrost.blocks.scrunch" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.scrunch.ScrunchBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.scrunch.</code><code class="descname">ScrunchBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>factor</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock" title="Permalink to this definition">¶</a></dt>
@@ -375,7 +375,7 @@ axes.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.sigproc">
-<span id="bifrost-blocks-sigproc-module"></span><h2>7.1.1.13. bifrost.blocks.sigproc module<a class="headerlink" href="#module-bifrost.blocks.sigproc" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-sigproc-module"></span><h2>7.13. bifrost.blocks.sigproc module<a class="headerlink" href="#module-bifrost.blocks.sigproc" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.sigproc.SigprocSinkBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">SigprocSinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock" title="Permalink to this definition">¶</a></dt>
@@ -461,7 +461,7 @@ The Sigproc data type is inferred from sequence metadata, and is one of:</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.transpose">
-<span id="bifrost-blocks-transpose-module"></span><h2>7.1.1.14. bifrost.blocks.transpose module<a class="headerlink" href="#module-bifrost.blocks.transpose" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-transpose-module"></span><h2>7.14. bifrost.blocks.transpose module<a class="headerlink" href="#module-bifrost.blocks.transpose" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.transpose.TransposeBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.transpose.</code><code class="descname">TransposeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock" title="Permalink to this definition">¶</a></dt>
@@ -485,7 +485,7 @@ The Sigproc data type is inferred from sequence metadata, and is one of:</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.unpack">
-<span id="bifrost-blocks-unpack-module"></span><h2>7.1.1.15. bifrost.blocks.unpack module<a class="headerlink" href="#module-bifrost.blocks.unpack" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-unpack-module"></span><h2>7.15. bifrost.blocks.unpack module<a class="headerlink" href="#module-bifrost.blocks.unpack" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.unpack.UnpackBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.unpack.</code><code class="descname">UnpackBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>align_msb=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock" title="Permalink to this definition">¶</a></dt>
@@ -515,7 +515,7 @@ The Sigproc data type is inferred from sequence metadata, and is one of:</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.wav">
-<span id="bifrost-blocks-wav-module"></span><h2>7.1.1.16. bifrost.blocks.wav module<a class="headerlink" href="#module-bifrost.blocks.wav" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-wav-module"></span><h2>7.16. bifrost.blocks.wav module<a class="headerlink" href="#module-bifrost.blocks.wav" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.wav.WavSinkBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.wav.</code><code class="descname">WavSinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock" title="Permalink to this definition">¶</a></dt>
@@ -595,7 +595,7 @@ The Sigproc data type is inferred from sequence metadata, and is one of:</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks">
-<span id="module-contents"></span><h2>7.1.1.17. Module contents<a class="headerlink" href="#module-bifrost.blocks" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>7.17. Module contents<a class="headerlink" href="#module-bifrost.blocks" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -607,24 +607,24 @@ The Sigproc data type is inferred from sequence metadata, and is one of:</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">7.1.1. bifrost.blocks package</a><ul>
-<li><a class="reference internal" href="#submodules">7.1.1.1. Submodules</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.accumulate">7.1.1.2. bifrost.blocks.accumulate module</a></li>
-<li><a class="reference internal" href="#bifrost-blocks-audio-module">7.1.1.3. bifrost.blocks.audio module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.copy">7.1.1.4. bifrost.blocks.copy module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.detect">7.1.1.5. bifrost.blocks.detect module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.fdmt">7.1.1.6. bifrost.blocks.fdmt module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.fft">7.1.1.7. bifrost.blocks.fft module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.fftshift">7.1.1.8. bifrost.blocks.fftshift module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.guppi_raw">7.1.1.9. bifrost.blocks.guppi_raw module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.quantize">7.1.1.10. bifrost.blocks.quantize module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.reverse">7.1.1.11. bifrost.blocks.reverse module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.scrunch">7.1.1.12. bifrost.blocks.scrunch module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.sigproc">7.1.1.13. bifrost.blocks.sigproc module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.transpose">7.1.1.14. bifrost.blocks.transpose module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.unpack">7.1.1.15. bifrost.blocks.unpack module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.wav">7.1.1.16. bifrost.blocks.wav module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks">7.1.1.17. Module contents</a></li>
+<li><a class="reference internal" href="#">7. Block Library Reference</a><ul>
+<li><a class="reference internal" href="#submodules">7.1. Submodules</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.accumulate">7.2. bifrost.blocks.accumulate module</a></li>
+<li><a class="reference internal" href="#bifrost-blocks-audio-module">7.3. bifrost.blocks.audio module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.copy">7.4. bifrost.blocks.copy module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.detect">7.5. bifrost.blocks.detect module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.fdmt">7.6. bifrost.blocks.fdmt module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.fft">7.7. bifrost.blocks.fft module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.fftshift">7.8. bifrost.blocks.fftshift module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.guppi_raw">7.9. bifrost.blocks.guppi_raw module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.quantize">7.10. bifrost.blocks.quantize module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.reverse">7.11. bifrost.blocks.reverse module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.scrunch">7.12. bifrost.blocks.scrunch module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.sigproc">7.13. bifrost.blocks.sigproc module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.transpose">7.14. bifrost.blocks.transpose module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.unpack">7.15. bifrost.blocks.unpack module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.wav">7.16. bifrost.blocks.wav module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks">7.17. Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -632,10 +632,8 @@ The Sigproc data type is inferred from sequence metadata, and is one of:</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="bifrost.html">7. Python Reference</a><ul>
-      <li>Previous: <a href="bifrost.html" title="previous chapter">7. Python Reference</a></li>
-      <li>Next: <a href="bifrost.views.html" title="next chapter">7.1.2. bifrost.views package</a></li>
-  </ul></li>
+      <li>Previous: <a href="Python-API.html" title="previous chapter">6. Python API</a></li>
+      <li>Next: <a href="bifrost.html" title="next chapter">8. Python Reference</a></li>
   </ul></li>
 </ul>
 </div>
