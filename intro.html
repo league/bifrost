@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -36,7 +36,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,7 +47,7 @@
   <div class="section" id="introduction-to-bifrost">
 <h1>1. Introduction to Bifrost<a class="headerlink" href="#introduction-to-bifrost" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="bifrost-is">
-<h2>1.1. Bifrost is ...<a class="headerlink" href="#bifrost-is" title="Permalink to this headline">¶</a></h2>
+<h2>1.1. Bifrost is …<a class="headerlink" href="#bifrost-is" title="Permalink to this headline">¶</a></h2>
 <p>A stream processing framework, created to ease the development of
 high-throughput processing CPU/GPU pipelines. It is specifically
 designed for digital signal processing (DSP) applications within radio
@@ -67,7 +67,7 @@ of memory copies between the CPU and GPU spaces.</p>
 <p>The purpose of bifrost is to allow rapid development of <em>streaming</em> DSP
 pipelines; that is, it is designed for <em>stream-like</em> data. A simple
 example of a data stream is the time series voltage data from a radio
-telescope&#8217;s digitizer card. Unlike file-like data, stream-like data has
+telescope’s digitizer card. Unlike file-like data, stream-like data has
 no well defined start and stop points. One can of course take a series
 of files, each containing a chunk of a time stream, and treat them as a
 stream.</p>
@@ -76,14 +76,14 @@ stream.</p>
 <h3>1.2.2. Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h3>
 <p>A <em>pipeline</em> is a programming implementation where data processing
 elements are daisy-chained together and stream data are pushed through
-them &#8211; like water through a pipe. The data processing elements all run
-at once, each processing different bits of data which &#8220;flow&#8221; through the
+them – like water through a pipe. The data processing elements all run
+at once, each processing different bits of data which “flow” through the
 pipeline.</p>
-<p>Pipelining can significantly improve a code&#8217;s performance (image a road
+<p>Pipelining can significantly improve a code’s performance (image a road
 system with only one car on it at one time: that would be an
-&#8216;unpipelined&#8217; transport system!). Nevertheless, if there is a
+‘unpipelined’ transport system!). Nevertheless, if there is a
 particularly slow processing element, the flow of the pipeline will be
-limited by that element&#8217;s output data rate&#8211; this is known as a
+limited by that element’s output data rate– this is known as a
 <em>bottleneck</em>.</p>
 </div>
 <div class="section" id="ring-buffers">
@@ -130,7 +130,7 @@ series of moving averaged data).</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1. Introduction to Bifrost</a><ul>
-<li><a class="reference internal" href="#bifrost-is">1.1. Bifrost is ...</a></li>
+<li><a class="reference internal" href="#bifrost-is">1.1. Bifrost is …</a></li>
 <li><a class="reference internal" href="#core-concepts">1.2. Core concepts</a><ul>
 <li><a class="reference internal" href="#streaming-data">1.2.1. Streaming data</a></li>
 <li><a class="reference internal" href="#pipelines">1.2.2. Pipelines</a></li>
@@ -150,7 +150,7 @@ series of moving averaged data).</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Bifrost&#8217;s documentation!</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Bifrost’s documentation!</a></li>
       <li>Next: <a href="Getting-started-guide.html" title="next chapter">2. Getting started guide</a></li>
   </ul></li>
 </ul>
@@ -180,7 +180,7 @@ series of moving averaged data).</p>
       &copy;2017, ledatelescope.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2+</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

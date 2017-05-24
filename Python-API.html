@@ -1,12 +1,12 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. Python API &#8212; bifrost 0.6 documentation</title>
+    <title>Python API &#8212; bifrost 0.6 documentation</title>
     
     <link rel="stylesheet" href="static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -27,8 +27,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Python Reference" href="bifrost.html" />
-    <link rel="prev" title="5. C++ Developement" href="Cpp-Development.html" />
    
   <link rel="stylesheet" href="static/custom.css" type="text/css" />
   
@@ -36,7 +34,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,15 +43,15 @@
           <div class="body" role="main">
             
   <div class="section" id="python-api">
-<h1>6. Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h1>
+<h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="basic-syntax">
-<h2>6.1. Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h2>
+<h2>Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h2>
 <p>As described on the [[Home]] page, Bifrost is made up of blocks, rings,
 and pipelines. Blocks embody <em>black box processes</em>, and rings connect
 these blocks together. A network of blocks and rings is called a
-pipeline. Bifrost&#8217;s Python API mirrors these concepts very closely.</p>
+pipeline. Bifrost’s Python API mirrors these concepts very closely.</p>
 <div class="section" id="let-s-start-on-an-example-here-we-will-perform-an-fft-on-an-array-and-dump-the-result-to-a-text-file">
-<h3>6.1.1. Let&#8217;s start on an example: here we will perform an FFT on an array, and dump the result to a text file.<a class="headerlink" href="#let-s-start-on-an-example-here-we-will-perform-an-fft-on-an-array-and-dump-the-result-to-a-text-file" title="Permalink to this headline">¶</a></h3>
+<h3>Let’s start on an example: here we will perform an FFT on an array, and dump the result to a text file.<a class="headerlink" href="#let-s-start-on-an-example-here-we-will-perform-an-fft-on-an-array-and-dump-the-result-to-a-text-file" title="Permalink to this headline">¶</a></h3>
 <p>The following code generates a list of three blocks: a <code class="docutils literal"><span class="pre">TestingBlock</span></code>,
 which takes a list of numbers during its initialization (which we give
 as <code class="docutils literal"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>, an <code class="docutils literal"><span class="pre">FFTBlock</span></code>, which performs a one dimensional FFT
@@ -88,7 +86,7 @@ through in real-time.</p>
 </div>
 </div>
 <div class="section" id="blocks">
-<h2>6.2. Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline">¶</a></h2>
+<h2>Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline">¶</a></h2>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#Dictionaries are the form of &quot;key&quot;: &quot;value&quot; pairs. If</span>
 <span class="c1"># I create a dictionary such as x={&quot;key&quot;: &quot;value&quot;},</span>
 <span class="c1"># then calling x[&quot;key&quot;] produces &quot;value&quot;.</span>
@@ -212,7 +210,7 @@ through in real-time.</p>
 </div>
 </div>
 <div class="section" id="pipelines">
-<h2>6.3. Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
+<h2>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#Dummy function to generate data</span>
 <span class="k">def</span> <span class="nf">generate_ten_arrays</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -320,13 +318,13 @@ through in real-time.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">6. Python API</a><ul>
-<li><a class="reference internal" href="#basic-syntax">6.1. Basic Syntax</a><ul>
-<li><a class="reference internal" href="#let-s-start-on-an-example-here-we-will-perform-an-fft-on-an-array-and-dump-the-result-to-a-text-file">6.1.1. Let&#8217;s start on an example: here we will perform an FFT on an array, and dump the result to a text file.</a></li>
+<li><a class="reference internal" href="#">Python API</a><ul>
+<li><a class="reference internal" href="#basic-syntax">Basic Syntax</a><ul>
+<li><a class="reference internal" href="#let-s-start-on-an-example-here-we-will-perform-an-fft-on-an-array-and-dump-the-result-to-a-text-file">Let’s start on an example: here we will perform an FFT on an array, and dump the result to a text file.</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#blocks">6.2. Blocks</a></li>
-<li><a class="reference internal" href="#pipelines">6.3. Pipelines</a></li>
+<li><a class="reference internal" href="#blocks">Blocks</a></li>
+<li><a class="reference internal" href="#pipelines">Pipelines</a></li>
 </ul>
 </li>
 </ul>
@@ -334,8 +332,6 @@ through in real-time.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Cpp-Development.html" title="previous chapter">5. C++ Developement</a></li>
-      <li>Next: <a href="bifrost.html" title="next chapter">7. Python Reference</a></li>
   </ul></li>
 </ul>
 </div>
@@ -364,7 +360,7 @@ through in real-time.</p>
       &copy;2017, ledatelescope.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2+</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

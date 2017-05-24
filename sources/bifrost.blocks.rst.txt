@@ -20,6 +20,14 @@ bifrost\.blocks\.audio module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.blocks\.binary\_io module
+----------------------------------
+
+.. automodule:: bifrost.blocks.binary_io
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.blocks\.copy module
 ----------------------------
 
@@ -64,6 +72,14 @@ bifrost\.blocks\.guppi\_raw module
 ----------------------------------
 
 .. automodule:: bifrost.blocks.guppi_raw
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+bifrost\.blocks\.print\_header module
+-------------------------------------
+
+.. automodule:: bifrost.blocks.print_header
     :members:
     :undoc-members:
     :show-inheritance:
