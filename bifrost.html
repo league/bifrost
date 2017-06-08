@@ -1447,32 +1447,22 @@ frames to commit for each output.</p>
 <dl class="function">
 <dt id="bifrost.pipeline.block_view">
 <code class="descclassname">bifrost.pipeline.</code><code class="descname">block_view</code><span class="sig-paren">(</span><em>block</em>, <em>header_transform</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.block_view" title="Permalink to this definition">¶</a></dt>
-<dd><p>Modify the headers of the output ring for a block</p>
+<dd><p>View a block with modified output headers</p>
 <p>Use this function to adjust the output headers of a ring
-without having to write a new block. This function
-returns a copy of the original block. This allows you
-to apply various modifications to a block with a single function.</p>
-<dl class="attribute">
-<dt id="bifrost.pipeline.block">
-<code class="descclassname">bifrost.pipeline.</code><code class="descname">block</code><a class="headerlink" href="#bifrost.pipeline.block" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Block</em> – A derivative of a Block object.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="bifrost.pipeline.header_transform">
-<code class="descclassname">bifrost.pipeline.</code><code class="descname">header_transform</code><a class="headerlink" href="#bifrost.pipeline.header_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>function</em> – A function that transforms headers
-in an outgoing ring from a block</p>
-</dd></dl>
-
+on-the-fly, effectively producing a new ‘view’ of the block.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A copy of the original block,
-but with modified output rings.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>block</strong> (<a class="reference internal" href="#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input block.</li>
+<li><strong>header_transform</strong> (<em>function</em>) – A function f(hdr) -&gt; new_hdr.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><cite>Block</cite></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new block that acts as the old block but modifies its sequence
+headers on-the-fly.</p>
+</td>
 </tr>
 </tbody>
 </table>
