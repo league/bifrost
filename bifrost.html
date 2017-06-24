@@ -805,6 +805,15 @@ shaped arrays.</dd>
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="bifrost.device.set_devices_no_spin_cpu">
+<code class="descclassname">bifrost.device.</code><code class="descname">set_devices_no_spin_cpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.device.set_devices_no_spin_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a flag on all GPU devices that tells them not to spin the CPU when
+synchronizing. This is useful for reducing CPU load in GPU pipelines.</p>
+<p>This function must be called _before_ any GPU devices are
+initialized (i.e., at the start of the process).</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="bifrost.device.stream_synchronize">
 <code class="descclassname">bifrost.device.</code><code class="descname">stream_synchronize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.device.stream_synchronize" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
