@@ -934,15 +934,20 @@ Numerical values typically not enclosed in quotes, but sometimes may be
 Final record is always ‘END’ + ‘ ‘<a href="#id1"><span class="problematic" id="id2">*</span></a>77</div></blockquote>
 <dl class="docutils">
 <dt>Header keywords:</dt>
-<dd>DIRECTIO: If present and non-zero, headers are padded to a 512-byte boundary
-NBITS:    No. bits per real component (e.g., 4 =&gt; 4+4-bit complex values); typical values: 8,4,2 (particularly 8)
-BLOCSIZE: No. bytes per binary data block
+<dd><p class="first">DIRECTIO: If present and non-zero, headers are padded to a 512-byte boundary
+NBITS:    No. bits per real component (e.g., 4 =&gt; 4+4-bit complex values);</p>
+<blockquote>
+<div>typical values: 8,4,2 (particularly 8)</div></blockquote>
+<p>BLOCSIZE: No. bytes per binary data block
 OBSNCHAN (or NCHAN?)
 NPOL:     Single-pol if 1 else dual-pol
 OBSFREQ:  Centre freq of data
-OBSBW:    Bandwidth of data (may be negative to indicate high-&gt;low channel ordering)
-BACKEND:  ‘GUPPI’ for guppi/BL data
-[CHAN_BW]</dd>
+OBSBW:    Bandwidth of data (may be negative to indicate high-&gt;low channel</p>
+<blockquote>
+<div>ordering)</div></blockquote>
+<p class="last">BACKEND:  ‘GUPPI’ for guppi/BL data
+[CHAN_BW]</p>
+</dd>
 </dl>
 <p>NTIME = BLOCSIZE * 8 / (2 * NPOL * NCHAN * NBITS)</p>
 <dl class="docutils">
@@ -965,8 +970,10 @@ nchans int “Number of frequency channels. 1+”
 nifs int “Number of separate IF channels. 1+”
 nbits int “Number of bits per value. 1+”
 fch1 float “Center frequency of first channel given in buffer (MHz). &gt;0”
-foff float “Bandwidth of each channel (MHz). Negative values used for when first channel specified has the largest frequency.”
-tstart float “Time stamp in MJD of first sample (seconds). &gt;0”
+foff float “Bandwidth of each channel (MHz). Negative values used for when</p>
+<blockquote>
+<div>first channel specified has the largest frequency.”</div></blockquote>
+<p>tstart float “Time stamp in MJD of first sample (seconds). &gt;0”
 tsamp float “Time interval between samples (seconds). &gt;0”</p>
 <p>Optional parameters (which some blocks require):</p>
 <dl class="function">
@@ -1050,7 +1057,9 @@ kernel.</li>
 <span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;c = a + b&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">})</span>
 
 <span class="c1"># Compute outer product of two arrays</span>
-<span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;c(i,j) = a(i) * b(j)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">},</span> <span class="n">axis_names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span><span class="s1">&#39;j&#39;</span><span class="p">))</span>
+<span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;c(i,j) = a(i) * b(j)&quot;</span><span class="p">,</span>
+       <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">},</span>
+       <span class="n">axis_names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span><span class="s1">&#39;j&#39;</span><span class="p">))</span>
 
 <span class="c1"># Split the components of a complex array</span>
 <span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;a = c.real; b = c.imag&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">})</span>
@@ -1121,7 +1130,9 @@ kernel.</li>
 </dl>
 <p>TODO: Need backend support for broadcasting arrays
 TODO: Convert dtype of val in __setitem__
-TODO: Some calls result in segfault with space=cuda (e.g., __getitem__ returning scalar)</p>
+TODO: Some calls result in segfault with space=cuda (e.g., __getitem__</p>
+<blockquote>
+<div>returning scalar).</div></blockquote>
 <dl class="class">
 <dt id="bifrost.ndarray.BFArrayInfo">
 <em class="property">class </em><code class="descclassname">bifrost.ndarray.</code><code class="descname">BFArrayInfo</code><span class="sig-paren">(</span><em>space</em>, <em>dtype</em>, <em>native</em>, <em>conjugated</em>, <em>ownbuffer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.ndarray.BFArrayInfo" title="Permalink to this definition">¶</a></dt>
