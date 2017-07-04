@@ -1222,6 +1222,11 @@ TODO: Some calls result in segfault with space=cuda (e.g., __getitem__ returning
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="bifrost.pipeline.Block.commit_spans">
+<code class="descname">commit_spans</code><span class="sig-paren">(</span><em>ospans</em>, <em>ostrides</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.Block.commit_spans" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="bifrost.pipeline.Block.create_ring">
 <code class="descname">create_ring</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.Block.create_ring" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1250,7 +1255,7 @@ TODO: Some calls result in segfault with space=cuda (e.g., __getitem__ returning
 
 <dl class="method">
 <dt id="bifrost.pipeline.Block.reserve_spans">
-<code class="descname">reserve_spans</code><span class="sig-paren">(</span><em>exit_stack</em>, <em>oseqs</em>, <em>ispans</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.Block.reserve_spans" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reserve_spans</code><span class="sig-paren">(</span><em>exit_stack</em>, <em>oseqs</em>, <em>igulp_nframes=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.Block.reserve_spans" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1330,6 +1335,12 @@ frames to commit for each output (or None to commit complete spans).</p>
 <dd><p>Do any necessary cleanup</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="bifrost.pipeline.MultiTransformBlock.on_skip">
+<code class="descname">on_skip</code><span class="sig-paren">(</span><em>islices</em>, <em>ospans</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.MultiTransformBlock.on_skip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle skipped frames</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -1395,7 +1406,7 @@ frames to commit for each output (or None to commit complete spans).</p>
 
 <dl class="class">
 <dt id="bifrost.pipeline.SourceBlock">
-<em class="property">class </em><code class="descclassname">bifrost.pipeline.</code><code class="descname">SourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.SourceBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.pipeline.</code><code class="descname">SourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.SourceBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.Block</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.pipeline.SourceBlock.create_reader">
@@ -1467,6 +1478,12 @@ frames to commit for each output.</p>
 <dt id="bifrost.pipeline.TransformBlock.on_sequence_end">
 <code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.TransformBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do any necessary cleanup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bifrost.pipeline.TransformBlock.on_skip">
+<code class="descname">on_skip</code><span class="sig-paren">(</span><em>islice</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.pipeline.TransformBlock.on_skip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle skipped frames</p>
 </dd></dl>
 
 </dd></dl>
@@ -1845,6 +1862,11 @@ dictionaries ordered by:</p>
 <dt id="bifrost.ring2.ReadSpan">
 <em class="property">class </em><code class="descclassname">bifrost.ring2.</code><code class="descname">ReadSpan</code><span class="sig-paren">(</span><em>sequence</em>, <em>frame_offset</em>, <em>nframe</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.ring2.ReadSpan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.ring2.SpanBase" title="bifrost.ring2.SpanBase"><code class="xref py py-class docutils literal"><span class="pre">bifrost.ring2.SpanBase</span></code></a></p>
+<dl class="attribute">
+<dt id="bifrost.ring2.ReadSpan.nframe_overwritten">
+<code class="descname">nframe_overwritten</code><a class="headerlink" href="#bifrost.ring2.ReadSpan.nframe_overwritten" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="bifrost.ring2.ReadSpan.release">
 <code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.ring2.ReadSpan.release" title="Permalink to this definition">¶</a></dt>
