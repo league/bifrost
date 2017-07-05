@@ -60,6 +60,14 @@ bifrost\.block module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.block\_chainer module
+------------------------------
+
+.. automodule:: bifrost.block_chainer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.core module
 --------------------
 
