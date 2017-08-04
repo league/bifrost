@@ -132,6 +132,14 @@ bifrost\.libbifrost module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.libbifrost\_generated module
+-------------------------------------
+
+.. automodule:: bifrost.libbifrost_generated
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.linalg module
 ----------------------
 

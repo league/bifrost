@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. Block Library Reference &#8212; bifrost 0.6 documentation</title>
+    <title>10. Block Library Reference &#8212; bifrost 0.6 documentation</title>
     
     <link rel="stylesheet" href="static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. Python Reference" href="bifrost.html" />
-    <link rel="prev" title="6. Common Installation and Execution Problems" href="Common-installation-and-execution-problems.html" />
+    <link rel="next" title="11. Python Reference" href="bifrost.html" />
+    <link rel="prev" title="9. Common Installation and Execution Problems" href="Common-installation-and-execution-problems.html" />
    
   <link rel="stylesheet" href="static/custom.css" type="text/css" />
   
@@ -45,39 +45,39 @@
           <div class="body" role="main">
             
   <div class="section" id="block-library-reference">
-<h1>7. Block Library Reference<a class="headerlink" href="#block-library-reference" title="Permalink to this headline">¶</a></h1>
+<h1>10. Block Library Reference<a class="headerlink" href="#block-library-reference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
-<h2>7.1. Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>10.1. Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost.blocks.accumulate">
-<span id="bifrost-blocks-accumulate-module"></span><h2>7.2. bifrost.blocks.accumulate module<a class="headerlink" href="#module-bifrost.blocks.accumulate" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-accumulate-module"></span><h2>10.2. bifrost.blocks.accumulate module<a class="headerlink" href="#module-bifrost.blocks.accumulate" title="Permalink to this headline">¶</a></h2>
 <p>A simple block that accepts 1 frame at a time and accumulates them
 nframe times before outputting the accumulated result.</p>
 <dl class="class">
 <dt id="bifrost.blocks.accumulate.AccumulateBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.accumulate.</code><code class="descname">AccumulateBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>nframe</em>, <em>dtype=None</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.accumulate.</code><code class="descname">AccumulateBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>nframe</em>, <em>dtype=None</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/accumulate.html#AccumulateBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.accumulate.AccumulateBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/accumulate.html#AccumulateBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return set of valid spaces (or ‘any’) for each input</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.accumulate.AccumulateBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/accumulate.html#AccumulateBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.accumulate.AccumulateBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/accumulate.html#AccumulateBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.accumulate.AccumulateBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.accumulate.accumulate">
-<code class="descclassname">bifrost.blocks.accumulate.</code><code class="descname">accumulate</code><span class="sig-paren">(</span><em>iring</em>, <em>nframe</em>, <em>dtype=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.accumulate.accumulate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.accumulate.</code><code class="descname">accumulate</code><span class="sig-paren">(</span><em>iring</em>, <em>nframe</em>, <em>dtype=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/accumulate.html#accumulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.accumulate.accumulate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accumulate <cite>nframe</cite> frames of data, one at a time, before outputting.</p>
 <dl class="attribute">
 <dt id="bifrost.blocks.accumulate.iring">
@@ -145,15 +145,15 @@ nframe times before outputting the accumulated result.</p>
 
 </div>
 <div class="section" id="bifrost-blocks-audio-module">
-<h2>7.3. bifrost.blocks.audio module<a class="headerlink" href="#bifrost-blocks-audio-module" title="Permalink to this headline">¶</a></h2>
+<h2>10.3. bifrost.blocks.audio module<a class="headerlink" href="#bifrost-blocks-audio-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost.blocks.binary_io">
-<span id="bifrost-blocks-binary-io-module"></span><h2>7.4. bifrost.blocks.binary_io module<a class="headerlink" href="#module-bifrost.blocks.binary_io" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-binary-io-module"></span><h2>10.4. bifrost.blocks.binary_io module<a class="headerlink" href="#module-bifrost.blocks.binary_io" title="Permalink to this headline">¶</a></h2>
 <p># binary_file_io.py</p>
 <p>Basic file I/O blocks for reading and writing data.</p>
 <dl class="class">
 <dt id="bifrost.blocks.binary_io.BinaryFileRead">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">BinaryFileRead</code><span class="sig-paren">(</span><em>filename</em>, <em>gulp_size</em>, <em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileRead" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">BinaryFileRead</code><span class="sig-paren">(</span><em>filename</em>, <em>gulp_size</em>, <em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileRead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileRead" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Simple file-like reading object for pipeline testing</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -172,21 +172,57 @@ not a bifrost.ndarray dtype (eg. float32, not f32)</li>
 </table>
 <dl class="method">
 <dt id="bifrost.blocks.binary_io.BinaryFileRead.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileRead.close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileRead.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileRead.close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.binary_io.BinaryFileRead.read">
-<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileRead.read" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileRead.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileRead.read" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="bifrost.blocks.binary_io.BinaryFileReadBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">BinaryFileReadBlock</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_size</em>, <em>gulp_nframe</em>, <em>dtype</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">BinaryFileReadBlock</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_size</em>, <em>gulp_nframe</em>, <em>dtype</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileReadBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SourceBlock" title="bifrost.pipeline.SourceBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code></a></p>
-<p>Block for reading binary data from file and streaming it into a bifrost pipeline</p>
+<dl class="method">
+<dt id="bifrost.blocks.binary_io.BinaryFileReadBlock.create_reader">
+<code class="descname">create_reader</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileReadBlock.create_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock.create_reader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.binary_io.BinaryFileReadBlock.on_data">
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileReadBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.binary_io.BinaryFileReadBlock.on_sequence">
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>ireader</em>, <em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileReadBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bifrost.blocks.binary_io.BinaryFileWriteBlock">
+<em class="property">class </em><code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">BinaryFileWriteBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>file_ext=’out’</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileWriteBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileWriteBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
+<dl class="method">
+<dt id="bifrost.blocks.binary_io.BinaryFileWriteBlock.on_data">
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileWriteBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileWriteBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.binary_io.BinaryFileWriteBlock.on_sequence">
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#BinaryFileWriteBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileWriteBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bifrost.blocks.binary_io.binary_read">
+<code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">binary_read</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_size</em>, <em>gulp_nframe</em>, <em>dtype</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#binary_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.binary_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Block for reading binary data from file and streaming it into a bifrost pipeline</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -201,28 +237,12 @@ not a bifrost.ndarray dtype (eg. float32, not f32)</li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="bifrost.blocks.binary_io.BinaryFileReadBlock.create_reader">
-<code class="descname">create_reader</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock.create_reader" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bifrost.blocks.binary_io.BinaryFileReadBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock.on_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bifrost.blocks.binary_io.BinaryFileReadBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>ireader</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileReadBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
-<dl class="class">
-<dt id="bifrost.blocks.binary_io.BinaryFileWriteBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">BinaryFileWriteBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>file_ext=’out’</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileWriteBlock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
-<p>Write ring data to a binary file</p>
+<dl class="function">
+<dt id="bifrost.blocks.binary_io.binary_write">
+<code class="descclassname">bifrost.blocks.binary_io.</code><code class="descname">binary_write</code><span class="sig-paren">(</span><em>iring</em>, <em>file_ext=’out’</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/binary_io.html#binary_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.binary_io.binary_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write ring data to a binary file</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -233,40 +253,30 @@ not a bifrost.ndarray dtype (eg. float32, not f32)</li>
 </table>
 <p class="rubric">Notes</p>
 <p>output filename is generated from the header ‘name’ keyword + file_ext</p>
-<dl class="method">
-<dt id="bifrost.blocks.binary_io.BinaryFileWriteBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileWriteBlock.on_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bifrost.blocks.binary_io.BinaryFileWriteBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.binary_io.BinaryFileWriteBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </div>
 <div class="section" id="module-bifrost.blocks.copy">
-<span id="bifrost-blocks-copy-module"></span><h2>7.5. bifrost.blocks.copy module<a class="headerlink" href="#module-bifrost.blocks.copy" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-copy-module"></span><h2>10.5. bifrost.blocks.copy module<a class="headerlink" href="#module-bifrost.blocks.copy" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.copy.CopyBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.copy.</code><code class="descname">CopyBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.copy.</code><code class="descname">CopyBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/copy.html#CopyBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.copy.CopyBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/copy.html#CopyBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.copy.CopyBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/copy.html#CopyBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.copy.CopyBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.copy.copy">
-<code class="descclassname">bifrost.blocks.copy.</code><code class="descname">copy</code><span class="sig-paren">(</span><em>iring</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.copy.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.copy.</code><code class="descname">copy</code><span class="sig-paren">(</span><em>iring</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/copy.html#copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.copy.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy data, possibly to another space.</p>
 <dl class="docutils">
 <dt>Use this block to copy data between different</dt>
@@ -279,7 +289,7 @@ to the input header.</dd>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>space</strong> (<em>str</em>) – Output data space (e.g., ‘cuda’ or ‘system’).
 Default space is same as input.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -304,39 +314,39 @@ Default space is same as input.</li>
 
 </div>
 <div class="section" id="module-bifrost.blocks.detect">
-<span id="bifrost-blocks-detect-module"></span><h2>7.6. bifrost.blocks.detect module<a class="headerlink" href="#module-bifrost.blocks.detect" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-detect-module"></span><h2>10.6. bifrost.blocks.detect module<a class="headerlink" href="#module-bifrost.blocks.detect" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.detect.DetectBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.detect.</code><code class="descname">DetectBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>mode</em>, <em>axis=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.detect.</code><code class="descname">DetectBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>mode</em>, <em>axis=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/detect.html#DetectBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.detect.DetectBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/detect.html#DetectBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return set of valid spaces (or ‘any’) for each input</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.detect.DetectBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/detect.html#DetectBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.detect.DetectBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/detect.html#DetectBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.detect.DetectBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.detect.detect">
-<code class="descclassname">bifrost.blocks.detect.</code><code class="descname">detect</code><span class="sig-paren">(</span><em>iring</em>, <em>mode</em>, <em>axis=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.detect.detect" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.detect.</code><code class="descname">detect</code><span class="sig-paren">(</span><em>iring</em>, <em>mode</em>, <em>axis=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/detect.html#detect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.detect.detect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply square-law detection to create polarization products.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>mode</strong> (<em>string</em>) – <p><code class="docutils literal"><span class="pre">'scalar':</span> <span class="pre">x</span>&#160;&#160; <span class="pre">-&gt;</span> <span class="pre">real</span> <span class="pre">x.x*</span></code></p>
 <p><code class="docutils literal"><span class="pre">'jones':</span>&#160; <span class="pre">x,y</span> <span class="pre">-&gt;</span> <span class="pre">complex</span> <span class="pre">x.x*</span> <span class="pre">+</span> <span class="pre">1j*y.y*,</span> <span class="pre">x.y*</span></code></p>
 <p><code class="docutils literal"><span class="pre">'stokes':</span> <span class="pre">x,y</span> <span class="pre">-&gt;</span> <span class="pre">real</span> <span class="pre">I,</span> <span class="pre">Q,</span> <span class="pre">U,</span> <span class="pre">V</span></code></p>
@@ -369,31 +379,31 @@ Default space is same as input.</li>
 
 </div>
 <div class="section" id="module-bifrost.blocks.fdmt">
-<span id="bifrost-blocks-fdmt-module"></span><h2>7.7. bifrost.blocks.fdmt module<a class="headerlink" href="#module-bifrost.blocks.fdmt" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-fdmt-module"></span><h2>10.7. bifrost.blocks.fdmt module<a class="headerlink" href="#module-bifrost.blocks.fdmt" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fdmt.FdmtBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">FdmtBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">FdmtBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#FdmtBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.fdmt.FdmtBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#FdmtBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.fdmt.FdmtBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#FdmtBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.fdmt.FdmtBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#FdmtBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.fdmt.fdmt">
-<code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">fdmt</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fdmt.fdmt" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">fdmt</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#fdmt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.fdmt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the Fast Dispersion Measure Transform (FDMT).</p>
 <p>This uses the GPU. It is used in pulsar and fast radio burst (FRB)
 search pipelines for dedispersing frequency data.</p>
@@ -402,7 +412,7 @@ search pipelines for dedispersing frequency data.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>max_dm</strong> (<em>float</em>) – Max dispersion measure to search up to
 (in units of pc/cm^3).</li>
 <li><strong>exponent</strong> (<em>float</em>) – Frequency power law to search
@@ -455,31 +465,31 @@ output dimensions if needed.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.fft">
-<span id="bifrost-blocks-fft-module"></span><h2>7.8. bifrost.blocks.fft module<a class="headerlink" href="#module-bifrost.blocks.fft" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-fft-module"></span><h2>10.8. bifrost.blocks.fft module<a class="headerlink" href="#module-bifrost.blocks.fft" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fft.FftBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.fft.</code><code class="descname">FftBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>real_output=False</em>, <em>axis_labels=None</em>, <em>apply_fftshift=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fft.FftBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.fft.</code><code class="descname">FftBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>real_output=False</em>, <em>axis_labels=None</em>, <em>apply_fftshift=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fft.html#FftBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fft.FftBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.fft.FftBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fft.FftBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fft.html#FftBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fft.FftBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.fft.FftBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fft.FftBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fft.html#FftBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fft.FftBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.fft.FftBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fft.FftBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fft.html#FftBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fft.FftBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.fft.fft">
-<code class="descclassname">bifrost.blocks.fft.</code><code class="descname">fft</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>real_output=False</em>, <em>axis_labels=None</em>, <em>apply_fftshift=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fft.fft" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.fft.</code><code class="descname">fft</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>real_output=False</em>, <em>axis_labels=None</em>, <em>apply_fftshift=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fft.html#fft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fft.fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply a GPU FFT to the input ring data.</p>
 <p>This block produces an N-dimensional FFT of the input data stream. The
 transform can be over any set of dimensions except the frame (time)
@@ -492,7 +502,7 @@ axes.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>axes</strong> (<em>list</em>) – List of integers or strings indicating axes to be transformed.</li>
 <li><strong>inverse</strong> (<em>bool</em>) – If True, the inverse Fourier transform is applied.</li>
 <li><strong>real_output</strong> (<em>bool</em>) – If True, a complex-to-real inverse Fourier
@@ -530,31 +540,31 @@ output (input) axis by <code class="docutils literal"><span class="pre">floor(ax
 
 </div>
 <div class="section" id="module-bifrost.blocks.fftshift">
-<span id="bifrost-blocks-fftshift-module"></span><h2>7.9. bifrost.blocks.fftshift module<a class="headerlink" href="#module-bifrost.blocks.fftshift" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-fftshift-module"></span><h2>10.9. bifrost.blocks.fftshift module<a class="headerlink" href="#module-bifrost.blocks.fftshift" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fftshift.FftShiftBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.fftshift.</code><code class="descname">FftShiftBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.fftshift.</code><code class="descname">FftShiftBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fftshift.html#FftShiftBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.fftshift.FftShiftBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fftshift.html#FftShiftBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.fftshift.FftShiftBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fftshift.html#FftShiftBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.fftshift.FftShiftBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fftshift.html#FftShiftBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fftshift.FftShiftBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.fftshift.fftshift">
-<code class="descclassname">bifrost.blocks.fftshift.</code><code class="descname">fftshift</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.fftshift.fftshift" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.fftshift.</code><code class="descname">fftshift</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>inverse=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fftshift.html#fftshift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fftshift.fftshift" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply an FFT shift to data along specified axes.</p>
 <p>This operation shifts the data of an array so the central element
 is moved to the start of the array.</p>
@@ -563,7 +573,7 @@ is moved to the start of the array.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>axes</strong> – (List of) strings or integers specifying axes to shift.</li>
 <li><strong>inverse</strong> (<em>bool</em>) – If True, axes are shifted in the reverse direction.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -592,31 +602,31 @@ is moved to the start of the array.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.guppi_raw">
-<span id="bifrost-blocks-guppi-raw-module"></span><h2>7.10. bifrost.blocks.guppi_raw module<a class="headerlink" href="#module-bifrost.blocks.guppi_raw" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-guppi-raw-module"></span><h2>10.10. bifrost.blocks.guppi_raw module<a class="headerlink" href="#module-bifrost.blocks.guppi_raw" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.guppi_raw.GuppiRawSourceBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.guppi_raw.</code><code class="descname">GuppiRawSourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.guppi_raw.</code><code class="descname">GuppiRawSourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/guppi_raw.html#GuppiRawSourceBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SourceBlock" title="bifrost.pipeline.SourceBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.guppi_raw.GuppiRawSourceBlock.create_reader">
-<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock.create_reader" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/guppi_raw.html#GuppiRawSourceBlock.create_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock.create_reader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.guppi_raw.GuppiRawSourceBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/guppi_raw.html#GuppiRawSourceBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.guppi_raw.GuppiRawSourceBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>reader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>reader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/guppi_raw.html#GuppiRawSourceBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.guppi_raw.GuppiRawSourceBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.guppi_raw.read_guppi_raw">
-<code class="descclassname">bifrost.blocks.guppi_raw.</code><code class="descname">read_guppi_raw</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.guppi_raw.read_guppi_raw" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.guppi_raw.</code><code class="descname">read_guppi_raw</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe=1</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/guppi_raw.html#read_guppi_raw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.guppi_raw.read_guppi_raw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read in a GUPPI format raw data file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -652,10 +662,10 @@ is moved to the start of the array.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.print_header">
-<span id="bifrost-blocks-print-header-module"></span><h2>7.11. bifrost.blocks.print_header module<a class="headerlink" href="#module-bifrost.blocks.print_header" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-print-header-module"></span><h2>10.11. bifrost.blocks.print_header module<a class="headerlink" href="#module-bifrost.blocks.print_header" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.print_header.PrintHeaderBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.print_header.</code><code class="descname">PrintHeaderBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.print_header.</code><code class="descname">PrintHeaderBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/print_header.html#PrintHeaderBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
 <dl class="attribute">
 <dt id="bifrost.blocks.print_header.PrintHeaderBlock.lock">
@@ -664,24 +674,24 @@ is moved to the start of the array.</p>
 
 <dl class="method">
 <dt id="bifrost.blocks.print_header.PrintHeaderBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/print_header.html#PrintHeaderBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.print_header.PrintHeaderBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/print_header.html#PrintHeaderBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.print_header.PrintHeaderBlock.on_sequence_end">
-<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/print_header.html#PrintHeaderBlock.on_sequence_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.print_header.PrintHeaderBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.print_header.print_header">
-<code class="descclassname">bifrost.blocks.print_header.</code><code class="descname">print_header</code><span class="sig-paren">(</span><em>iring</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.print_header.print_header" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.print_header.</code><code class="descname">print_header</code><span class="sig-paren">(</span><em>iring</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/print_header.html#print_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.print_header.print_header" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints out the header of each new sequence of a ring.</p>
 <p>Use this for testing purposes to have a quick look
 at the contents of a ring when you are unsure. This
@@ -719,39 +729,39 @@ without any modification to the dictionary.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.quantize">
-<span id="bifrost-blocks-quantize-module"></span><h2>7.12. bifrost.blocks.quantize module<a class="headerlink" href="#module-bifrost.blocks.quantize" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-quantize-module"></span><h2>10.12. bifrost.blocks.quantize module<a class="headerlink" href="#module-bifrost.blocks.quantize" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.quantize.QuantizeBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.quantize.</code><code class="descname">QuantizeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>scale=1.0</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.quantize.</code><code class="descname">QuantizeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>scale=1.0</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/quantize.html#QuantizeBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.quantize.QuantizeBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/quantize.html#QuantizeBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return set of valid spaces (or ‘any’) for each input</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.quantize.QuantizeBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/quantize.html#QuantizeBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.quantize.QuantizeBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/quantize.html#QuantizeBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.quantize.QuantizeBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.quantize.quantize">
-<code class="descclassname">bifrost.blocks.quantize.</code><code class="descname">quantize</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>scale=1.0</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.quantize.quantize" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.quantize.</code><code class="descname">quantize</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>scale=1.0</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/quantize.html#quantize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.quantize.quantize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply a requantization of bit depth for the data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>dtype</strong> – Output data type or number of bits.</li>
 <li><strong>scale</strong> (<em>float</em>) – Scale factor to apply before quantizing.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -780,38 +790,38 @@ without any modification to the dictionary.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.reverse">
-<span id="bifrost-blocks-reverse-module"></span><h2>7.13. bifrost.blocks.reverse module<a class="headerlink" href="#module-bifrost.blocks.reverse" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-reverse-module"></span><h2>10.13. bifrost.blocks.reverse module<a class="headerlink" href="#module-bifrost.blocks.reverse" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.reverse.ReverseBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.reverse.</code><code class="descname">ReverseBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.reverse.</code><code class="descname">ReverseBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/reverse.html#ReverseBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.reverse.ReverseBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/reverse.html#ReverseBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.reverse.ReverseBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/reverse.html#ReverseBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.reverse.ReverseBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/reverse.html#ReverseBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.reverse.ReverseBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.reverse.reverse">
-<code class="descclassname">bifrost.blocks.reverse.</code><code class="descname">reverse</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.reverse.reverse" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.reverse.</code><code class="descname">reverse</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/reverse.html#reverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.reverse.reverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reverse data along an axis or set of axes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>axes</strong> – (List of) strings or integers specifying axes to reverse.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
 <li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -839,38 +849,38 @@ without any modification to the dictionary.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.scrunch">
-<span id="bifrost-blocks-scrunch-module"></span><h2>7.14. bifrost.blocks.scrunch module<a class="headerlink" href="#module-bifrost.blocks.scrunch" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-scrunch-module"></span><h2>10.14. bifrost.blocks.scrunch module<a class="headerlink" href="#module-bifrost.blocks.scrunch" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.scrunch.ScrunchBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.scrunch.</code><code class="descname">ScrunchBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>factor</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.scrunch.</code><code class="descname">ScrunchBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>factor</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/scrunch.html#ScrunchBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.scrunch.ScrunchBlock.define_output_nframes">
-<code class="descname">define_output_nframes</code><span class="sig-paren">(</span><em>input_nframe</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.define_output_nframes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_output_nframes</code><span class="sig-paren">(</span><em>input_nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/scrunch.html#ScrunchBlock.define_output_nframes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.define_output_nframes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return output nframe for each output, given input_nframes.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.scrunch.ScrunchBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/scrunch.html#ScrunchBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return set of valid spaces (or ‘any’) for each input</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.scrunch.ScrunchBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/scrunch.html#ScrunchBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.scrunch.ScrunchBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/scrunch.html#ScrunchBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.scrunch.ScrunchBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.scrunch.scrunch">
-<code class="descclassname">bifrost.blocks.scrunch.</code><code class="descname">scrunch</code><span class="sig-paren">(</span><em>iring</em>, <em>factor</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.scrunch.scrunch" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.scrunch.</code><code class="descname">scrunch</code><span class="sig-paren">(</span><em>iring</em>, <em>factor</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/scrunch.html#scrunch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.scrunch.scrunch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average <cite>factor</cite> incoming frames into one output frame.</p>
 <p>This works on system memory.</p>
 <dl class="attribute">
@@ -910,53 +920,131 @@ without any modification to the dictionary.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-bifrost.blocks.serialize">
+<span id="bifrost-blocks-serialize-module"></span><h2>10.15. bifrost.blocks.serialize module<a class="headerlink" href="#module-bifrost.blocks.serialize" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bifrost.blocks.serialize.SerializeBlock">
+<em class="property">class </em><code class="descclassname">bifrost.blocks.serialize.</code><code class="descname">SerializeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path</em>, <em>max_file_size=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#SerializeBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.SerializeBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
+<dl class="method">
+<dt id="bifrost.blocks.serialize.SerializeBlock.on_data">
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#SerializeBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.SerializeBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.serialize.SerializeBlock.on_sequence">
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#SerializeBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.SerializeBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.serialize.SerializeBlock.on_sequence_end">
+<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#SerializeBlock.on_sequence_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.SerializeBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bifrost.blocks.serialize.serialize">
+<code class="descclassname">bifrost.blocks.serialize.</code><code class="descname">serialize</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>max_file_size=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#serialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes a data stream to a set of files using a simple data format</p>
+<p>Sequence headers are written as JSON files, and sequence data are written
+directly as binary to separate files.</p>
+<p>Filenames begin with the sequence name if present, or the time tag if not.
+The general form is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Header</span>
+<span class="o">&lt;</span><span class="n">name_or_time_tag</span><span class="o">&gt;.</span><span class="n">bf</span><span class="o">.</span><span class="n">json</span>
+
+<span class="c1"># Single-ringlet data</span>
+<span class="o">&lt;</span><span class="n">name_or_time_tag</span><span class="o">&gt;.&lt;</span><span class="n">frame_offset</span><span class="o">&gt;.</span><span class="n">bf</span><span class="o">.</span><span class="n">dat</span>
+
+<span class="c1"># Multi-ringlet data</span>
+<span class="o">&lt;</span><span class="n">name_or_time_tag</span><span class="o">&gt;.&lt;</span><span class="n">frame_offset</span><span class="o">&gt;.&lt;</span><span class="n">ringlet</span><span class="o">&gt;.</span><span class="n">bf</span><span class="o">.</span><span class="n">dat</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.o</li>
+<li><strong>path</strong> (<em>str</em>) – Path specifying where to write output files.</li>
+<li><strong>max_file_size</strong> (<em>int</em>) – Max no. bytes to write to a single file. If set to
+-1, no limit is applied.</li>
+<li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code>.</li>
+<li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tensor semantics</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span>  <span class="p">[</span><span class="n">frame</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">any</span><span class="p">,</span> <span class="n">space</span> <span class="o">=</span> <span class="n">SYSTEM</span>
+<span class="n">Output</span><span class="p">:</span> <span class="n">One</span> <span class="n">data</span> <span class="n">file</span> <span class="n">per</span> <span class="n">sequence</span>
+
+<span class="n">Input</span><span class="p">:</span>  <span class="p">[</span><span class="n">ringlet</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">any</span><span class="p">,</span> <span class="n">space</span> <span class="o">=</span> <span class="n">SYSTEM</span>
+<span class="n">Output</span><span class="p">:</span> <span class="n">One</span> <span class="n">data</span> <span class="n">file</span> <span class="n">per</span> <span class="n">ringlet</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A new block instance.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#bifrost.blocks.serialize.SerializeBlock" title="bifrost.blocks.serialize.SerializeBlock">SerializeBlock</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="module-bifrost.blocks.sigproc">
-<span id="bifrost-blocks-sigproc-module"></span><h2>7.15. bifrost.blocks.sigproc module<a class="headerlink" href="#module-bifrost.blocks.sigproc" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-sigproc-module"></span><h2>10.16. bifrost.blocks.sigproc module<a class="headerlink" href="#module-bifrost.blocks.sigproc" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.sigproc.SigprocSinkBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">SigprocSinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">SigprocSinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSinkBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.sigproc.SigprocSinkBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSinkBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSinkBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence_end">
-<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSinkBlock.on_sequence_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="bifrost.blocks.sigproc.SigprocSourceBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">SigprocSourceBlock</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe</em>, <em>unpack=True</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">SigprocSourceBlock</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe</em>, <em>unpack=True</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSourceBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SourceBlock" title="bifrost.pipeline.SourceBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.sigproc.SigprocSourceBlock.create_reader">
-<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock.create_reader" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSourceBlock.create_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock.create_reader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.sigproc.SigprocSourceBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSourceBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.sigproc.SigprocSourceBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>ireader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>ireader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#SigprocSourceBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.SigprocSourceBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.sigproc.read_sigproc">
-<code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">read_sigproc</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe</em>, <em>unpack=True</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.read_sigproc" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">read_sigproc</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe</em>, <em>unpack=True</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#read_sigproc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.read_sigproc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read SIGPROC data files.</p>
 <p>Capable of reading filterbank, time series, and dedispersed subband data.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -992,17 +1080,17 @@ without any modification to the dictionary.</p>
 
 <dl class="function">
 <dt id="bifrost.blocks.sigproc.write_sigproc">
-<code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">write_sigproc</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.sigproc.write_sigproc" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.sigproc.</code><code class="descname">write_sigproc</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/sigproc.html#write_sigproc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.sigproc.write_sigproc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write data as Sigproc files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>path</strong> (<em>str</em>) – Path specifying where to write output files.</li>
-<li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
-<li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
+<li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code>.</li>
+<li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -1039,33 +1127,33 @@ without any modification to the dictionary.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.transpose">
-<span id="bifrost-blocks-transpose-module"></span><h2>7.16. bifrost.blocks.transpose module<a class="headerlink" href="#module-bifrost.blocks.transpose" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-transpose-module"></span><h2>10.17. bifrost.blocks.transpose module<a class="headerlink" href="#module-bifrost.blocks.transpose" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.transpose.TransposeBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.transpose.</code><code class="descname">TransposeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.transpose.</code><code class="descname">TransposeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/transpose.html#TransposeBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.transpose.TransposeBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/transpose.html#TransposeBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.transpose.TransposeBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/transpose.html#TransposeBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.transpose.TransposeBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.transpose.transpose">
-<code class="descclassname">bifrost.blocks.transpose.</code><code class="descname">transpose</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.transpose.transpose" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.transpose.</code><code class="descname">transpose</code><span class="sig-paren">(</span><em>iring</em>, <em>axes</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/transpose.html#transpose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.transpose.transpose" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transpose (permute) axes of the data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>axes</strong> (<em>list</em>) – List of integers or strings indicating order of output axes.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
 <li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -1093,39 +1181,39 @@ without any modification to the dictionary.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.unpack">
-<span id="bifrost-blocks-unpack-module"></span><h2>7.17. bifrost.blocks.unpack module<a class="headerlink" href="#module-bifrost.blocks.unpack" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-unpack-module"></span><h2>10.18. bifrost.blocks.unpack module<a class="headerlink" href="#module-bifrost.blocks.unpack" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.unpack.UnpackBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.unpack.</code><code class="descname">UnpackBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>align_msb=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.unpack.</code><code class="descname">UnpackBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>align_msb=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/unpack.html#UnpackBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.unpack.UnpackBlock.define_valid_input_spaces">
-<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/unpack.html#UnpackBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return set of valid spaces (or ‘any’) for each input</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.unpack.UnpackBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em>, <em>ospan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/unpack.html#UnpackBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.unpack.UnpackBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/unpack.html#UnpackBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.unpack.UnpackBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.unpack.unpack">
-<code class="descclassname">bifrost.blocks.unpack.</code><code class="descname">unpack</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.unpack.unpack" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.unpack.</code><code class="descname">unpack</code><span class="sig-paren">(</span><em>iring</em>, <em>dtype</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/unpack.html#unpack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.unpack.unpack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unpack data to a larger data type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>dtype</strong> – Output data type.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
 <li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -1153,52 +1241,52 @@ without any modification to the dictionary.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks.wav">
-<span id="bifrost-blocks-wav-module"></span><h2>7.18. bifrost.blocks.wav module<a class="headerlink" href="#module-bifrost.blocks.wav" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-blocks-wav-module"></span><h2>10.19. bifrost.blocks.wav module<a class="headerlink" href="#module-bifrost.blocks.wav" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.wav.WavSinkBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.wav.</code><code class="descname">WavSinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.wav.</code><code class="descname">WavSinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSinkBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.wav.WavSinkBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>ispan</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSinkBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.wav.WavSinkBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSinkBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.wav.WavSinkBlock.on_sequence_end">
-<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSinkBlock.on_sequence_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSinkBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="bifrost.blocks.wav.WavSourceBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.wav.</code><code class="descname">WavSourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.wav.</code><code class="descname">WavSourceBlock</code><span class="sig-paren">(</span><em>sourcenames</em>, <em>gulp_nframe</em>, <em>space=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSourceBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SourceBlock" title="bifrost.pipeline.SourceBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.wav.WavSourceBlock.create_reader">
-<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock.create_reader" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSourceBlock.create_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock.create_reader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.wav.WavSourceBlock.on_data">
-<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSourceBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock.on_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="bifrost.blocks.wav.WavSourceBlock.on_sequence">
-<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>reader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>reader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#WavSourceBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.WavSourceBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.read_wav">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">read_wav</code><span class="sig-paren">(</span><em>sourcefiles</em>, <em>gulp_nframe</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.read_wav" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">read_wav</code><span class="sig-paren">(</span><em>sourcefiles</em>, <em>gulp_nframe</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#read_wav"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.read_wav" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read Wave files (.wav).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1232,39 +1320,39 @@ without any modification to the dictionary.</p>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.wav_read_chunk_desc">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_chunk_desc</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.wav_read_chunk_desc" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_chunk_desc</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#wav_read_chunk_desc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.wav_read_chunk_desc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.wav_read_header">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_header</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.wav_read_header" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_header</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#wav_read_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.wav_read_header" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.wav_read_subchunk_desc">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_subchunk_desc</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.wav_read_subchunk_desc" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_subchunk_desc</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#wav_read_subchunk_desc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.wav_read_subchunk_desc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.wav_read_subchunk_fmt">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_subchunk_fmt</code><span class="sig-paren">(</span><em>f</em>, <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.wav_read_subchunk_fmt" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_read_subchunk_fmt</code><span class="sig-paren">(</span><em>f</em>, <em>size</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#wav_read_subchunk_fmt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.wav_read_subchunk_fmt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.wav_write_header">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_write_header</code><span class="sig-paren">(</span><em>f</em>, <em>hdr</em>, <em>chunk_size=0</em>, <em>data_size=0</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.wav_write_header" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">wav_write_header</code><span class="sig-paren">(</span><em>f</em>, <em>hdr</em>, <em>chunk_size=0</em>, <em>data_size=0</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#wav_write_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.wav_write_header" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="bifrost.blocks.wav.write_wav">
-<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">write_wav</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bifrost.blocks.wav.write_wav" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.wav.</code><code class="descname">write_wav</code><span class="sig-paren">(</span><em>iring</em>, <em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/wav.html#write_wav"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.wav.write_wav" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write data as Wave files (.wav).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring.Ring" title="bifrost.ring.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
+<li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>path</strong> (<em>str</em>) – Path specifying where to write output files.</li>
 <li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
 <li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code>.</li>
@@ -1302,7 +1390,7 @@ subchunks that appear after the data will be misinterpreted as data.</p>
 
 </div>
 <div class="section" id="module-bifrost.blocks">
-<span id="module-contents"></span><h2>7.19. Module contents<a class="headerlink" href="#module-bifrost.blocks" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>10.20. Module contents<a class="headerlink" href="#module-bifrost.blocks" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -1314,26 +1402,27 @@ subchunks that appear after the data will be misinterpreted as data.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">7. Block Library Reference</a><ul>
-<li><a class="reference internal" href="#submodules">7.1. Submodules</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.accumulate">7.2. bifrost.blocks.accumulate module</a></li>
-<li><a class="reference internal" href="#bifrost-blocks-audio-module">7.3. bifrost.blocks.audio module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.binary_io">7.4. bifrost.blocks.binary_io module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.copy">7.5. bifrost.blocks.copy module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.detect">7.6. bifrost.blocks.detect module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.fdmt">7.7. bifrost.blocks.fdmt module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.fft">7.8. bifrost.blocks.fft module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.fftshift">7.9. bifrost.blocks.fftshift module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.guppi_raw">7.10. bifrost.blocks.guppi_raw module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.print_header">7.11. bifrost.blocks.print_header module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.quantize">7.12. bifrost.blocks.quantize module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.reverse">7.13. bifrost.blocks.reverse module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.scrunch">7.14. bifrost.blocks.scrunch module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.sigproc">7.15. bifrost.blocks.sigproc module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.transpose">7.16. bifrost.blocks.transpose module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.unpack">7.17. bifrost.blocks.unpack module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks.wav">7.18. bifrost.blocks.wav module</a></li>
-<li><a class="reference internal" href="#module-bifrost.blocks">7.19. Module contents</a></li>
+<li><a class="reference internal" href="#">10. Block Library Reference</a><ul>
+<li><a class="reference internal" href="#submodules">10.1. Submodules</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.accumulate">10.2. bifrost.blocks.accumulate module</a></li>
+<li><a class="reference internal" href="#bifrost-blocks-audio-module">10.3. bifrost.blocks.audio module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.binary_io">10.4. bifrost.blocks.binary_io module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.copy">10.5. bifrost.blocks.copy module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.detect">10.6. bifrost.blocks.detect module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.fdmt">10.7. bifrost.blocks.fdmt module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.fft">10.8. bifrost.blocks.fft module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.fftshift">10.9. bifrost.blocks.fftshift module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.guppi_raw">10.10. bifrost.blocks.guppi_raw module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.print_header">10.11. bifrost.blocks.print_header module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.quantize">10.12. bifrost.blocks.quantize module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.reverse">10.13. bifrost.blocks.reverse module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.scrunch">10.14. bifrost.blocks.scrunch module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.serialize">10.15. bifrost.blocks.serialize module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.sigproc">10.16. bifrost.blocks.sigproc module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.transpose">10.17. bifrost.blocks.transpose module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.unpack">10.18. bifrost.blocks.unpack module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks.wav">10.19. bifrost.blocks.wav module</a></li>
+<li><a class="reference internal" href="#module-bifrost.blocks">10.20. Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -1341,8 +1430,8 @@ subchunks that appear after the data will be misinterpreted as data.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Common-installation-and-execution-problems.html" title="previous chapter">6. Common Installation and Execution Problems</a></li>
-      <li>Next: <a href="bifrost.html" title="next chapter">8. Python Reference</a></li>
+      <li>Previous: <a href="Common-installation-and-execution-problems.html" title="previous chapter">9. Common Installation and Execution Problems</a></li>
+      <li>Next: <a href="bifrost.html" title="next chapter">11. Python Reference</a></li>
   </ul></li>
 </ul>
 </div>

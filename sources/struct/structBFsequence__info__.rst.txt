@@ -1,0 +1,5 @@
+Struct BFsequence_info_
+=======================
+
+.. doxygenstruct:: BFsequence_info_
+   :project: bifrost

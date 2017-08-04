@@ -1,0 +1,234 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>bifrost.blocks.serialize &#8212; bifrost 0.6 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for bifrost.blocks.serialize</h1><div class="highlight"><pre>
+<span></span>
+<span class="c1"># Copyright (c) 2016, The Bifrost Authors. All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without</span>
+<span class="c1"># modification, are permitted provided that the following conditions</span>
+<span class="c1"># are met:</span>
+<span class="c1"># * Redistributions of source code must retain the above copyright</span>
+<span class="c1">#   notice, this list of conditions and the following disclaimer.</span>
+<span class="c1"># * Redistributions in binary form must reproduce the above copyright</span>
+<span class="c1">#   notice, this list of conditions and the following disclaimer in the</span>
+<span class="c1">#   documentation and/or other materials provided with the distribution.</span>
+<span class="c1"># * Neither the name of The Bifrost Authors nor the names of its</span>
+<span class="c1">#   contributors may be used to endorse or promote products derived</span>
+<span class="c1">#   from this software without specific prior written permission.</span>
+<span class="c1">#</span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS&#39;&#39; AND ANY</span>
+<span class="c1"># EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span>
+<span class="c1"># PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR</span>
+<span class="c1"># CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span>
+<span class="c1"># EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span>
+<span class="c1"># PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span>
+<span class="c1"># PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY</span>
+<span class="c1"># OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">SinkBlock</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">simplejson</span> <span class="k">as</span> <span class="nn">json</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s2">&quot;WARNING: Install simplejson for better performance&quot;</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># **TODO: Write a DeserializeBlock that does the inverse of this</span>
+<div class="viewcode-block" id="SerializeBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.SerializeBlock">[docs]</a><span class="k">class</span> <span class="nc">SerializeBlock</span><span class="p">(</span><span class="n">SinkBlock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">max_file_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SerializeBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">if</span> <span class="n">max_file_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">max_file_size</span> <span class="o">=</span> <span class="mi">2147483647</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_file_size</span> <span class="o">=</span> <span class="n">max_file_size</span>
+    <span class="k">def</span> <span class="nf">_close_data_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;ofiles&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ofile</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ofiles</span><span class="p">:</span>
+                <span class="n">ofile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_open_new_data_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_offset</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_data_files</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bytes_written</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># No ringlets, we can write all data to one file</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.</span><span class="si">%012i</span><span class="s1">.bf.dat&#39;</span> <span class="o">%</span> <span class="n">frame_offset</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Ringlets, we must write each to a separate file</span>
+            <span class="n">ndigit</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;.</span><span class="si">%012i</span><span class="s1">.%0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ndigit</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;i.bf.dat&#39;</span><span class="p">)</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">frame_offset</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO: Need to deal with separating multiple ringlet axes</span>
+            <span class="c1">#         E.g., separate each ringlet dim with a dot</span>
+            <span class="c1">#         Will have to lift/project the indices</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Multiple ringlet axes not supported&quot;</span><span class="p">)</span>
+        <span class="c1"># Open data files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ofiles</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+<div class="viewcode-block" id="SerializeBlock.on_sequence"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.SerializeBlock.on_sequence">[docs]</a>    <span class="k">def</span> <span class="nf">on_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iseq</span><span class="p">):</span>
+        <span class="n">hdr</span> <span class="o">=</span> <span class="n">iseq</span><span class="o">.</span><span class="n">header</span>
+        <span class="n">tensor</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%020i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;time_tag&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="c1"># TODO: May need more flexibility in path handling</span>
+            <span class="c1">#         E.g., may want to keep subdirs from original name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">basename</span><span class="p">)</span>
+        <span class="c1"># Write sequence header file</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.bf.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdr_file</span><span class="p">:</span>
+            <span class="n">hdr_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">hdr</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_axis</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">shape</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_axis</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_open_new_data_files</span><span class="p">(</span><span class="n">frame_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+<div class="viewcode-block" id="SerializeBlock.on_sequence_end"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.SerializeBlock.on_sequence_end">[docs]</a>    <span class="k">def</span> <span class="nf">on_sequence_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iseq</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_data_files</span><span class="p">()</span></div>
+<div class="viewcode-block" id="SerializeBlock.on_data"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.SerializeBlock.on_data">[docs]</a>    <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ispan</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">bytes_to_write</span> <span class="o">=</span> <span class="n">ispan</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bytes_to_write</span> <span class="o">=</span> <span class="n">ispan</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">nbytes</span>
+        <span class="c1"># Check if file size limit has been reached</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bytes_written</span> <span class="o">+</span> <span class="n">bytes_to_write</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_file_size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_open_new_data_files</span><span class="p">(</span><span class="n">ispan</span><span class="o">.</span><span class="n">frame_offset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bytes_written</span> <span class="o">+=</span> <span class="n">bytes_to_write</span>
+        <span class="c1"># Write data to file(s)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ispan</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tofile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ofiles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span><span class="p">):</span>
+                <span class="n">ispan</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">tofile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ofiles</span><span class="p">[</span><span class="n">r</span><span class="p">])</span></div></div>
+
+<div class="viewcode-block" id="serialize"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.serialize">[docs]</a><span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_file_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Serializes a data stream to a set of files using a simple data format</span>
+
+<span class="sd">    Sequence headers are written as JSON files, and sequence data are written</span>
+<span class="sd">    directly as binary to separate files.</span>
+
+<span class="sd">    Filenames begin with the sequence name if present, or the time tag if not.</span>
+<span class="sd">    The general form is::</span>
+
+<span class="sd">        # Header</span>
+<span class="sd">        &lt;name_or_time_tag&gt;.bf.json</span>
+
+<span class="sd">        # Single-ringlet data</span>
+<span class="sd">        &lt;name_or_time_tag&gt;.&lt;frame_offset&gt;.bf.dat</span>
+
+<span class="sd">        # Multi-ringlet data</span>
+<span class="sd">        &lt;name_or_time_tag&gt;.&lt;frame_offset&gt;.&lt;ringlet&gt;.bf.dat</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        iring (Ring or Block): Input data source.o</span>
+<span class="sd">        path (str): Path specifying where to write output files.</span>
+<span class="sd">        max_file_size (int): Max no. bytes to write to a single file. If set to</span>
+<span class="sd">            -1, no limit is applied.</span>
+<span class="sd">        *args: Arguments to ``bifrost.pipeline.SinkBlock``.</span>
+<span class="sd">        **kwargs: Keyword Arguments to ``bifrost.pipeline.SinkBlock``.</span>
+
+<span class="sd">    **Tensor semantics**::</span>
+
+<span class="sd">        Input:  [frame, ...], dtype = any, space = SYSTEM</span>
+<span class="sd">        Output: One data file per sequence</span>
+
+<span class="sd">        Input:  [ringlet, frame, ...], dtype = any, space = SYSTEM</span>
+<span class="sd">        Output: One data file per ringlet</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        SerializeBlock: A new block instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SerializeBlock</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">max_file_size</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ledatelescope.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3+</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

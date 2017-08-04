@@ -1,0 +1,242 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>bifrost.blocks.fdmt &#8212; bifrost 0.6 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for bifrost.blocks.fdmt</h1><div class="highlight"><pre>
+<span></span>
+<span class="c1"># Copyright (c) 2016, The Bifrost Authors. All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without</span>
+<span class="c1"># modification, are permitted provided that the following conditions</span>
+<span class="c1"># are met:</span>
+<span class="c1"># * Redistributions of source code must retain the above copyright</span>
+<span class="c1">#   notice, this list of conditions and the following disclaimer.</span>
+<span class="c1"># * Redistributions in binary form must reproduce the above copyright</span>
+<span class="c1">#   notice, this list of conditions and the following disclaimer in the</span>
+<span class="c1">#   documentation and/or other materials provided with the distribution.</span>
+<span class="c1"># * Neither the name of The Bifrost Authors nor the names of its</span>
+<span class="c1">#   contributors may be used to endorse or promote products derived</span>
+<span class="c1">#   from this software without specific prior written permission.</span>
+<span class="c1">#</span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS&#39;&#39; AND ANY</span>
+<span class="c1"># EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span>
+<span class="c1"># PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR</span>
+<span class="c1"># CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span>
+<span class="c1"># EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span>
+<span class="c1"># PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span>
+<span class="c1"># PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY</span>
+<span class="c1"># OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+
+<span class="c1"># TODO: Add support for batching once it&#39;s supported by the backend</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">TransformBlock</span>
+<span class="kn">from</span> <span class="nn">bifrost.fdmt</span> <span class="k">import</span> <span class="n">Fdmt</span>
+<span class="kn">from</span> <span class="nn">bifrost.units</span> <span class="k">import</span> <span class="n">convert_units</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<div class="viewcode-block" id="FdmtBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock">[docs]</a><span class="k">class</span> <span class="nc">FdmtBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span>
+                 <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">negative_delays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FdmtBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">space</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span>   <span class="o">=</span> <span class="n">max_dm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kdm</span>      <span class="o">=</span> <span class="mf">4.148741601e3</span> <span class="c1"># MHz**2 cm**3 s / pc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span> <span class="o">=</span> <span class="s1">&#39;pc cm^-3&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">=</span> <span class="n">exponent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">negative_delays</span> <span class="o">=</span> <span class="n">negative_delays</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span>     <span class="o">=</span> <span class="n">Fdmt</span><span class="p">()</span>
+<div class="viewcode-block" id="FdmtBlock.define_valid_input_spaces"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock.define_valid_input_spaces">[docs]</a>    <span class="k">def</span> <span class="nf">define_valid_input_spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">,)</span></div>
+<div class="viewcode-block" id="FdmtBlock.on_sequence"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock.on_sequence">[docs]</a>    <span class="k">def</span> <span class="nf">on_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iseq</span><span class="p">):</span>
+        <span class="n">ihdr</span> <span class="o">=</span> <span class="n">iseq</span><span class="o">.</span><span class="n">header</span>
+        <span class="n">itensor</span> <span class="o">=</span> <span class="n">ihdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">]</span>
+        <span class="c1"># TODO: Assert that axis labels match expected (and/or allow more flexibility in which axes are used)</span>
+        <span class="n">nchan</span>    <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span> <span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">npol</span>     <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span> <span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">f0_</span><span class="p">,</span> <span class="n">df_</span> <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;scales&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">t0_</span><span class="p">,</span> <span class="n">dt_</span> <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;scales&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Units must match self.kdm</span>
+        <span class="n">f0</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">f0_</span><span class="p">,</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;MHz&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;MHz&#39;</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">dt_</span><span class="p">,</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+        <span class="n">rel_delay</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kdm</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span> <span class="o">*</span>
+                     <span class="p">(</span><span class="n">f0</span><span class="o">**-</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">f0</span> <span class="o">+</span> <span class="n">nchan</span> <span class="o">*</span> <span class="n">df</span><span class="p">)</span><span class="o">**-</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">rel_delay</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_delays</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">nchan</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="n">ohdr</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">ihdr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;refdm&#39;</span> <span class="ow">in</span> <span class="n">ihdr</span><span class="p">:</span>
+            <span class="n">refdm</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">ihdr</span><span class="p">[</span><span class="s1">&#39;refdm&#39;</span><span class="p">],</span> <span class="n">ihdr</span><span class="p">[</span><span class="s1">&#39;refdm_units&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">refdm</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="c1"># Update transformed axis info</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;dtype&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="s1">&#39;f32&#39;</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;labels&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;dispersion&#39;</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;scales&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">refdm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span><span class="p">)</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span>
+        <span class="c1"># Add some new metadata</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;max_dm&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;max_dm_units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;cfreq&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">f0_</span> <span class="o">+</span> <span class="p">(</span><span class="n">nchan</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">df_</span><span class="p">)</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;cfreq_units&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;bw&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="n">nchan</span> <span class="o">*</span> <span class="n">df_</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;bw_units&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">gulp_nframe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gulp_nframe</span> <span class="ow">or</span> <span class="n">ihdr</span><span class="p">[</span><span class="s1">&#39;gulp_nframe&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">ohdr</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">gulp_nframe</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">)</span></div>
+<div class="viewcode-block" id="FdmtBlock.on_data"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock.on_data">[docs]</a>    <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ispan</span><span class="p">,</span> <span class="n">ospan</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ispan</span><span class="o">.</span><span class="n">nframe</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span><span class="p">:</span>
+            <span class="c1"># Cannot fully process any frames</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span><span class="o">.</span><span class="n">get_workspace_size</span><span class="p">(</span><span class="n">ispan</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">ospan</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_temp_storage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_storage</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span><span class="o">.</span><span class="n">execute_workspace</span><span class="p">(</span><span class="n">ispan</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">ospan</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                        <span class="n">temp_storage</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">temp_storage</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
+                                        <span class="n">negative_delays</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">negative_delays</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ispan</span><span class="o">.</span><span class="n">nframe</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span></div></div>
+        <span class="c1"># ***TODO: Need to tell downstream blocks the *stride*, not the</span>
+        <span class="c1">#            reserve size, because the stride is what determines</span>
+        <span class="c1">#            how much output this block generates each gulp.</span>
+        <span class="c1">#            HOWEVER, still can&#39;t fuse on the input side without</span>
+        <span class="c1">#              deadlocking. Not sure if there&#39;s any way around this.</span>
+
+<div class="viewcode-block" id="fdmt"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.fdmt">[docs]</a><span class="k">def</span> <span class="nf">fdmt</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">negative_delays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Apply the Fast Dispersion Measure Transform (FDMT).</span>
+
+<span class="sd">    This uses the GPU. It is used in pulsar and fast radio burst (FRB)</span>
+<span class="sd">    search pipelines for dedispersing frequency data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        iring (Ring or Block): Input data source.</span>
+<span class="sd">        max_dm (float): Max dispersion measure to search up to</span>
+<span class="sd">            (in units of pc/cm^3).</span>
+<span class="sd">        exponent (float): Frequency power law to search</span>
+<span class="sd">            (-2.0 for interstellar dispersion).</span>
+<span class="sd">        negative_delays (bool): If True, the transform applies dispersions</span>
+<span class="sd">            in the range (-max_dm, 0] instead of [0, max_dm).</span>
+<span class="sd">        *args: Arguments to ``bifrost.pipeline.TransformBlock``.</span>
+<span class="sd">        **kwargs: Keyword Arguments to ``bifrost.pipeline.TransformBlock``.</span>
+
+<span class="sd">    **Tensor semantics**::</span>
+
+<span class="sd">        Input:  [&#39;pol&#39;, &#39;freq&#39;,       &#39;time&#39;], dtype = any real, space = CUDA</span>
+<span class="sd">        Output: [&#39;pol&#39;, &#39;dispersion&#39;, &#39;time&#39;], dtype = f32, space = CUDA</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        FdmtBlock: A new block instance.</span>
+
+<span class="sd">    References:</span>
+
+<span class="sd">        This is based on Barak Zackay&#39;s FDMT algorithm, see [1]_.</span>
+
+<span class="sd">        .. [1] Zackay, Barak, and Eran O. Ofek. &quot;An accurate</span>
+<span class="sd">           and efficient algorithm for detection of radio bursts</span>
+<span class="sd">           with an unknown dispersion measure, for single dish</span>
+<span class="sd">           telescopes and interferometers.&quot; arXiv preprint arXiv:1411.5373</span>
+<span class="sd">           (2014).</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The number of dispersion measure trials (delays) computed by</span>
+<span class="sd">        this algorithm depends on the value of ``max_dm`` and the time</span>
+<span class="sd">        and frequency scales of the input data. The</span>
+<span class="sd">        ``bifrost.blocks.print_header`` block can be used to check the</span>
+<span class="sd">        output dimensions if needed.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">FdmtBlock</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">negative_delays</span><span class="p">,</span>
+                     <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ledatelescope.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3+</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -108,6 +108,14 @@ bifrost\.blocks\.scrunch module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.blocks\.serialize module
+---------------------------------
+
+.. automodule:: bifrost.blocks.serialize
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.blocks\.sigproc module
 -------------------------------
 
