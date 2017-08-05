@@ -295,7 +295,9 @@
                                   <span class="n">obj</span><span class="o">.</span><span class="n">bf</span><span class="o">.</span><span class="n">native</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">bf</span><span class="o">.</span><span class="n">conjugated</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Generate metadata from existing np.ndarray</span>
-            <span class="n">space</span>      <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Space</span><span class="p">(</span><span class="n">raw_get_space</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data</span><span class="p">)))</span>
+            <span class="c1">#*space      = str(Space(raw_get_space(obj.ctypes.data)))</span>
+            <span class="c1"># Note: Assumes that any existing np.ndarray is in system space</span>
+            <span class="n">space</span>      <span class="o">=</span> <span class="s1">&#39;system&#39;</span>
             <span class="c1">#dtype      = str(DataType(obj.dtype))</span>
             <span class="c1"># **TODO: Decide on bf.dtype being DataType vs. string (and same for space)</span>
             <span class="n">dtype</span>      <span class="o">=</span> <span class="n">DataType</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>

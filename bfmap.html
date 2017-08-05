@@ -136,7 +136,9 @@ A and B, create an outer product. A full example:</p>
 <span class="n">c</span> <span class="o">=</span> <span class="n">bf</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">space</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 
 <span class="c1"># Compute outer product</span>
-<span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;c(i,j) = a(i) * b(j)&quot;</span><span class="p">,</span> <span class="n">axis_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">})</span>
+<span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;c(i,j) = a(i) * b(j)&quot;</span><span class="p">,</span>
+       <span class="n">axis_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">],</span>
+       <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">})</span>
 <span class="nb">print</span> <span class="n">c</span>
 
 <span class="c1"># ndarray([[ 1.,  0.,  1.,  0.,  1.],</span>
@@ -146,10 +148,12 @@ A and B, create an outer product. A full example:</p>
 <span class="c1">#          [ 5.,  0.,  5.,  0.,  5.]])</span>
 </pre></div>
 </div>
-<p>The first example of <code class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> could be written more explicitly as:</p>
+<p>The first example of <code class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> could also be written more explicitly as:</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">bf</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;c(i) = a(i) + b(i)&quot;</span><span class="p">,</span> <span class="n">axis_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">})</span>
 </pre></div>
 </div>
+<p>Note, however, that implicit indexing should be preferred where possible, as
+explicit indexing may exhibit worse performance.</p>
 </div>
 
 

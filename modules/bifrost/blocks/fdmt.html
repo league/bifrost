@@ -70,8 +70,6 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="c1"># TODO: Add support for batching once it&#39;s supported by the backend</span>
-
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
 
 <span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">TransformBlock</span>
@@ -82,17 +80,24 @@
 <span class="kn">import</span> <span class="nn">math</span>
 
 <div class="viewcode-block" id="FdmtBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock">[docs]</a><span class="k">class</span> <span class="nc">FdmtBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_delay</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_diagonal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">negative_delays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FdmtBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">space</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">space</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span>   <span class="o">=</span> <span class="n">max_dm</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kdm</span>      <span class="o">=</span> <span class="mf">4.148741601e3</span> <span class="c1"># MHz**2 cm**3 s / pc</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span> <span class="o">=</span> <span class="s1">&#39;pc cm^-3&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">=</span> <span class="n">exponent</span>
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">max_dm</span><span class="p">,</span> <span class="n">max_delay</span><span class="p">,</span> <span class="n">max_diagonal</span><span class="p">]])</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must specify exactly one of: max_dm, max_delay, &quot;</span>
+                             <span class="s2">&quot;max_diagonal&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">space</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span> <span class="o">=</span> <span class="n">max_dm</span> <span class="ow">or</span> <span class="n">max_delay</span> <span class="ow">or</span> <span class="n">max_diagonal</span> <span class="ow">or</span> <span class="mf">0.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_mode</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;dm&#39;</span> <span class="k">if</span> <span class="n">max_dm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span>
+                          <span class="s1">&#39;delay&#39;</span> <span class="k">if</span> <span class="n">max_delay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span>
+                          <span class="s1">&#39;diagonal&#39;</span> <span class="k">if</span> <span class="n">max_diagonal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span>
+                          <span class="s1">&#39;error&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kdm</span>       <span class="o">=</span> <span class="mf">4.148741601e3</span> <span class="c1"># MHz**2 cm**3 s / pc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span>  <span class="o">=</span> <span class="s1">&#39;pc cm^-3&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span>  <span class="o">=</span> <span class="n">exponent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">negative_delays</span> <span class="o">=</span> <span class="n">negative_delays</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span>     <span class="o">=</span> <span class="n">Fdmt</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span>      <span class="o">=</span> <span class="n">Fdmt</span><span class="p">()</span>
 <div class="viewcode-block" id="FdmtBlock.define_valid_input_spaces"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock.define_valid_input_spaces">[docs]</a>    <span class="k">def</span> <span class="nf">define_valid_input_spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">,)</span></div>
 <div class="viewcode-block" id="FdmtBlock.on_sequence"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock.on_sequence">[docs]</a>    <span class="k">def</span> <span class="nf">on_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iseq</span><span class="p">):</span>
@@ -107,10 +112,21 @@
         <span class="n">f0</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">f0_</span><span class="p">,</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;MHz&#39;</span><span class="p">)</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;MHz&#39;</span><span class="p">)</span>
         <span class="n">dt</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="n">dt_</span><span class="p">,</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
-        <span class="n">rel_delay</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kdm</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span> <span class="o">*</span>
-                     <span class="p">(</span><span class="n">f0</span><span class="o">**-</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">f0</span> <span class="o">+</span> <span class="n">nchan</span> <span class="o">*</span> <span class="n">df</span><span class="p">)</span><span class="o">**-</span><span class="mi">2</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">rel_delay</span><span class="p">)))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_mode</span> <span class="o">==</span> <span class="s1">&#39;diagonal&#39;</span><span class="p">:</span>
+            <span class="n">max_diagonal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_mode</span> <span class="o">=</span> <span class="s1">&#39;delay&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">nchan</span> <span class="o">*</span> <span class="n">max_diagonal</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_mode</span> <span class="o">==</span> <span class="s1">&#39;dm&#39;</span><span class="p">:</span>
+            <span class="n">max_dm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span>
+            <span class="n">rel_delay</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kdm</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">max_dm</span> <span class="o">*</span>
+                         <span class="p">(</span><span class="n">f0</span><span class="o">**-</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">f0</span> <span class="o">+</span> <span class="n">nchan</span> <span class="o">*</span> <span class="n">df</span><span class="p">)</span><span class="o">**-</span><span class="mi">2</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">rel_delay</span><span class="p">)))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_mode</span> <span class="o">==</span> <span class="s1">&#39;delay&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span>
+            <span class="n">max_dm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kdm</span> <span class="o">*</span> <span class="p">(</span><span class="n">f0</span><span class="o">**-</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">f0</span> <span class="o">+</span> <span class="n">nchan</span> <span class="o">*</span> <span class="n">df</span><span class="p">)</span><span class="o">**-</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown max mode: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_mode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span> <span class="o">=</span> <span class="n">max_dm</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">negative_delays</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fdmt</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">nchan</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_delay</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
@@ -126,7 +142,7 @@
         <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;scales&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">refdm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_step</span><span class="p">)</span>
         <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span>
         <span class="c1"># Add some new metadata</span>
-        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;max_dm&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dm</span>
+        <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;max_dm&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">max_dm</span>
         <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;max_dm_units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_units</span>
         <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;cfreq&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">f0_</span> <span class="o">+</span> <span class="p">(</span><span class="n">nchan</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">df_</span><span class="p">)</span>
         <span class="n">ohdr</span><span class="p">[</span><span class="s1">&#39;cfreq_units&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
@@ -151,17 +167,22 @@
         <span class="c1">#            HOWEVER, still can&#39;t fuse on the input side without</span>
         <span class="c1">#              deadlocking. Not sure if there&#39;s any way around this.</span>
 
-<div class="viewcode-block" id="fdmt"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.fdmt">[docs]</a><span class="k">def</span> <span class="nf">fdmt</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">negative_delays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="fdmt"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.fdmt">[docs]</a><span class="k">def</span> <span class="nf">fdmt</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_delay</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_diagonal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">negative_delays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
          <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply the Fast Dispersion Measure Transform (FDMT).</span>
 
 <span class="sd">    This uses the GPU. It is used in pulsar and fast radio burst (FRB)</span>
-<span class="sd">    search pipelines for dedispersing frequency data.</span>
+<span class="sd">    search pipelines for dedispersing channelised data.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        iring (Ring or Block): Input data source.</span>
 <span class="sd">        max_dm (float): Max dispersion measure to search up to</span>
 <span class="sd">            (in units of pc/cm^3).</span>
+<span class="sd">        max_delay (int): Max dispersion delay across the band to search</span>
+<span class="sd">            up to (in units of time samples).</span>
+<span class="sd">        max_diagonal (float): Max dispersion delay across the band to</span>
+<span class="sd">            search up to (in units of the number of frequency channels).</span>
 <span class="sd">        exponent (float): Frequency power law to search</span>
 <span class="sd">            (-2.0 for interstellar dispersion).</span>
 <span class="sd">        negative_delays (bool): If True, the transform applies dispersions</span>
@@ -188,14 +209,16 @@
 <span class="sd">           (2014).</span>
 
 <span class="sd">    Note:</span>
-<span class="sd">        The number of dispersion measure trials (delays) computed by</span>
-<span class="sd">        this algorithm depends on the value of ``max_dm`` and the time</span>
-<span class="sd">        and frequency scales of the input data. The</span>
+<span class="sd">        Only one of max_dm, max_delay, or max_diagonal may be specified.</span>
+<span class="sd">        In the case of ``max_dm``, the number of dispersion measure trials</span>
+<span class="sd">        (delays) computed by this algorithm depends on the value of ``max_dm``</span>
+<span class="sd">        and the time and frequency scales of the input data. The</span>
 <span class="sd">        ``bifrost.blocks.print_header`` block can be used to check the</span>
 <span class="sd">        output dimensions if needed.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">FdmtBlock</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">negative_delays</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">FdmtBlock</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="p">,</span> <span class="n">max_delay</span><span class="p">,</span> <span class="n">max_diagonal</span><span class="p">,</span>
+                     <span class="n">exponent</span><span class="p">,</span> <span class="n">negative_delays</span><span class="p">,</span>
                      <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 

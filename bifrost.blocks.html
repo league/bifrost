@@ -382,7 +382,7 @@ Default space is same as input.</li>
 <span id="bifrost-blocks-fdmt-module"></span><h2>10.7. bifrost.blocks.fdmt module<a class="headerlink" href="#module-bifrost.blocks.fdmt" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.blocks.fdmt.FdmtBlock">
-<em class="property">class </em><code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">FdmtBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#FdmtBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">FdmtBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm=None</em>, <em>max_delay=None</em>, <em>max_diagonal=None</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#FdmtBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.FdmtBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.TransformBlock" title="bifrost.pipeline.TransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.TransformBlock</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.blocks.fdmt.FdmtBlock.define_valid_input_spaces">
@@ -403,10 +403,10 @@ Default space is same as input.</li>
 
 <dl class="function">
 <dt id="bifrost.blocks.fdmt.fdmt">
-<code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">fdmt</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#fdmt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.fdmt" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bifrost.blocks.fdmt.</code><code class="descname">fdmt</code><span class="sig-paren">(</span><em>iring</em>, <em>max_dm=None</em>, <em>max_delay=None</em>, <em>max_diagonal=None</em>, <em>exponent=-2.0</em>, <em>negative_delays=False</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/fdmt.html#fdmt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.fdmt.fdmt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the Fast Dispersion Measure Transform (FDMT).</p>
 <p>This uses the GPU. It is used in pulsar and fast radio burst (FRB)
-search pipelines for dedispersing frequency data.</p>
+search pipelines for dedispersing channelised data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -415,6 +415,10 @@ search pipelines for dedispersing frequency data.</p>
 <li><strong>iring</strong> (<a class="reference internal" href="bifrost.html#bifrost.ring2.Ring" title="bifrost.ring2.Ring"><em>Ring</em></a><em> or </em><a class="reference internal" href="bifrost.html#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><em>Block</em></a>) – Input data source.</li>
 <li><strong>max_dm</strong> (<em>float</em>) – Max dispersion measure to search up to
 (in units of pc/cm^3).</li>
+<li><strong>max_delay</strong> (<em>int</em>) – Max dispersion delay across the band to search
+up to (in units of time samples).</li>
+<li><strong>max_diagonal</strong> (<em>float</em>) – Max dispersion delay across the band to
+search up to (in units of the number of frequency channels).</li>
 <li><strong>exponent</strong> (<em>float</em>) – Frequency power law to search
 (-2.0 for interstellar dispersion).</li>
 <li><strong>negative_delays</strong> (<em>bool</em>) – If True, the transform applies dispersions
@@ -455,9 +459,10 @@ telescopes and interferometers.” arXiv preprint arXiv:1411.5373
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The number of dispersion measure trials (delays) computed by
-this algorithm depends on the value of <code class="docutils literal"><span class="pre">max_dm</span></code> and the time
-and frequency scales of the input data. The
+<p class="last">Only one of max_dm, max_delay, or max_diagonal may be specified.
+In the case of <code class="docutils literal"><span class="pre">max_dm</span></code>, the number of dispersion measure trials
+(delays) computed by this algorithm depends on the value of <code class="docutils literal"><span class="pre">max_dm</span></code>
+and the time and frequency scales of the input data. The
 <code class="docutils literal"><span class="pre">bifrost.blocks.print_header</span></code> block can be used to check the
 output dimensions if needed.</p>
 </div>
