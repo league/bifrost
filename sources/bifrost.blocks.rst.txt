@@ -92,6 +92,14 @@ bifrost\.blocks\.quantize module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.blocks\.reduce module
+------------------------------
+
+.. automodule:: bifrost.blocks.reduce
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.blocks\.reverse module
 -------------------------------
 

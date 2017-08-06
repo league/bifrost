@@ -340,7 +340,10 @@
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Axis labels do not correspond to a known data format: &quot;</span> <span class="o">+</span>
-                             <span class="nb">str</span><span class="p">(</span><span class="n">axnames</span><span class="p">))</span></div>
+                             <span class="nb">str</span><span class="p">(</span><span class="n">axnames</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Known formats are:&quot;</span> <span class="o">+</span>
+                             <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  [time, pol, freq]</span><span class="se">\n</span><span class="s2">  [beam, time, pol]</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                             <span class="s2">&quot;  [time, pol]</span><span class="se">\n</span><span class="s2">  [dispersion, time, pol]</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                             <span class="s2">&quot;  [pol, freq, phase]&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SigprocSinkBlock.on_sequence_end"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.sigproc.SigprocSinkBlock.on_sequence_end">[docs]</a>    <span class="k">def</span> <span class="nf">on_sequence_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iseq</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;ofile&#39;</span><span class="p">):</span>

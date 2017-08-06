@@ -93,6 +93,7 @@
     <span class="k">return</span> <span class="n">bf</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
 
 <div class="viewcode-block" id="map"><a class="viewcode-back" href="../../bifrost.html#bifrost.map.map">[docs]</a><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">func_string</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">axis_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">func_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_code</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">block_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">block_axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply a function to a set of ndarrays.</span>
 
@@ -104,6 +105,8 @@
 <span class="sd">                   in func_string.</span>
 <span class="sd">      shape:       The shape of the computation. If None, the broadcast shape</span>
 <span class="sd">                   of all data arrays is used.</span>
+<span class="sd">      func_name (str): Name of the function, for debugging purposes.</span>
+<span class="sd">      extra_code (str): Additional code to be included at global scope.</span>
 <span class="sd">      block_shape: The 2D shape of the thread block (y,x) with which the kernel</span>
 <span class="sd">                   is launched.</span>
 <span class="sd">                   This is a performance tuning parameter.</span>
@@ -164,7 +167,8 @@
     <span class="n">_check</span><span class="p">(</span><span class="n">_bf</span><span class="o">.</span><span class="n">bfMap</span><span class="p">(</span><span class="n">ndim</span><span class="p">,</span> <span class="n">_array</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">),</span>
                      <span class="n">_array</span><span class="p">(</span><span class="n">axis_names</span><span class="p">),</span>
                      <span class="n">narg</span><span class="p">,</span> <span class="n">_array</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="n">_array</span><span class="p">(</span><span class="n">arg_names</span><span class="p">),</span>
-                     <span class="n">func_string</span><span class="p">,</span> <span class="n">_array</span><span class="p">(</span><span class="n">block_shape</span><span class="p">),</span> <span class="n">_array</span><span class="p">(</span><span class="n">block_axes</span><span class="p">)))</span></div>
+                     <span class="n">func_name</span><span class="p">,</span> <span class="n">func_string</span><span class="p">,</span> <span class="n">extra_code</span><span class="p">,</span>
+                     <span class="n">_array</span><span class="p">(</span><span class="n">block_shape</span><span class="p">),</span> <span class="n">_array</span><span class="p">(</span><span class="n">block_axes</span><span class="p">)))</span></div>
 </pre></div>
 
           </div>

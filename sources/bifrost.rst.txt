@@ -204,6 +204,14 @@ bifrost\.quantize module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.reduce module
+----------------------
+
+.. automodule:: bifrost.reduce
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.ring module
 --------------------
 

@@ -52,6 +52,17 @@
 <div class="section" id="module-bifrost.views.basic_views">
 <span id="bifrost-views-basic-views-module"></span><h2>11.1.1.2. bifrost.views.basic_views module<a class="headerlink" href="#module-bifrost.views.basic_views" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="bifrost.views.basic_views.add_axis">
+<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">add_axis</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em>, <em>label=None</em>, <em>scale=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#add_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.add_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an extra dimension to the frame at position ‘axis’</p>
+<p>E.g., if the shape is [-1, 3, 2], then
+selecting axis=1 would change the shape to be
+[-1, 1, 3, 2].</p>
+<p>Axis may be negative, or a string corresponding to an existing axis label,
+in which case the new axis is inserted after the referenced axis.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="bifrost.views.basic_views.astype">
 <code class="descclassname">bifrost.views.basic_views.</code><code class="descname">astype</code><span class="sig-paren">(</span><em>block</em>, <em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#astype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.astype" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -63,12 +74,13 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="bifrost.views.basic_views.expand_dims">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">expand_dims</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em>, <em>label</em>, <em>scale=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#expand_dims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.expand_dims" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add an extra dimension to the frame</p>
-<p>As in, if the shape is [-1, 3, 2], then
+<dt id="bifrost.views.basic_views.delete_axis">
+<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">delete_axis</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#delete_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.delete_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a unitary dimension from the frame</p>
+<p>E.g., if the shape is [-1, 1, 3, 2], then
 selecting axis=1 would change the shape to be
-[-1, 3, 1, 2].</p>
+[-1, 3, 2].</p>
+<p>Axis may be negative, or a string corresponding to an existing axis label.</p>
 </dd></dl>
 
 <dl class="function">
