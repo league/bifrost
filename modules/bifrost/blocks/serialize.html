@@ -88,7 +88,7 @@
             <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="k">if</span> <span class="n">max_file_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">max_file_size</span> <span class="o">=</span> <span class="mi">2147483647</span>
+            <span class="n">max_file_size</span> <span class="o">=</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">3</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_file_size</span> <span class="o">=</span> <span class="n">max_file_size</span>
     <span class="k">def</span> <span class="nf">_close_data_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;ofiles&#39;</span><span class="p">):</span>
@@ -99,11 +99,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bytes_written</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># No ringlets, we can write all data to one file</span>
-            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.</span><span class="si">%012i</span><span class="s1">.bf.dat&#39;</span> <span class="o">%</span> <span class="n">frame_offset</span><span class="p">]</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.bf.</span><span class="si">%012i</span><span class="s1">.dat&#39;</span> <span class="o">%</span> <span class="n">frame_offset</span><span class="p">]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="c1"># Ringlets, we must write each to a separate file</span>
             <span class="n">ndigit</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;.</span><span class="si">%012i</span><span class="s1">.%0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ndigit</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;i.bf.dat&#39;</span><span class="p">)</span> <span class="o">%</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basename</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;.bf.</span><span class="si">%012i</span><span class="s1">.%0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ndigit</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;i.dat&#39;</span><span class="p">)</span> <span class="o">%</span>
                          <span class="p">(</span><span class="n">frame_offset</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
                          <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span><span class="p">)]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -163,10 +163,10 @@
 <span class="sd">        &lt;name_or_time_tag&gt;.bf.json</span>
 
 <span class="sd">        # Single-ringlet data</span>
-<span class="sd">        &lt;name_or_time_tag&gt;.&lt;frame_offset&gt;.bf.dat</span>
+<span class="sd">        &lt;name_or_time_tag&gt;.bf.&lt;frame_offset&gt;.dat</span>
 
 <span class="sd">        # Multi-ringlet data</span>
-<span class="sd">        &lt;name_or_time_tag&gt;.&lt;frame_offset&gt;.&lt;ringlet&gt;.bf.dat</span>
+<span class="sd">        &lt;name_or_time_tag&gt;.bf.&lt;frame_offset&gt;.&lt;ringlet&gt;.dat</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        iring (Ring or Block): Input data source.o</span>
