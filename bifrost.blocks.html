@@ -999,6 +999,38 @@ One of: sum, mean, min, max, stderr [stderr=sum/sqrt(n)].</li>
 <div class="section" id="module-bifrost.blocks.serialize">
 <span id="bifrost-blocks-serialize-module"></span><h2>10.16. bifrost.blocks.serialize module<a class="headerlink" href="#module-bifrost.blocks.serialize" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
+<dt id="bifrost.blocks.serialize.BifrostReader">
+<em class="property">class </em><code class="descclassname">bifrost.blocks.serialize.</code><code class="descname">BifrostReader</code><span class="sig-paren">(</span><em>basename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#BifrostReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.BifrostReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="bifrost.blocks.serialize.BifrostReader.readinto">
+<code class="descname">readinto</code><span class="sig-paren">(</span><em>buf</em>, <em>frame_nbyte</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#BifrostReader.readinto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.BifrostReader.readinto" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bifrost.blocks.serialize.DeserializeBlock">
+<em class="property">class </em><code class="descclassname">bifrost.blocks.serialize.</code><code class="descname">DeserializeBlock</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#DeserializeBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.DeserializeBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SourceBlock" title="bifrost.pipeline.SourceBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code></a></p>
+<dl class="method">
+<dt id="bifrost.blocks.serialize.DeserializeBlock.create_reader">
+<code class="descname">create_reader</code><span class="sig-paren">(</span><em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#DeserializeBlock.create_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.DeserializeBlock.create_reader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.serialize.DeserializeBlock.on_data">
+<code class="descname">on_data</code><span class="sig-paren">(</span><em>reader</em>, <em>ospans</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#DeserializeBlock.on_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.DeserializeBlock.on_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.blocks.serialize.DeserializeBlock.on_sequence">
+<code class="descname">on_sequence</code><span class="sig-paren">(</span><em>ireader</em>, <em>sourcename</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#DeserializeBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.DeserializeBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="bifrost.blocks.serialize.SerializeBlock">
 <em class="property">class </em><code class="descclassname">bifrost.blocks.serialize.</code><code class="descname">SerializeBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>path</em>, <em>max_file_size=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#SerializeBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.SerializeBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bifrost.html#bifrost.pipeline.SinkBlock" title="bifrost.pipeline.SinkBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.SinkBlock</span></code></a></p>
@@ -1017,6 +1049,58 @@ One of: sum, mean, min, max, stderr [stderr=sum/sqrt(n)].</li>
 <code class="descname">on_sequence_end</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#SerializeBlock.on_sequence_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.SerializeBlock.on_sequence_end" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="bifrost.blocks.serialize.deserialize">
+<code class="descclassname">bifrost.blocks.serialize.</code><code class="descname">deserialize</code><span class="sig-paren">(</span><em>filenames</em>, <em>gulp_nframe</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/blocks/serialize.html#deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.blocks.serialize.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserializes a data stream from a set of files using a simple data format</p>
+<p>Sequence headers are read as JSON files, and sequence data are read
+directly as binary from separate files.</p>
+<p>The actual header and data files must have the following general form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Header</span>
+<span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;.</span><span class="n">json</span>
+
+<span class="c1"># Single-ringlet data</span>
+<span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;.&lt;</span><span class="n">frame_offset</span><span class="o">&gt;.</span><span class="n">dat</span>
+
+<span class="c1"># Multi-ringlet data</span>
+<span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;.&lt;</span><span class="n">frame_offset</span><span class="o">&gt;.&lt;</span><span class="n">ringlet</span><span class="o">&gt;.</span><span class="n">dat</span>
+</pre></div>
+</div>
+<p>See also: <code class="docutils literal"><span class="pre">serialize</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filenames</strong> (<em>list</em>) – List of input filenames (each ending with ‘.bf’)</li>
+<li><strong>gulp_nframe</strong> (<em>int</em>) – No. frames to read at a time.</li>
+<li><strong>*args</strong> – Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code>.</li>
+<li><strong>**kwargs</strong> – Keyword Arguments to <code class="docutils literal"><span class="pre">bifrost.pipeline.SourceBlock</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tensor semantics</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span>  <span class="n">One</span> <span class="n">data</span> <span class="n">file</span> <span class="n">per</span> <span class="n">sequence</span>
+<span class="n">Output</span><span class="p">:</span> <span class="p">[</span><span class="n">frame</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">any</span><span class="p">,</span> <span class="n">space</span> <span class="o">=</span> <span class="n">SYSTEM</span>
+
+<span class="n">Input</span><span class="p">:</span>  <span class="n">One</span> <span class="n">data</span> <span class="n">file</span> <span class="n">per</span> <span class="n">ringlet</span>
+<span class="n">Output</span><span class="p">:</span> <span class="p">[</span><span class="n">ringlet</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">any</span><span class="p">,</span> <span class="n">space</span> <span class="o">=</span> <span class="n">SYSTEM</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A new block instance.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#bifrost.blocks.serialize.DeserializeBlock" title="bifrost.blocks.serialize.DeserializeBlock">DeserializeBlock</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

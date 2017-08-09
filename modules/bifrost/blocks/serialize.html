@@ -72,13 +72,140 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
 
-<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">SinkBlock</span>
+<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">SinkBlock</span><span class="p">,</span> <span class="n">SourceBlock</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">simplejson</span> <span class="k">as</span> <span class="nn">json</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="nb">print</span> <span class="s2">&quot;WARNING: Install simplejson for better performance&quot;</span>
     <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="k">def</span> <span class="nf">_parse_bifrost_filename</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+    <span class="n">inds</span> <span class="o">=</span> <span class="n">fname</span><span class="p">[</span><span class="n">fname</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;.bf.&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">inds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">inds</span><span class="p">]</span>
+    <span class="n">frame0</span><span class="p">,</span> <span class="n">ringlet_inds</span> <span class="o">=</span> <span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inds</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">frame0</span><span class="p">,</span> <span class="n">ringlet_inds</span>
+
+<div class="viewcode-block" id="BifrostReader"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.BifrostReader">[docs]</a><span class="k">class</span> <span class="nc">BifrostReader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basename</span><span class="p">):</span>
+        <span class="k">assert</span><span class="p">(</span><span class="n">basename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.bf&#39;</span><span class="p">))</span>
+        <span class="n">hdr_filename</span> <span class="o">=</span> <span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.json&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">hdr_filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdr_file</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">hdr_file</span><span class="p">)</span>
+        <span class="n">data_filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.*.dat&#39;</span><span class="p">)</span>
+        <span class="n">inds</span> <span class="o">=</span> <span class="p">[</span><span class="n">_parse_bifrost_filename</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">data_filenames</span><span class="p">]</span>
+        <span class="n">frame0s</span><span class="p">,</span> <span class="n">ringlet_inds</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">inds</span><span class="p">)</span>
+        <span class="n">nringlets</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">ringlet_inds</span><span class="p">)]</span>
+        <span class="c1"># TODO: Support multiple ringlet axes (needed in SerializeBlock too)</span>
+        <span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nringlets</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">=</span> <span class="n">nringlets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nringlets</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ringlet_inds</span> <span class="o">=</span> <span class="p">[</span><span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">ringlet_inds</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ringlet</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span><span class="p">):</span>
+                <span class="n">ringlet_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_filenames</span><span class="p">,</span> <span class="n">ringlet_inds</span><span class="p">)</span>
+                                     <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">ringlet</span><span class="p">]</span>
+                <span class="n">ringlet_filenames</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+                <span class="n">ringlet_files</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">ringlet_filenames</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ringlet_files</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nfile</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfile</span> <span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Number of files in each ringlet does not match&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_filenames</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">data_filenames</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nfile</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ringlet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">ringlet</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="viewcode-block" id="BifrostReader.readinto"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.BifrostReader.readinto">[docs]</a>    <span class="k">def</span> <span class="nf">readinto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">frame_nbyte</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfile</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">nframe_read</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># First dimension of buf is ringlets</span>
+            <span class="n">bufs</span> <span class="o">=</span> <span class="n">buf</span>
+            <span class="n">nbyte_reads</span> <span class="o">=</span> <span class="p">[</span><span class="n">ringlet_file</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span><span class="p">]</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+                           <span class="k">for</span> <span class="n">ringlet_file</span><span class="p">,</span> <span class="n">buf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="p">,</span> <span class="n">bufs</span><span class="p">)]</span>
+            <span class="n">nbyte_read</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nbyte_reads</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nbyte_read</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span><span class="p">]</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nbyte_read</span> <span class="o">%</span> <span class="n">frame_nbyte</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Unexpected end of file&quot;</span><span class="p">)</span>
+        <span class="n">nframe_read</span> <span class="o">+=</span> <span class="n">nbyte_read</span> <span class="o">//</span> <span class="n">frame_nbyte</span>
+        <span class="k">while</span> <span class="n">nbyte_read</span> <span class="o">&lt;</span> <span class="n">buf</span><span class="o">.</span><span class="n">nbytes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfile</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">nbyte_reads</span> <span class="o">=</span> <span class="p">[</span><span class="n">ringlet_file</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span><span class="p">]</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+                               <span class="k">for</span> <span class="n">ringlet_file</span><span class="p">,</span> <span class="n">buf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="p">,</span> <span class="n">bufs</span><span class="p">)]</span>
+                <span class="n">nbyte_read</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nbyte_reads</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nbyte_read</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span><span class="p">]</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nbyte_read</span> <span class="o">%</span> <span class="n">frame_nbyte</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Unexpected end of file&quot;</span><span class="p">)</span>
+            <span class="n">nframe_read</span> <span class="o">+=</span> <span class="n">nbyte_read</span> <span class="o">//</span> <span class="n">frame_nbyte</span>
+        <span class="k">return</span> <span class="n">nframe_read</span></div></div>
+
+<div class="viewcode-block" id="DeserializeBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.DeserializeBlock">[docs]</a><span class="k">class</span> <span class="nc">DeserializeBlock</span><span class="p">(</span><span class="n">SourceBlock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DeserializeBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="viewcode-block" id="DeserializeBlock.create_reader"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.DeserializeBlock.create_reader">[docs]</a>    <span class="k">def</span> <span class="nf">create_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">BifrostReader</span><span class="p">(</span><span class="n">sourcename</span><span class="p">)</span></div>
+<div class="viewcode-block" id="DeserializeBlock.on_sequence"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.DeserializeBlock.on_sequence">[docs]</a>    <span class="k">def</span> <span class="nf">on_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ireader</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">):</span>
+        <span class="n">hdr</span> <span class="o">=</span> <span class="n">ireader</span><span class="o">.</span><span class="n">header</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ireader</span><span class="o">.</span><span class="n">header</span><span class="p">]</span></div>
+<div class="viewcode-block" id="DeserializeBlock.on_data"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.DeserializeBlock.on_data">[docs]</a>    <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reader</span><span class="p">,</span> <span class="n">ospans</span><span class="p">):</span>
+        <span class="n">ospan</span> <span class="o">=</span> <span class="n">ospans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">reader</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">ospan</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">ospan</span><span class="o">.</span><span class="n">frame_nbyte</span><span class="p">)]</span></div></div>
+
+<div class="viewcode-block" id="deserialize"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.deserialize">[docs]</a><span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Deserializes a data stream from a set of files using a simple data format</span>
+
+<span class="sd">    Sequence headers are read as JSON files, and sequence data are read</span>
+<span class="sd">    directly as binary from separate files.</span>
+
+<span class="sd">    The actual header and data files must have the following general form::</span>
+
+<span class="sd">        # Header</span>
+<span class="sd">        &lt;filename&gt;.json</span>
+
+<span class="sd">        # Single-ringlet data</span>
+<span class="sd">        &lt;filename&gt;.&lt;frame_offset&gt;.dat</span>
+
+<span class="sd">        # Multi-ringlet data</span>
+<span class="sd">        &lt;filename&gt;.&lt;frame_offset&gt;.&lt;ringlet&gt;.dat</span>
+
+<span class="sd">    See also: ``serialize``</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filenames (list): List of input filenames (each ending with &#39;.bf&#39;)</span>
+<span class="sd">        gulp_nframe (int): No. frames to read at a time.</span>
+<span class="sd">        *args: Arguments to ``bifrost.pipeline.SourceBlock``.</span>
+<span class="sd">        **kwargs: Keyword Arguments to ``bifrost.pipeline.SourceBlock``.</span>
+
+<span class="sd">    **Tensor semantics**::</span>
+
+<span class="sd">        Input:  One data file per sequence</span>
+<span class="sd">        Output: [frame, ...], dtype = any, space = SYSTEM</span>
+
+<span class="sd">        Input:  One data file per ringlet</span>
+<span class="sd">        Output: [ringlet, frame, ...], dtype = any, space = SYSTEM</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DeserializeBlock: A new block instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">DeserializeBlock</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <span class="c1"># **TODO: Write a DeserializeBlock that does the inverse of this</span>
 <div class="viewcode-block" id="SerializeBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.SerializeBlock">[docs]</a><span class="k">class</span> <span class="nc">SerializeBlock</span><span class="p">(</span><span class="n">SinkBlock</span><span class="p">):</span>
