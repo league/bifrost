@@ -138,6 +138,11 @@ values that self can.</p>
 <code class="descname">as_real</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/DataType.html#DataType.as_real"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.DataType.DataType.as_real" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="bifrost.DataType.DataType.as_vector">
+<code class="descname">as_vector</code><span class="sig-paren">(</span><em>veclen</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/DataType.html#DataType.as_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.DataType.DataType.as_vector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="bifrost.DataType.DataType.is_complex">
 <code class="descname">is_complex</code><a class="headerlink" href="#bifrost.DataType.DataType.is_complex" title="Permalink to this definition">¶</a></dt>
@@ -2114,7 +2119,7 @@ TODO: Some calls result in segfault with space=cuda (e.g., __getitem__</p>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.pipeline.BlockScope" title="bifrost.pipeline.BlockScope"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.BlockScope</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.pipeline.Block.begin_sequences">
-<code class="descname">begin_sequences</code><span class="sig-paren">(</span><em>exit_stack</em>, <em>orings</em>, <em>oheaders</em>, <em>igulp_nframes</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#Block.begin_sequences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.Block.begin_sequences" title="Permalink to this definition">¶</a></dt>
+<code class="descname">begin_sequences</code><span class="sig-paren">(</span><em>exit_stack</em>, <em>orings</em>, <em>oheaders</em>, <em>igulp_nframes</em>, <em>istride_nframes</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#Block.begin_sequences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.Block.begin_sequences" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2124,7 +2129,7 @@ TODO: Some calls result in segfault with space=cuda (e.g., __getitem__</p>
 
 <dl class="method">
 <dt id="bifrost.pipeline.Block.commit_spans">
-<code class="descname">commit_spans</code><span class="sig-paren">(</span><em>ospans</em>, <em>ostrides</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#Block.commit_spans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.Block.commit_spans" title="Permalink to this definition">¶</a></dt>
+<code class="descname">commit_spans</code><span class="sig-paren">(</span><em>ospans</em>, <em>ostrides_actual</em>, <em>ogulp_overlaps</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#Block.commit_spans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.Block.commit_spans" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2207,6 +2212,13 @@ TODO: Some calls result in segfault with space=cuda (e.g., __getitem__</p>
 <em class="property">class </em><code class="descclassname">bifrost.pipeline.</code><code class="descname">MultiTransformBlock</code><span class="sig-paren">(</span><em>irings_</em>, <em>guarantee=True</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#MultiTransformBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.MultiTransformBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.pipeline.Block" title="bifrost.pipeline.Block"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.Block</span></code></a></p>
 <dl class="method">
+<dt id="bifrost.pipeline.MultiTransformBlock.define_input_overlap_nframe">
+<code class="descname">define_input_overlap_nframe</code><span class="sig-paren">(</span><em>iseqs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#MultiTransformBlock.define_input_overlap_nframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.MultiTransformBlock.define_input_overlap_nframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return no. input frames that should overlap between successive spans
+for each input sequence.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="bifrost.pipeline.MultiTransformBlock.define_output_nframes">
 <code class="descname">define_output_nframes</code><span class="sig-paren">(</span><em>input_nframes</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#MultiTransformBlock.define_output_nframes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.MultiTransformBlock.define_output_nframes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return output nframe for each output, given input_nframes.</p>
@@ -2227,7 +2239,7 @@ frames to commit for each output (or None to commit complete spans).</p>
 <dl class="method">
 <dt id="bifrost.pipeline.MultiTransformBlock.on_sequence">
 <code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseqs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#MultiTransformBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.MultiTransformBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return: oheaders (one per output) and islices (one per input)</p>
+<dd><p>Return: oheaders (one per output)</p>
 </dd></dl>
 
 <dl class="method">
@@ -2363,6 +2375,12 @@ frames to commit for each output.</p>
 <em class="property">class </em><code class="descclassname">bifrost.pipeline.</code><code class="descname">TransformBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#TransformBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.TransformBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.pipeline.MultiTransformBlock" title="bifrost.pipeline.MultiTransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.MultiTransformBlock</span></code></a></p>
 <dl class="method">
+<dt id="bifrost.pipeline.TransformBlock.define_input_overlap_nframe">
+<code class="descname">define_input_overlap_nframe</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#TransformBlock.define_input_overlap_nframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.TransformBlock.define_input_overlap_nframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return no. input frames that should overlap between successive spans.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="bifrost.pipeline.TransformBlock.define_output_nframes">
 <code class="descname">define_output_nframes</code><span class="sig-paren">(</span><em>input_nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#TransformBlock.define_output_nframes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.TransformBlock.define_output_nframes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return number of frames that will be produced given input_nframe</p>
@@ -2383,7 +2401,7 @@ frames to commit for each output.</p>
 <dl class="method">
 <dt id="bifrost.pipeline.TransformBlock.on_sequence">
 <code class="descname">on_sequence</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#TransformBlock.on_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.TransformBlock.on_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return oheader or (oheader, islice)</p>
+<dd><p>Return oheader</p>
 </dd></dl>
 
 <dl class="method">
@@ -2858,7 +2876,7 @@ dictionaries ordered by:</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="bifrost.ring2.RingWriter.begin_sequence">
-<code class="descname">begin_sequence</code><span class="sig-paren">(</span><em>header</em>, <em>buf_nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#RingWriter.begin_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.RingWriter.begin_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">begin_sequence</code><span class="sig-paren">(</span><em>header</em>, <em>gulp_nframe</em>, <em>buf_nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#RingWriter.begin_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.RingWriter.begin_sequence" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2963,7 +2981,7 @@ dictionaries ordered by:</p>
 
 <dl class="class">
 <dt id="bifrost.ring2.WriteSequence">
-<em class="property">class </em><code class="descclassname">bifrost.ring2.</code><code class="descname">WriteSequence</code><span class="sig-paren">(</span><em>ring</em>, <em>header</em>, <em>buf_nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#WriteSequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.WriteSequence" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.ring2.</code><code class="descname">WriteSequence</code><span class="sig-paren">(</span><em>ring</em>, <em>header</em>, <em>gulp_nframe</em>, <em>buf_nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#WriteSequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.WriteSequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.ring2.SequenceBase" title="bifrost.ring2.SequenceBase"><code class="xref py py-class docutils literal"><span class="pre">bifrost.ring2.SequenceBase</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.ring2.WriteSequence.end">
