@@ -196,6 +196,14 @@ bifrost\.proclog module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.psrdada module
+-----------------------
+
+.. automodule:: bifrost.psrdada
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.quantize module
 ------------------------
 

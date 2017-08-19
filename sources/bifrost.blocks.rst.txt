@@ -84,6 +84,14 @@ bifrost\.blocks\.print\_header module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.blocks\.psrdada module
+-------------------------------
+
+.. automodule:: bifrost.blocks.psrdada
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.blocks\.quantize module
 --------------------------------
 

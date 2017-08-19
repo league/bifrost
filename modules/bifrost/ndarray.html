@@ -95,7 +95,11 @@
 <span class="c1"># TODO: ndarray.flags[&#39;WRITEABLE&#39;] does not get preserved</span>
 <span class="c1">#         through ndarray.__init__()</span>
 
+<span class="c1"># TODO: Single-element assignment appears to be broken</span>
+
 <span class="k">def</span> <span class="nf">_address_as_buffer</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">nbyte</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">address</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot create buffer from NULL pointer&quot;</span><span class="p">)</span>
     <span class="c1"># Note: This doesn&#39;t work as a buffer when using pypy</span>
     <span class="c1"># return (ctypes.c_byte*nbyte).from_address(address)</span>
     <span class="c1"># Note: This works as a buffer in regular python and pypy</span>
