@@ -36,6 +36,14 @@ bifrost\.blocks\.copy module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.blocks\.correlate module
+---------------------------------
+
+.. automodule:: bifrost.blocks.correlate
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.blocks\.detect module
 ------------------------------
 
