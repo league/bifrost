@@ -209,9 +209,11 @@
     <span class="k">return</span> <span class="n">s</span>
 
 <div class="viewcode-block" id="write_header"><a class="viewcode-back" href="../../bifrost.html#bifrost.sigproc2.write_header">[docs]</a><span class="k">def</span> <span class="nf">write_header</span><span class="p">(</span><span class="n">hdr</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-    <span class="c1">#f.write(&quot;HEADER_START&quot;)</span>
     <span class="n">_header_write_string</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;HEADER_START&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">hdr</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Do not write keys with no value</span>
+            <span class="k">continue</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">_string_values</span><span class="p">:</span>
             <span class="n">_header_write_string</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
             <span class="n">_header_write_string</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>

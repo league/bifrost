@@ -76,6 +76,7 @@
 <span class="kn">import</span> <span class="nn">bifrost.sigproc2</span> <span class="k">as</span> <span class="nn">sigproc</span>
 <span class="kn">from</span> <span class="nn">bifrost.DataType</span> <span class="k">import</span> <span class="n">DataType</span>
 <span class="kn">from</span> <span class="nn">bifrost.units</span> <span class="k">import</span> <span class="n">convert_units</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">transpose</span>
 
 <span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -209,10 +210,10 @@
         <span class="n">ihdr</span> <span class="o">=</span> <span class="n">iseq</span><span class="o">.</span><span class="n">header</span>
         <span class="n">itensor</span> <span class="o">=</span> <span class="n">ihdr</span><span class="p">[</span><span class="s1">&#39;_tensor&#39;</span><span class="p">]</span>
 
-        <span class="n">axnames</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>
-        <span class="n">shape</span>   <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
-        <span class="n">scales</span>  <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;scales&#39;</span><span class="p">]</span>
-        <span class="n">units</span>   <span class="o">=</span> <span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
+        <span class="n">axnames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>
+        <span class="n">shape</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">])</span>
+        <span class="n">scales</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;scales&#39;</span><span class="p">])</span>
+        <span class="n">units</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
         <span class="n">ndim</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
         <span class="n">dtype</span>   <span class="o">=</span> <span class="n">DataType</span><span class="p">(</span><span class="n">itensor</span><span class="p">[</span><span class="s1">&#39;dtype&#39;</span><span class="p">])</span>
 
@@ -265,7 +266,8 @@
                 <span class="n">sigproc</span><span class="o">.</span><span class="n">write_header</span><span class="p">(</span><span class="n">sigproc_hdr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ofile</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">axnames</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;beam&#39;</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected first axis to be &#39;beam&#39;&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected first axis to be &#39;beam&#39;&quot;</span>
+                                     <span class="s2">&quot; got &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">axnames</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
                 <span class="n">nbeam</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
                 <span class="n">sigproc_hdr</span><span class="p">[</span><span class="s1">&#39;nbeams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nbeam</span>
                 <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">filename</span> <span class="o">+</span> <span class="s1">&#39;.</span><span class="si">%06i</span><span class="s1">of.</span><span class="si">%06i</span><span class="s1">.fil&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nbeam</span><span class="p">)</span>
@@ -277,7 +279,20 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many dimensions&quot;</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">ndim</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">axnames</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;pol&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">ndim</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">axnames</span> <span class="ow">and</span> <span class="s1">&#39;pol&#39;</span> <span class="ow">in</span> <span class="n">axnames</span><span class="p">:</span>
+            <span class="n">pol_axis</span> <span class="o">=</span> <span class="n">axnames</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;pol&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pol_axis</span> <span class="o">!=</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># Need to move pol axis</span>
+                <span class="c1"># Note: We support this because it tends to be convenient</span>
+                <span class="c1">#         for rest of the pipeline to operate with pol being</span>
+                <span class="c1">#         the first dim, and doing the transpose on the fly</span>
+                <span class="c1">#         inside this block is unlikely to cost much relative</span>
+                <span class="c1">#         to disk perf (and it&#39;s free if npol==1).</span>
+                <span class="n">axnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axnames</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]);</span> <span class="k">del</span> <span class="n">axnames</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]</span>
+                <span class="n">shape</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]);</span>     <span class="k">del</span> <span class="n">shape</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]</span>
+                <span class="n">scales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scales</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]);</span>   <span class="k">del</span> <span class="n">scales</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]</span>
+                <span class="n">units</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]);</span>     <span class="k">del</span> <span class="n">units</span><span class="p">[</span><span class="n">pol_axis</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pol_axis</span> <span class="o">=</span> <span class="n">pol_axis</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">=</span> <span class="s1">&#39;timeseries&#39;</span>
             <span class="k">assert</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
             <span class="n">sigproc_hdr</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
@@ -303,7 +318,8 @@
                 <span class="n">sigproc</span><span class="o">.</span><span class="n">write_header</span><span class="p">(</span><span class="n">sigproc_hdr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ofile</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">axnames</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;dispersion&#39;</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected first axis to be &#39;dispersion&#39;&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected first axis to be &#39;dispersion&#39;&quot;</span>
+                                     <span class="s2">&quot; got &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">axnames</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
                 <span class="n">ndm</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
                 <span class="n">dm0</span> <span class="o">=</span> <span class="n">scales</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">ddm</span> <span class="o">=</span> <span class="n">scales</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
@@ -361,7 +377,13 @@
                 <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">idata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                     <span class="n">idata</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">tofile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ofiles</span><span class="p">[</span><span class="n">b</span><span class="p">])</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s1">&#39;timeseries&#39;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">idata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pol_axis</span> <span class="o">!=</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">perm</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">xrange</span><span class="p">(</span><span class="n">ndim</span><span class="p">))</span>
+                <span class="k">del</span> <span class="n">perm</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pol_axis</span><span class="p">]</span>
+                <span class="n">perm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pol_axis</span><span class="p">);</span>
+                <span class="n">idata</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">idata</span><span class="p">,</span> <span class="n">perm</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                 <span class="n">idata</span><span class="o">.</span><span class="n">tofile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ofile</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">idata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
