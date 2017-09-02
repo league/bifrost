@@ -28,6 +28,14 @@ bifrost\.blocks\.binary\_io module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.blocks\.convert\_visibilities module
+---------------------------------------------
+
+.. automodule:: bifrost.blocks.convert_visibilities
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.blocks\.copy module
 ----------------------------
 

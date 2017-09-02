@@ -264,6 +264,8 @@
 </li>
       <li><a href="bifrost.blocks.html#module-bifrost.blocks.binary_io">bifrost.blocks.binary_io (module)</a>
 </li>
+      <li><a href="bifrost.blocks.html#module-bifrost.blocks.convert_visibilities">bifrost.blocks.convert_visibilities (module)</a>
+</li>
       <li><a href="bifrost.blocks.html#module-bifrost.blocks.copy">bifrost.blocks.copy (module)</a>
 </li>
       <li><a href="bifrost.blocks.html#module-bifrost.blocks.correlate">bifrost.blocks.correlate (module)</a>
@@ -286,10 +288,10 @@
 </li>
       <li><a href="bifrost.blocks.html#module-bifrost.blocks.reverse">bifrost.blocks.reverse (module)</a>
 </li>
-      <li><a href="bifrost.blocks.html#module-bifrost.blocks.scrunch">bifrost.blocks.scrunch (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="bifrost.blocks.html#module-bifrost.blocks.scrunch">bifrost.blocks.scrunch (module)</a>
+</li>
       <li><a href="bifrost.blocks.html#module-bifrost.blocks.serialize">bifrost.blocks.serialize (module)</a>
 </li>
       <li><a href="bifrost.blocks.html#module-bifrost.blocks.sigproc">bifrost.blocks.sigproc (module)</a>
@@ -480,15 +482,19 @@
 </li>
       <li><a href="bifrost.html#bifrost.ring2.compose_unary_funcs">compose_unary_funcs() (in module bifrost.ring2)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="bifrost.html#bifrost.ndarray.ndarray.conj">conj() (bifrost.ndarray.ndarray method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="bifrost.html#bifrost.libbifrost_generated.struct_BFarray_.conjugated">conjugated (bifrost.libbifrost_generated.struct_BFarray_ attribute)</a>
 </li>
       <li><a href="bifrost.html#bifrost.udp_socket.UDPSocket.connect">connect() (bifrost.udp_socket.UDPSocket method)</a>
 </li>
       <li><a href="bifrost.html#bifrost.units.convert_units">convert_units() (in module bifrost.units)</a>
+</li>
+      <li><a href="bifrost.blocks.html#bifrost.blocks.convert_visibilities.convert_visibilities">convert_visibilities() (in module bifrost.blocks.convert_visibilities)</a>
+</li>
+      <li><a href="bifrost.blocks.html#bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock">ConvertVisibilitiesBlock (class in bifrost.blocks.convert_visibilities)</a>
 </li>
       <li><a href="bifrost.html#bifrost.ndarray.ndarray.copy">copy() (bifrost.ndarray.ndarray method)</a>
 
@@ -595,6 +601,8 @@
       <li><a href="bifrost.blocks.html#bifrost.blocks.accumulate.AccumulateBlock.define_valid_input_spaces">define_valid_input_spaces() (bifrost.blocks.accumulate.AccumulateBlock method)</a>
 
       <ul>
+        <li><a href="bifrost.blocks.html#bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock.define_valid_input_spaces">(bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock method)</a>
+</li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.correlate.CorrelateBlock.define_valid_input_spaces">(bifrost.blocks.correlate.CorrelateBlock method)</a>
 </li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.detect.DetectBlock.define_valid_input_spaces">(bifrost.blocks.detect.DetectBlock method)</a>
@@ -870,10 +878,10 @@
       </ul></li>
       <li><a href="bifrost.html#bifrost.DataType.DataType.is_complex">is_complex (bifrost.DataType.DataType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="bifrost.html#bifrost.DataType.DataType.is_floating_point">is_floating_point (bifrost.DataType.DataType attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="bifrost.html#bifrost.pipeline.BlockScope.is_fused_with">is_fused_with() (bifrost.pipeline.BlockScope method)</a>
 </li>
       <li><a href="bifrost.html#bifrost.DataType.DataType.is_integer">is_integer (bifrost.DataType.DataType attribute)</a>
@@ -881,6 +889,8 @@
       <li><a href="bifrost.html#bifrost.DataType.DataType.is_real">is_real (bifrost.DataType.DataType attribute)</a>
 </li>
       <li><a href="bifrost.html#bifrost.DataType.DataType.is_signed">is_signed (bifrost.DataType.DataType attribute)</a>
+</li>
+      <li><a href="bifrost.html#bifrost.DataType.is_vector_structure">is_vector_structure() (in module bifrost.DataType)</a>
 </li>
       <li><a href="bifrost.html#bifrost.libbifrost_generated.UserString.isalnum">isalnum() (bifrost.libbifrost_generated.UserString method)</a>
 </li>
@@ -1167,6 +1177,8 @@
 </li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileWriteBlock.on_data">(bifrost.blocks.binary_io.BinaryFileWriteBlock method)</a>
 </li>
+        <li><a href="bifrost.blocks.html#bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock.on_data">(bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock method)</a>
+</li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.copy.CopyBlock.on_data">(bifrost.blocks.copy.CopyBlock method)</a>
 </li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.correlate.CorrelateBlock.on_data">(bifrost.blocks.correlate.CorrelateBlock method)</a>
@@ -1222,6 +1234,8 @@
         <li><a href="bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileReadBlock.on_sequence">(bifrost.blocks.binary_io.BinaryFileReadBlock method)</a>
 </li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileWriteBlock.on_sequence">(bifrost.blocks.binary_io.BinaryFileWriteBlock method)</a>
+</li>
+        <li><a href="bifrost.blocks.html#bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock.on_sequence">(bifrost.blocks.convert_visibilities.ConvertVisibilitiesBlock method)</a>
 </li>
         <li><a href="bifrost.blocks.html#bifrost.blocks.copy.CopyBlock.on_sequence">(bifrost.blocks.copy.CopyBlock method)</a>
 </li>

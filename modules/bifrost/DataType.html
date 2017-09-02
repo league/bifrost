@@ -141,6 +141,15 @@
            <span class="mi">64</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">,</span> <span class="mi">128</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">complex256</span><span class="p">}</span>
 <span class="p">}</span>
 
+<div class="viewcode-block" id="is_vector_structure"><a class="viewcode-back" href="../../bifrost.html#bifrost.DataType.is_vector_structure">[docs]</a><span class="k">def</span> <span class="nf">is_vector_structure</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+    <span class="n">vector_field_names</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;f</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">ndim</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span> <span class="ow">and</span>
+            <span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="o">==</span> <span class="n">vector_field_names</span> <span class="ow">and</span>
+            <span class="nb">all</span><span class="p">([</span><span class="n">dtype</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">dtype</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">)]))</span></div>
+
 <div class="viewcode-block" id="DataType"><a class="viewcode-back" href="../../bifrost.html#bifrost.DataType.DataType">[docs]</a><span class="k">class</span> <span class="nc">DataType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="c1"># Note: Default of None results in default Numpy type (np.float)</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -178,6 +187,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_nbit</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="mi">8</span>
             <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]):</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Unsupported data type: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">is_vector_structure</span><span class="p">(</span><span class="n">t</span><span class="p">):</span> <span class="c1"># Field structure representing vector</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_veclen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_kind</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">kind</span>
             <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_nbit</span> <span class="o">/=</span> <span class="mi">2</span>   <span class="c1"># Bifrost convention is nbit per real component</span>
@@ -207,7 +219,12 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_veclen</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">base</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">((</span><span class="n">base</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_veclen</span><span class="p">))</span></div>
+            <span class="c1">#return np.dtype((base, self._veclen))</span>
+            <span class="c1"># WAR for vector types not working as expected when passed to</span>
+            <span class="c1">#   np.view (the shape gets merged into the ndarray&#39;s shape instead</span>
+            <span class="c1">#   of remaining part of the dtype). We return a structure type</span>
+            <span class="c1">#   with fields representing a vector instead.</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">base</span><span class="p">),)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_veclen</span><span class="p">))</span></div>
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_veclen</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_kind</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbit</span><span class="p">)</span>
