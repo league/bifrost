@@ -2311,6 +2311,12 @@ frames to commit for each output (or None to commit complete spans).</p>
 <em class="property">class </em><code class="descclassname">bifrost.pipeline.</code><code class="descname">SinkBlock</code><span class="sig-paren">(</span><em>iring</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#SinkBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.SinkBlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.pipeline.MultiTransformBlock" title="bifrost.pipeline.MultiTransformBlock"><code class="xref py py-class docutils literal"><span class="pre">bifrost.pipeline.MultiTransformBlock</span></code></a></p>
 <dl class="method">
+<dt id="bifrost.pipeline.SinkBlock.define_input_overlap_nframe">
+<code class="descname">define_input_overlap_nframe</code><span class="sig-paren">(</span><em>iseq</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#SinkBlock.define_input_overlap_nframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.SinkBlock.define_input_overlap_nframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return no. input frames that should overlap between successive spans.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="bifrost.pipeline.SinkBlock.define_valid_input_spaces">
 <code class="descname">define_valid_input_spaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#SinkBlock.define_valid_input_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.SinkBlock.define_valid_input_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return set of valid spaces (or ‘any’) for the input</p>
@@ -2749,14 +2755,14 @@ dictionaries ordered by:</p>
 
 <dl class="method">
 <dt id="bifrost.ring.WriteSequence.reserve">
-<code class="descname">reserve</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring.html#WriteSequence.reserve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring.WriteSequence.reserve" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reserve</code><span class="sig-paren">(</span><em>size</em>, <em>nonblocking=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring.html#WriteSequence.reserve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring.WriteSequence.reserve" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="bifrost.ring.WriteSpan">
-<em class="property">class </em><code class="descclassname">bifrost.ring.</code><code class="descname">WriteSpan</code><span class="sig-paren">(</span><em>ring</em>, <em>size</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring.html#WriteSpan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring.WriteSpan" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.ring.</code><code class="descname">WriteSpan</code><span class="sig-paren">(</span><em>ring</em>, <em>size</em>, <em>nonblocking=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring.html#WriteSpan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring.WriteSpan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.ring.SpanBase" title="bifrost.ring.SpanBase"><code class="xref py py-class docutils literal"><span class="pre">bifrost.ring.SpanBase</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.ring.WriteSpan.close">
@@ -3006,14 +3012,14 @@ dictionaries ordered by:</p>
 
 <dl class="method">
 <dt id="bifrost.ring2.WriteSequence.reserve">
-<code class="descname">reserve</code><span class="sig-paren">(</span><em>nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#WriteSequence.reserve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.WriteSequence.reserve" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reserve</code><span class="sig-paren">(</span><em>nframe</em>, <em>nonblocking=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#WriteSequence.reserve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.WriteSequence.reserve" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="bifrost.ring2.WriteSpan">
-<em class="property">class </em><code class="descclassname">bifrost.ring2.</code><code class="descname">WriteSpan</code><span class="sig-paren">(</span><em>ring</em>, <em>sequence</em>, <em>nframe</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#WriteSpan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.WriteSpan" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bifrost.ring2.</code><code class="descname">WriteSpan</code><span class="sig-paren">(</span><em>ring</em>, <em>sequence</em>, <em>nframe</em>, <em>nonblocking=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#WriteSpan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.WriteSpan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bifrost.ring2.SpanBase" title="bifrost.ring2.SpanBase"><code class="xref py py-class docutils literal"><span class="pre">bifrost.ring2.SpanBase</span></code></a></p>
 <dl class="method">
 <dt id="bifrost.ring2.WriteSpan.close">
