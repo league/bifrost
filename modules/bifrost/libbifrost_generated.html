@@ -886,7 +886,20 @@
     <span class="n">bfGetSpace</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
-<span class="c1"># ../src/bifrost/memory.h: 61</span>
+<span class="c1"># ../src/bifrost/memory.h: 60</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfGetSpaceString&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfGetSpaceString</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfGetSpaceString</span>
+    <span class="n">bfGetSpaceString</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFspace</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">c_int</span><span class="p">)</span> <span class="o">==</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">c_void_p</span><span class="p">):</span>
+        <span class="n">bfGetSpaceString</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ReturnString</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">bfGetSpaceString</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">String</span>
+<span class="c1">#        bfGetSpaceString.errcheck = ReturnString</span>
+    <span class="k">break</span>
+
+<span class="c1"># ../src/bifrost/memory.h: 63</span>
 <span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfMemcpy&#39;</span><span class="p">):</span>
         <span class="k">continue</span>
@@ -895,7 +908,7 @@
     <span class="n">bfMemcpy</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
-<span class="c1"># ../src/bifrost/memory.h: 66</span>
+<span class="c1"># ../src/bifrost/memory.h: 68</span>
 <span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfMemcpy2D&#39;</span><span class="p">):</span>
         <span class="k">continue</span>
@@ -904,7 +917,7 @@
     <span class="n">bfMemcpy2D</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
-<span class="c1"># ../src/bifrost/memory.h: 74</span>
+<span class="c1"># ../src/bifrost/memory.h: 76</span>
 <span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfMemset&#39;</span><span class="p">):</span>
         <span class="k">continue</span>
@@ -913,7 +926,7 @@
     <span class="n">bfMemset</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
-<span class="c1"># ../src/bifrost/memory.h: 78</span>
+<span class="c1"># ../src/bifrost/memory.h: 80</span>
 <span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfMemset2D&#39;</span><span class="p">):</span>
         <span class="k">continue</span>
@@ -922,7 +935,7 @@
     <span class="n">bfMemset2D</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
-<span class="c1"># ../src/bifrost/memory.h: 84</span>
+<span class="c1"># ../src/bifrost/memory.h: 86</span>
 <span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfGetAlignment&#39;</span><span class="p">):</span>
         <span class="k">continue</span>

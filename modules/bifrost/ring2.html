@@ -43,7 +43,8 @@
           <div class="body" role="main">
             
   <h1>Source code for bifrost.ring2</h1><div class="highlight"><pre>
-<span></span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
 <span class="c1"># Copyright (c) 2016, The Bifrost Authors. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># Redistribution and use in source and binary forms, with or without</span>
@@ -79,6 +80,7 @@
 <span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
 
 <span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">string</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -86,6 +88,11 @@
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="nb">print</span> <span class="s2">&quot;WARNING: Install simplejson for better performance&quot;</span>
     <span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">_slugify</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">valid_chars</span> <span class="o">=</span> <span class="s2">&quot;-_.() </span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
+    <span class="n">valid_chars</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">valid_chars</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">name</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">valid_chars</span><span class="p">])</span>
 
 <span class="c1"># TODO: Should probably move this elsewhere (e.g., utils)</span>
 <div class="viewcode-block" id="split_shape"><a class="viewcode-back" href="../../bifrost.html#bifrost.ring2.split_shape">[docs]</a><span class="k">def</span> <span class="nf">split_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
@@ -114,15 +121,22 @@
 
 <div class="viewcode-block" id="Ring"><a class="viewcode-back" href="../../bifrost.html#bifrost.ring2.Ring">[docs]</a><span class="k">class</span> <span class="nc">Ring</span><span class="p">(</span><span class="n">BifrostObject</span><span class="p">):</span>
     <span class="n">instance_count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">core</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># If this is non-None, then the object is wrapping a base Ring instance</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">space</span> <span class="o">=</span> <span class="n">space</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ring_</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">Ring</span><span class="o">.</span><span class="n">instance_count</span>
             <span class="n">Ring</span><span class="o">.</span><span class="n">instance_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">_slugify</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">BifrostObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfRingCreate</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfRingDestroy</span><span class="p">,</span>
                                <span class="n">name</span><span class="p">,</span> <span class="n">_string2space</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">core</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_check</span><span class="p">(</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfRingSetAffinity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> 
+                                              <span class="n">core</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+                <span class="k">pass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">owner</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">header_transform</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -140,6 +154,9 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_get</span><span class="p">(</span><span class="n">_bf</span><span class="o">.</span><span class="n">bfRingGetName</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">core</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_get</span><span class="p">(</span><span class="n">_bf</span><span class="o">.</span><span class="n">bfRingGetAffinity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
 <div class="viewcode-block" id="Ring.begin_writing"><a class="viewcode-back" href="../../bifrost.html#bifrost.ring2.Ring.begin_writing">[docs]</a>    <span class="k">def</span> <span class="nf">begin_writing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">RingWriter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
     <span class="k">def</span> <span class="nf">_begin_writing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -444,7 +461,6 @@
         <span class="n">data_ptr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_ptr</span>
 
         <span class="n">space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring</span><span class="o">.</span><span class="n">space</span>
-
         <span class="c1"># **TODO: Need to integrate support for endianness and conjugatedness</span>
         <span class="c1">#         Also need support in headers for units of the actual values,</span>
         <span class="c1">#           in addition to the axis scales.</span>
