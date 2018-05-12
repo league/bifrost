@@ -46,7 +46,7 @@
 <span></span><span class="sd">&#39;&#39;&#39;Wrapper for address.h</span>
 
 <span class="sd">Generated with:</span>
-<span class="sd">/usr/local/bin/ctypesgen.py -lbifrost -I../src ../src/bifrost/address.h ../src/bifrost/affinity.h ../src/bifrost/array.h ../src/bifrost/common.h ../src/bifrost/cuda.h ../src/bifrost/fdmt.h ../src/bifrost/fft.h ../src/bifrost/linalg.h ../src/bifrost/map.h ../src/bifrost/memory.h ../src/bifrost/proclog.h ../src/bifrost/quantize.h ../src/bifrost/reduce.h ../src/bifrost/ring.h ../src/bifrost/transpose.h ../src/bifrost/udp_capture.h ../src/bifrost/udp_socket.h ../src/bifrost/udp_transmit.h ../src/bifrost/unpack.h -o bifrost/libbifrost_generated.py</span>
+<span class="sd">/usr/local/bin/ctypesgen.py -lbifrost -I../src ../src/bifrost/address.h ../src/bifrost/affinity.h ../src/bifrost/array.h ../src/bifrost/common.h ../src/bifrost/cuda.h ../src/bifrost/fdmt.h ../src/bifrost/fft.h ../src/bifrost/fir.h ../src/bifrost/linalg.h ../src/bifrost/map.h ../src/bifrost/memory.h ../src/bifrost/proclog.h ../src/bifrost/quantize.h ../src/bifrost/reduce.h ../src/bifrost/ring.h ../src/bifrost/transpose.h ../src/bifrost/udp_capture.h ../src/bifrost/udp_socket.h ../src/bifrost/udp_transmit.h ../src/bifrost/unpack.h -o bifrost/libbifrost_generated.py</span>
 
 <span class="sd">Do not modify this file.</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -1251,6 +1251,75 @@
     <span class="n">bfFftDestroy</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
+<span class="c1"># /bifrost/src/bifrost/fir.h: 41</span>
+<div class="viewcode-block" id="struct_BFfir_impl"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.struct_BFfir_impl">[docs]</a><span class="k">class</span> <span class="nc">struct_BFfir_impl</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+<span class="n">BFfir</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">struct_BFfir_impl</span><span class="p">)</span> <span class="c1"># /bifrost/src/bifrost/fir.h: 41</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 43</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirCreate&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirCreate</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirCreate</span>
+    <span class="n">bfFirCreate</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">BFfir</span><span class="p">)]</span>
+    <span class="n">bfFirCreate</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 44</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirInit&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirInit</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirInit</span>
+    <span class="n">bfFirInit</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFfir</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">),</span> <span class="n">BFsize</span><span class="p">,</span> <span class="n">BFspace</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFsize</span><span class="p">)]</span>
+    <span class="n">bfFirInit</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 50</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirSetStream&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirSetStream</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirSetStream</span>
+    <span class="n">bfFirSetStream</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFfir</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span>
+    <span class="n">bfFirSetStream</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 52</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirSetCoeffs&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirSetCoeffs</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirSetCoeffs</span>
+    <span class="n">bfFirSetCoeffs</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFfir</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">)]</span>
+    <span class="n">bfFirSetCoeffs</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 54</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirResetState&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirResetState</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirResetState</span>
+    <span class="n">bfFirResetState</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFfir</span><span class="p">]</span>
+    <span class="n">bfFirResetState</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 55</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirExecute&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirExecute</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirExecute</span>
+    <span class="n">bfFirExecute</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFfir</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">)]</span>
+    <span class="n">bfFirExecute</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/fir.h: 58</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfFirDestroy&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfFirDestroy</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfFirDestroy</span>
+    <span class="n">bfFirDestroy</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFfir</span><span class="p">]</span>
+    <span class="n">bfFirDestroy</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
 <span class="c1"># /bifrost/src/bifrost/linalg.h: 43</span>
 <div class="viewcode-block" id="struct_BFlinalg_impl"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.struct_BFlinalg_impl">[docs]</a><span class="k">class</span> <span class="nc">struct_BFlinalg_impl</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
     <span class="k">pass</span></div>
@@ -2092,6 +2161,8 @@
 <span class="n">BFfdmt_impl</span> <span class="o">=</span> <span class="n">struct_BFfdmt_impl</span> <span class="c1"># /bifrost/src/bifrost/fdmt.h: 48</span>
 
 <span class="n">BFfft_impl</span> <span class="o">=</span> <span class="n">struct_BFfft_impl</span> <span class="c1"># /bifrost/src/bifrost/fft.h: 39</span>
+
+<span class="n">BFfir_impl</span> <span class="o">=</span> <span class="n">struct_BFfir_impl</span> <span class="c1"># /bifrost/src/bifrost/fir.h: 41</span>
 
 <span class="n">BFlinalg_impl</span> <span class="o">=</span> <span class="n">struct_BFlinalg_impl</span> <span class="c1"># /bifrost/src/bifrost/linalg.h: 43</span>
 

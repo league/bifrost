@@ -108,6 +108,14 @@ bifrost\.fft module
     :undoc-members:
     :show-inheritance:
 
+bifrost\.fir module
+-------------------
+
+.. automodule:: bifrost.fir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 bifrost\.guppi\_raw module
 --------------------------
 

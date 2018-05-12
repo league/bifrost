@@ -978,8 +978,37 @@ cf32: 32+32-bit complex floating point</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-bifrost.fir">
+<span id="bifrost-fir-module"></span><h2>11.15. bifrost.fir module<a class="headerlink" href="#module-bifrost.fir" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bifrost.fir.Fir">
+<em class="property">class </em><code class="descclassname">bifrost.fir.</code><code class="descname">Fir</code><a class="reference internal" href="modules/bifrost/fir.html#Fir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.fir.Fir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bifrost.libbifrost.BifrostObject" title="bifrost.libbifrost.BifrostObject"><code class="xref py py-class docutils literal"><span class="pre">bifrost.libbifrost.BifrostObject</span></code></a></p>
+<dl class="method">
+<dt id="bifrost.fir.Fir.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>idata</em>, <em>odata</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/fir.html#Fir.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.fir.Fir.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.fir.Fir.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>coeffs</em>, <em>decim=1</em>, <em>space=’cuda’</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/fir.html#Fir.init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.fir.Fir.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.fir.Fir.reset_state">
+<code class="descname">reset_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/fir.html#Fir.reset_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.fir.Fir.reset_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bifrost.fir.Fir.set_coeffs">
+<code class="descname">set_coeffs</code><span class="sig-paren">(</span><em>coeffs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/fir.html#Fir.set_coeffs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.fir.Fir.set_coeffs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-bifrost.guppi_raw">
-<span id="bifrost-guppi-raw-module"></span><h2>11.15. bifrost.guppi_raw module<a class="headerlink" href="#module-bifrost.guppi_raw" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-guppi-raw-module"></span><h2>11.16. bifrost.guppi_raw module<a class="headerlink" href="#module-bifrost.guppi_raw" title="Permalink to this headline">¶</a></h2>
 <p>GUPPI Raw format
 Headers:</p>
 <blockquote>
@@ -1018,7 +1047,7 @@ OBSBW:    Bandwidth of data (may be negative to indicate high-&gt;low channel</p
 
 </div>
 <div class="section" id="module-bifrost.header_standard">
-<span id="bifrost-header-standard-module"></span><h2>11.16. bifrost.header_standard module<a class="headerlink" href="#module-bifrost.header_standard" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-header-standard-module"></span><h2>11.17. bifrost.header_standard module<a class="headerlink" href="#module-bifrost.header_standard" title="Permalink to this headline">¶</a></h2>
 <p>&#64;package header_standard
 This file enforces a standard header for rings.</p>
 <p>Required parameters:</p>
@@ -1042,7 +1071,7 @@ does not fit the standard specified above.</p>
 
 </div>
 <div class="section" id="module-bifrost.libbifrost">
-<span id="bifrost-libbifrost-module"></span><h2>11.17. bifrost.libbifrost module<a class="headerlink" href="#module-bifrost.libbifrost" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-libbifrost-module"></span><h2>11.18. bifrost.libbifrost module<a class="headerlink" href="#module-bifrost.libbifrost" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.libbifrost.BifrostObject">
 <em class="property">class </em><code class="descclassname">bifrost.libbifrost.</code><code class="descname">BifrostObject</code><span class="sig-paren">(</span><em>constructor</em>, <em>destructor</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/libbifrost.html#BifrostObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.libbifrost.BifrostObject" title="Permalink to this definition">¶</a></dt>
@@ -1052,10 +1081,10 @@ does not fit the standard specified above.</p>
 
 </div>
 <div class="section" id="module-bifrost.libbifrost_generated">
-<span id="bifrost-libbifrost-generated-module"></span><h2>11.18. bifrost.libbifrost_generated module<a class="headerlink" href="#module-bifrost.libbifrost_generated" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-libbifrost-generated-module"></span><h2>11.19. bifrost.libbifrost_generated module<a class="headerlink" href="#module-bifrost.libbifrost_generated" title="Permalink to this headline">¶</a></h2>
 <p>Wrapper for address.h</p>
 <p>Generated with:
-/usr/local/bin/ctypesgen.py -lbifrost -I../src ../src/bifrost/address.h ../src/bifrost/affinity.h ../src/bifrost/array.h ../src/bifrost/common.h ../src/bifrost/cuda.h ../src/bifrost/fdmt.h ../src/bifrost/fft.h ../src/bifrost/linalg.h ../src/bifrost/map.h ../src/bifrost/memory.h ../src/bifrost/proclog.h ../src/bifrost/quantize.h ../src/bifrost/reduce.h ../src/bifrost/ring.h ../src/bifrost/transpose.h ../src/bifrost/udp_capture.h ../src/bifrost/udp_socket.h ../src/bifrost/udp_transmit.h ../src/bifrost/unpack.h -o bifrost/libbifrost_generated.py</p>
+/usr/local/bin/ctypesgen.py -lbifrost -I../src ../src/bifrost/address.h ../src/bifrost/affinity.h ../src/bifrost/array.h ../src/bifrost/common.h ../src/bifrost/cuda.h ../src/bifrost/fdmt.h ../src/bifrost/fft.h ../src/bifrost/fir.h ../src/bifrost/linalg.h ../src/bifrost/map.h ../src/bifrost/memory.h ../src/bifrost/proclog.h ../src/bifrost/quantize.h ../src/bifrost/reduce.h ../src/bifrost/ring.h ../src/bifrost/transpose.h ../src/bifrost/udp_capture.h ../src/bifrost/udp_socket.h ../src/bifrost/udp_transmit.h ../src/bifrost/unpack.h -o bifrost/libbifrost_generated.py</p>
 <p>Do not modify this file.</p>
 <dl class="attribute">
 <dt id="bifrost.libbifrost_generated.BFaddress">
@@ -1103,6 +1132,18 @@ does not fit the standard specified above.</p>
 <dt id="bifrost.libbifrost_generated.BFfft_impl">
 <code class="descclassname">bifrost.libbifrost_generated.</code><code class="descname">BFfft_impl</code><a class="headerlink" href="#bifrost.libbifrost_generated.BFfft_impl" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#bifrost.libbifrost_generated.struct_BFfft_impl" title="bifrost.libbifrost_generated.struct_BFfft_impl"><code class="xref py py-class docutils literal"><span class="pre">struct_BFfft_impl</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bifrost.libbifrost_generated.BFfir">
+<code class="descclassname">bifrost.libbifrost_generated.</code><code class="descname">BFfir</code><a class="headerlink" href="#bifrost.libbifrost_generated.BFfir" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">LP_struct_BFfir_impl</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bifrost.libbifrost_generated.BFfir_impl">
+<code class="descclassname">bifrost.libbifrost_generated.</code><code class="descname">BFfir_impl</code><a class="headerlink" href="#bifrost.libbifrost_generated.BFfir_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#bifrost.libbifrost_generated.struct_BFfir_impl" title="bifrost.libbifrost_generated.struct_BFfir_impl"><code class="xref py py-class docutils literal"><span class="pre">struct_BFfir_impl</span></code></a></p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1724,6 +1765,12 @@ errors that would be very hard to track down.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bifrost.libbifrost_generated.struct_BFfir_impl">
+<em class="property">class </em><code class="descclassname">bifrost.libbifrost_generated.</code><code class="descname">struct_BFfir_impl</code><a class="reference internal" href="modules/bifrost/libbifrost_generated.html#struct_BFfir_impl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.libbifrost_generated.struct_BFfir_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bifrost.libbifrost_generated.struct_BFlinalg_impl">
 <em class="property">class </em><code class="descclassname">bifrost.libbifrost_generated.</code><code class="descname">struct_BFlinalg_impl</code><a class="reference internal" href="modules/bifrost/libbifrost_generated.html#struct_BFlinalg_impl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.libbifrost_generated.struct_BFlinalg_impl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
@@ -1887,7 +1934,7 @@ errors that would be very hard to track down.</p>
 
 </div>
 <div class="section" id="module-bifrost.linalg">
-<span id="bifrost-linalg-module"></span><h2>11.19. bifrost.linalg module<a class="headerlink" href="#module-bifrost.linalg" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-linalg-module"></span><h2>11.20. bifrost.linalg module<a class="headerlink" href="#module-bifrost.linalg" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.linalg.LinAlg">
 <em class="property">class </em><code class="descclassname">bifrost.linalg.</code><code class="descname">LinAlg</code><a class="reference internal" href="modules/bifrost/linalg.html#LinAlg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.linalg.LinAlg" title="Permalink to this definition">¶</a></dt>
@@ -1914,7 +1961,7 @@ used as batch dims to be matched or broadcast between a and b.</div></blockquote
 
 </div>
 <div class="section" id="module-bifrost.map">
-<span id="bifrost-map-module"></span><h2>11.20. bifrost.map module<a class="headerlink" href="#module-bifrost.map" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-map-module"></span><h2>11.21. bifrost.map module<a class="headerlink" href="#module-bifrost.map" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.map.map">
 <code class="descclassname">bifrost.map.</code><code class="descname">map</code><span class="sig-paren">(</span><em>func_string</em>, <em>data</em>, <em>axis_names=None</em>, <em>shape=None</em>, <em>func_name=None</em>, <em>extra_code=None</em>, <em>block_shape=None</em>, <em>block_axes=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/map.html#map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.map.map" title="Permalink to this definition">¶</a></dt>
@@ -1978,7 +2025,7 @@ kernel.</li>
 
 </div>
 <div class="section" id="module-bifrost.memory">
-<span id="bifrost-memory-module"></span><h2>11.21. bifrost.memory module<a class="headerlink" href="#module-bifrost.memory" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-memory-module"></span><h2>11.22. bifrost.memory module<a class="headerlink" href="#module-bifrost.memory" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.memory.alignment">
 <code class="descclassname">bifrost.memory.</code><code class="descname">alignment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/memory.html#alignment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.memory.alignment" title="Permalink to this definition">¶</a></dt>
@@ -2026,7 +2073,7 @@ kernel.</li>
 
 </div>
 <div class="section" id="module-bifrost.ndarray">
-<span id="bifrost-ndarray-module"></span><h2>11.22. bifrost.ndarray module<a class="headerlink" href="#module-bifrost.ndarray" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-ndarray-module"></span><h2>11.23. bifrost.ndarray module<a class="headerlink" href="#module-bifrost.ndarray" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>A np.ndarray subclass that adds support for different spaces and</dt>
 <dd>bifrost-specific metadata.</dd>
@@ -2120,7 +2167,7 @@ TODO: Some calls result in segfault with space=cuda (e.g., __getitem__</p>
 
 </div>
 <div class="section" id="module-bifrost.pipeline">
-<span id="bifrost-pipeline-module"></span><h2>11.23. bifrost.pipeline module<a class="headerlink" href="#module-bifrost.pipeline" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-pipeline-module"></span><h2>11.24. bifrost.pipeline module<a class="headerlink" href="#module-bifrost.pipeline" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.pipeline.Block">
 <em class="property">class </em><code class="descclassname">bifrost.pipeline.</code><code class="descname">Block</code><span class="sig-paren">(</span><em>irings</em>, <em>name=None</em>, <em>type_=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/pipeline.html#Block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.pipeline.Block" title="Permalink to this definition">¶</a></dt>
@@ -2493,10 +2540,10 @@ headers on-the-fly.</p>
 
 </div>
 <div class="section" id="bifrost-portaudio-module">
-<h2>11.24. bifrost.portaudio module<a class="headerlink" href="#bifrost-portaudio-module" title="Permalink to this headline">¶</a></h2>
+<h2>11.25. bifrost.portaudio module<a class="headerlink" href="#bifrost-portaudio-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost.proclog">
-<span id="bifrost-proclog-module"></span><h2>11.25. bifrost.proclog module<a class="headerlink" href="#module-bifrost.proclog" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-proclog-module"></span><h2>11.26. bifrost.proclog module<a class="headerlink" href="#module-bifrost.proclog" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.proclog.ProcLog">
 <em class="property">class </em><code class="descclassname">bifrost.proclog.</code><code class="descname">ProcLog</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/proclog.html#ProcLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.proclog.ProcLog" title="Permalink to this definition">¶</a></dt>
@@ -2537,10 +2584,10 @@ dictionaries ordered by:</p>
 
 </div>
 <div class="section" id="bifrost-psrdada-module">
-<h2>11.26. bifrost.psrdada module<a class="headerlink" href="#bifrost-psrdada-module" title="Permalink to this headline">¶</a></h2>
+<h2>11.27. bifrost.psrdada module<a class="headerlink" href="#bifrost-psrdada-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost.quantize">
-<span id="bifrost-quantize-module"></span><h2>11.27. bifrost.quantize module<a class="headerlink" href="#module-bifrost.quantize" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-quantize-module"></span><h2>11.28. bifrost.quantize module<a class="headerlink" href="#module-bifrost.quantize" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.quantize.quantize">
 <code class="descclassname">bifrost.quantize.</code><code class="descname">quantize</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>scale=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/quantize.html#quantize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.quantize.quantize" title="Permalink to this definition">¶</a></dt>
@@ -2548,7 +2595,7 @@ dictionaries ordered by:</p>
 
 </div>
 <div class="section" id="module-bifrost.reduce">
-<span id="bifrost-reduce-module"></span><h2>11.28. bifrost.reduce module<a class="headerlink" href="#module-bifrost.reduce" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-reduce-module"></span><h2>11.29. bifrost.reduce module<a class="headerlink" href="#module-bifrost.reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.reduce.reduce">
 <code class="descclassname">bifrost.reduce.</code><code class="descname">reduce</code><span class="sig-paren">(</span><em>idata</em>, <em>odata</em>, <em>op=’sum’</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/reduce.html#reduce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.reduce.reduce" title="Permalink to this definition">¶</a></dt>
@@ -2556,7 +2603,7 @@ dictionaries ordered by:</p>
 
 </div>
 <div class="section" id="module-bifrost.ring">
-<span id="bifrost-ring-module"></span><h2>11.29. bifrost.ring module<a class="headerlink" href="#module-bifrost.ring" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-ring-module"></span><h2>11.30. bifrost.ring module<a class="headerlink" href="#module-bifrost.ring" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.ring.ReadSequence">
 <em class="property">class </em><code class="descclassname">bifrost.ring.</code><code class="descname">ReadSequence</code><span class="sig-paren">(</span><em>ring</em>, <em>which=’specific’</em>, <em>name=’‘</em>, <em>time_tag=None</em>, <em>other_obj=None</em>, <em>guarantee=True</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring.html#ReadSequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring.ReadSequence" title="Permalink to this definition">¶</a></dt>
@@ -2783,7 +2830,7 @@ dictionaries ordered by:</p>
 
 </div>
 <div class="section" id="module-bifrost.ring2">
-<span id="bifrost-ring2-module"></span><h2>11.30. bifrost.ring2 module<a class="headerlink" href="#module-bifrost.ring2" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-ring2-module"></span><h2>11.31. bifrost.ring2 module<a class="headerlink" href="#module-bifrost.ring2" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.ring2.ReadSequence">
 <em class="property">class </em><code class="descclassname">bifrost.ring2.</code><code class="descname">ReadSequence</code><span class="sig-paren">(</span><em>ring</em>, <em>which=’specific’</em>, <em>name=’‘</em>, <em>time_tag=None</em>, <em>other_obj=None</em>, <em>guarantee=True</em>, <em>header_transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/ring2.html#ReadSequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.ring2.ReadSequence" title="Permalink to this definition">¶</a></dt>
@@ -3067,7 +3114,7 @@ E.g., (2,3,-1,4,5) -&gt; (2,3), (4,5)</p>
 
 </div>
 <div class="section" id="module-bifrost.sigproc">
-<span id="bifrost-sigproc-module"></span><h2>11.31. bifrost.sigproc module<a class="headerlink" href="#module-bifrost.sigproc" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-sigproc-module"></span><h2>11.32. bifrost.sigproc module<a class="headerlink" href="#module-bifrost.sigproc" title="Permalink to this headline">¶</a></h2>
 <p>telescope_id:  0 (FAKE)
 machine_id:    0 (FAKE)
 data_type:     2 # Time-series data
@@ -3178,7 +3225,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.sigproc2">
-<span id="bifrost-sigproc2-module"></span><h2>11.32. bifrost.sigproc2 module<a class="headerlink" href="#module-bifrost.sigproc2" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-sigproc2-module"></span><h2>11.33. bifrost.sigproc2 module<a class="headerlink" href="#module-bifrost.sigproc2" title="Permalink to this headline">¶</a></h2>
 <p>telescope_id:  0 (FAKE)
 machine_id:    0 (FAKE)
 data_type:     2 # Time-series data
@@ -3285,7 +3332,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.temp_storage">
-<span id="bifrost-temp-storage-module"></span><h2>11.33. bifrost.temp_storage module<a class="headerlink" href="#module-bifrost.temp_storage" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-temp-storage-module"></span><h2>11.34. bifrost.temp_storage module<a class="headerlink" href="#module-bifrost.temp_storage" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.temp_storage.TempStorage">
 <em class="property">class </em><code class="descclassname">bifrost.temp_storage.</code><code class="descname">TempStorage</code><span class="sig-paren">(</span><em>space</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/temp_storage.html#TempStorage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.temp_storage.TempStorage" title="Permalink to this definition">¶</a></dt>
@@ -3310,7 +3357,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.transpose">
-<span id="bifrost-transpose-module"></span><h2>11.34. bifrost.transpose module<a class="headerlink" href="#module-bifrost.transpose" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-transpose-module"></span><h2>11.35. bifrost.transpose module<a class="headerlink" href="#module-bifrost.transpose" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.transpose.transpose">
 <code class="descclassname">bifrost.transpose.</code><code class="descname">transpose</code><span class="sig-paren">(</span><em>dst</em>, <em>src</em>, <em>axes=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/transpose.html#transpose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.transpose.transpose" title="Permalink to this definition">¶</a></dt>
@@ -3318,7 +3365,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.udp_capture">
-<span id="bifrost-udp-capture-module"></span><h2>11.35. bifrost.udp_capture module<a class="headerlink" href="#module-bifrost.udp_capture" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-udp-capture-module"></span><h2>11.36. bifrost.udp_capture module<a class="headerlink" href="#module-bifrost.udp_capture" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.udp_capture.UDPCapture">
 <em class="property">class </em><code class="descclassname">bifrost.udp_capture.</code><code class="descname">UDPCapture</code><span class="sig-paren">(</span><em>fmt</em>, <em>sock</em>, <em>ring</em>, <em>nsrc</em>, <em>src0</em>, <em>max_payload_size</em>, <em>buffer_ntime</em>, <em>slot_ntime</em>, <em>sequence_callback</em>, <em>core=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/udp_capture.html#UDPCapture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.udp_capture.UDPCapture" title="Permalink to this definition">¶</a></dt>
@@ -3342,7 +3389,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.udp_socket">
-<span id="bifrost-udp-socket-module"></span><h2>11.36. bifrost.udp_socket module<a class="headerlink" href="#module-bifrost.udp_socket" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-udp-socket-module"></span><h2>11.37. bifrost.udp_socket module<a class="headerlink" href="#module-bifrost.udp_socket" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.udp_socket.UDPSocket">
 <em class="property">class </em><code class="descclassname">bifrost.udp_socket.</code><code class="descname">UDPSocket</code><a class="reference internal" href="modules/bifrost/udp_socket.html#UDPSocket"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.udp_socket.UDPSocket" title="Permalink to this definition">¶</a></dt>
@@ -3386,7 +3433,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.udp_transmit">
-<span id="bifrost-udp-transmit-module"></span><h2>11.37. bifrost.udp_transmit module<a class="headerlink" href="#module-bifrost.udp_transmit" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-udp-transmit-module"></span><h2>11.38. bifrost.udp_transmit module<a class="headerlink" href="#module-bifrost.udp_transmit" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bifrost.udp_transmit.UDPTransmit">
 <em class="property">class </em><code class="descclassname">bifrost.udp_transmit.</code><code class="descname">UDPTransmit</code><span class="sig-paren">(</span><em>sock</em>, <em>core=-1</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/udp_transmit.html#UDPTransmit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.udp_transmit.UDPTransmit" title="Permalink to this definition">¶</a></dt>
@@ -3405,7 +3452,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.units">
-<span id="bifrost-units-module"></span><h2>11.38. bifrost.units module<a class="headerlink" href="#module-bifrost.units" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-units-module"></span><h2>11.39. bifrost.units module<a class="headerlink" href="#module-bifrost.units" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.units.convert_units">
 <code class="descclassname">bifrost.units.</code><code class="descname">convert_units</code><span class="sig-paren">(</span><em>value</em>, <em>old_units</em>, <em>new_units</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/units.html#convert_units"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.units.convert_units" title="Permalink to this definition">¶</a></dt>
@@ -3418,7 +3465,7 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.unpack">
-<span id="bifrost-unpack-module"></span><h2>11.39. bifrost.unpack module<a class="headerlink" href="#module-bifrost.unpack" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-unpack-module"></span><h2>11.40. bifrost.unpack module<a class="headerlink" href="#module-bifrost.unpack" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="bifrost.unpack.unpack">
 <code class="descclassname">bifrost.unpack.</code><code class="descname">unpack</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>align_msb=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/unpack.html#unpack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.unpack.unpack" title="Permalink to this definition">¶</a></dt>
@@ -3426,10 +3473,10 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 
 </div>
 <div class="section" id="module-bifrost.version">
-<span id="bifrost-version-module"></span><h2>11.40. bifrost.version module<a class="headerlink" href="#module-bifrost.version" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-version-module"></span><h2>11.41. bifrost.version module<a class="headerlink" href="#module-bifrost.version" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-bifrost">
-<span id="module-contents"></span><h2>11.41. Module contents<a class="headerlink" href="#module-bifrost" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>11.42. Module contents<a class="headerlink" href="#module-bifrost" title="Permalink to this headline">¶</a></h2>
 <p>Bifrost pipeline processing library</p>
 </div>
 </div>
@@ -3457,33 +3504,34 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 <li><a class="reference internal" href="#module-bifrost.dtype">11.12. bifrost.dtype module</a></li>
 <li><a class="reference internal" href="#module-bifrost.fdmt">11.13. bifrost.fdmt module</a></li>
 <li><a class="reference internal" href="#module-bifrost.fft">11.14. bifrost.fft module</a></li>
-<li><a class="reference internal" href="#module-bifrost.guppi_raw">11.15. bifrost.guppi_raw module</a></li>
-<li><a class="reference internal" href="#module-bifrost.header_standard">11.16. bifrost.header_standard module</a></li>
-<li><a class="reference internal" href="#module-bifrost.libbifrost">11.17. bifrost.libbifrost module</a></li>
-<li><a class="reference internal" href="#module-bifrost.libbifrost_generated">11.18. bifrost.libbifrost_generated module</a></li>
-<li><a class="reference internal" href="#module-bifrost.linalg">11.19. bifrost.linalg module</a></li>
-<li><a class="reference internal" href="#module-bifrost.map">11.20. bifrost.map module</a></li>
-<li><a class="reference internal" href="#module-bifrost.memory">11.21. bifrost.memory module</a></li>
-<li><a class="reference internal" href="#module-bifrost.ndarray">11.22. bifrost.ndarray module</a></li>
-<li><a class="reference internal" href="#module-bifrost.pipeline">11.23. bifrost.pipeline module</a></li>
-<li><a class="reference internal" href="#bifrost-portaudio-module">11.24. bifrost.portaudio module</a></li>
-<li><a class="reference internal" href="#module-bifrost.proclog">11.25. bifrost.proclog module</a></li>
-<li><a class="reference internal" href="#bifrost-psrdada-module">11.26. bifrost.psrdada module</a></li>
-<li><a class="reference internal" href="#module-bifrost.quantize">11.27. bifrost.quantize module</a></li>
-<li><a class="reference internal" href="#module-bifrost.reduce">11.28. bifrost.reduce module</a></li>
-<li><a class="reference internal" href="#module-bifrost.ring">11.29. bifrost.ring module</a></li>
-<li><a class="reference internal" href="#module-bifrost.ring2">11.30. bifrost.ring2 module</a></li>
-<li><a class="reference internal" href="#module-bifrost.sigproc">11.31. bifrost.sigproc module</a></li>
-<li><a class="reference internal" href="#module-bifrost.sigproc2">11.32. bifrost.sigproc2 module</a></li>
-<li><a class="reference internal" href="#module-bifrost.temp_storage">11.33. bifrost.temp_storage module</a></li>
-<li><a class="reference internal" href="#module-bifrost.transpose">11.34. bifrost.transpose module</a></li>
-<li><a class="reference internal" href="#module-bifrost.udp_capture">11.35. bifrost.udp_capture module</a></li>
-<li><a class="reference internal" href="#module-bifrost.udp_socket">11.36. bifrost.udp_socket module</a></li>
-<li><a class="reference internal" href="#module-bifrost.udp_transmit">11.37. bifrost.udp_transmit module</a></li>
-<li><a class="reference internal" href="#module-bifrost.units">11.38. bifrost.units module</a></li>
-<li><a class="reference internal" href="#module-bifrost.unpack">11.39. bifrost.unpack module</a></li>
-<li><a class="reference internal" href="#module-bifrost.version">11.40. bifrost.version module</a></li>
-<li><a class="reference internal" href="#module-bifrost">11.41. Module contents</a></li>
+<li><a class="reference internal" href="#module-bifrost.fir">11.15. bifrost.fir module</a></li>
+<li><a class="reference internal" href="#module-bifrost.guppi_raw">11.16. bifrost.guppi_raw module</a></li>
+<li><a class="reference internal" href="#module-bifrost.header_standard">11.17. bifrost.header_standard module</a></li>
+<li><a class="reference internal" href="#module-bifrost.libbifrost">11.18. bifrost.libbifrost module</a></li>
+<li><a class="reference internal" href="#module-bifrost.libbifrost_generated">11.19. bifrost.libbifrost_generated module</a></li>
+<li><a class="reference internal" href="#module-bifrost.linalg">11.20. bifrost.linalg module</a></li>
+<li><a class="reference internal" href="#module-bifrost.map">11.21. bifrost.map module</a></li>
+<li><a class="reference internal" href="#module-bifrost.memory">11.22. bifrost.memory module</a></li>
+<li><a class="reference internal" href="#module-bifrost.ndarray">11.23. bifrost.ndarray module</a></li>
+<li><a class="reference internal" href="#module-bifrost.pipeline">11.24. bifrost.pipeline module</a></li>
+<li><a class="reference internal" href="#bifrost-portaudio-module">11.25. bifrost.portaudio module</a></li>
+<li><a class="reference internal" href="#module-bifrost.proclog">11.26. bifrost.proclog module</a></li>
+<li><a class="reference internal" href="#bifrost-psrdada-module">11.27. bifrost.psrdada module</a></li>
+<li><a class="reference internal" href="#module-bifrost.quantize">11.28. bifrost.quantize module</a></li>
+<li><a class="reference internal" href="#module-bifrost.reduce">11.29. bifrost.reduce module</a></li>
+<li><a class="reference internal" href="#module-bifrost.ring">11.30. bifrost.ring module</a></li>
+<li><a class="reference internal" href="#module-bifrost.ring2">11.31. bifrost.ring2 module</a></li>
+<li><a class="reference internal" href="#module-bifrost.sigproc">11.32. bifrost.sigproc module</a></li>
+<li><a class="reference internal" href="#module-bifrost.sigproc2">11.33. bifrost.sigproc2 module</a></li>
+<li><a class="reference internal" href="#module-bifrost.temp_storage">11.34. bifrost.temp_storage module</a></li>
+<li><a class="reference internal" href="#module-bifrost.transpose">11.35. bifrost.transpose module</a></li>
+<li><a class="reference internal" href="#module-bifrost.udp_capture">11.36. bifrost.udp_capture module</a></li>
+<li><a class="reference internal" href="#module-bifrost.udp_socket">11.37. bifrost.udp_socket module</a></li>
+<li><a class="reference internal" href="#module-bifrost.udp_transmit">11.38. bifrost.udp_transmit module</a></li>
+<li><a class="reference internal" href="#module-bifrost.units">11.39. bifrost.units module</a></li>
+<li><a class="reference internal" href="#module-bifrost.unpack">11.40. bifrost.unpack module</a></li>
+<li><a class="reference internal" href="#module-bifrost.version">11.41. bifrost.version module</a></li>
+<li><a class="reference internal" href="#module-bifrost">11.42. Module contents</a></li>
 </ul>
 </li>
 </ul>
