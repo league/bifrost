@@ -1,11 +1,11 @@
-bifrost\.views package
-======================
+bifrost.views package
+=====================
 
 Submodules
 ----------
 
-bifrost\.views\.basic\_views module
------------------------------------
+bifrost.views.basic\_views module
+---------------------------------
 
 .. automodule:: bifrost.views.basic_views
     :members:
