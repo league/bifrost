@@ -60,14 +60,14 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">libbifrost</span> <span class="k">import</span> <span class="n">_bf</span><span class="p">,</span> <span class="n">_check</span><span class="p">,</span> <span class="n">_get</span><span class="p">,</span> <span class="n">BifrostObject</span><span class="p">,</span> <span class="n">_string2space</span>
-<span class="kn">from</span> <span class="nn">ndarray</span> <span class="k">import</span> <span class="n">asarray</span>
+<span class="kn">from</span> <span class="nn">libbifrost</span> <span class="kn">import</span> <span class="n">_bf</span><span class="p">,</span> <span class="n">_check</span><span class="p">,</span> <span class="n">_get</span><span class="p">,</span> <span class="n">BifrostObject</span><span class="p">,</span> <span class="n">_string2space</span>
+<span class="kn">from</span> <span class="nn">ndarray</span> <span class="kn">import</span> <span class="n">asarray</span>
 
 <span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <div class="viewcode-block" id="Fdmt"><a class="viewcode-back" href="../../bifrost.html#bifrost.fdmt.Fdmt">[docs]</a><span class="k">class</span> <span class="nc">Fdmt</span><span class="p">(</span><span class="n">BifrostObject</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">BifrostObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfFdmtCreate</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfFdmtDestroy</span><span class="p">)</span>
 <div class="viewcode-block" id="Fdmt.init"><a class="viewcode-back" href="../../bifrost.html#bifrost.fdmt.Fdmt.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nchan</span><span class="p">,</span> <span class="n">max_delay</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">):</span>
         <span class="n">space</span> <span class="o">=</span> <span class="n">_string2space</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>

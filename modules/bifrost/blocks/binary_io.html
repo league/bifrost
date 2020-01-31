@@ -69,7 +69,7 @@
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">bifrost</span> <span class="k">as</span> <span class="nn">bf</span>
 <span class="kn">import</span> <span class="nn">bifrost.pipeline</span> <span class="k">as</span> <span class="nn">bfp</span>
-<span class="kn">from</span> <span class="nn">bifrost.dtype</span> <span class="k">import</span> <span class="n">name_nbit2numpy</span>
+<span class="kn">from</span> <span class="nn">bifrost.dtype</span> <span class="kn">import</span> <span class="n">name_nbit2numpy</span>
 
 <div class="viewcode-block" id="BinaryFileRead"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileRead">[docs]</a><span class="k">class</span> <span class="nc">BinaryFileRead</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Simple file-like reading object for pipeline testing</span>
@@ -80,7 +80,7 @@
 <span class="sd">                                 not a bifrost.ndarray dtype (eg. float32, not f32)</span>
 <span class="sd">        gulp_size (int): How much data to read per gulp, (i.e. sub-array size)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BinaryFileRead</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
@@ -90,18 +90,18 @@
         <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">d</span></div>
 
-    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="BinaryFileRead.close"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileRead.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
-    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="BinaryFileReadBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileReadBlock">[docs]</a><span class="k">class</span> <span class="nc">BinaryFileReadBlock</span><span class="p">(</span><span class="n">bfp</span><span class="o">.</span><span class="n">SourceBlock</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BinaryFileReadBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span> <span class="o">=</span> <span class="n">gulp_size</span>
@@ -137,7 +137,7 @@
             <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
 
 <div class="viewcode-block" id="BinaryFileWriteBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.binary_io.BinaryFileWriteBlock">[docs]</a><span class="k">class</span> <span class="nc">BinaryFileWriteBlock</span><span class="p">(</span><span class="n">bfp</span><span class="o">.</span><span class="n">SinkBlock</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">file_ext</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">file_ext</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BinaryFileWriteBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_fileobj</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">file_ext</span> <span class="o">=</span> <span class="n">file_ext</span>

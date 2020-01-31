@@ -60,7 +60,7 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">bifrost.libbifrost</span> <span class="k">import</span> <span class="n">_bf</span>
+<span class="kn">from</span> <span class="nn">bifrost.libbifrost</span> <span class="kn">import</span> <span class="n">_bf</span>
 
 <span class="n">SPACEMAP_TO_STR</span> <span class="o">=</span> <span class="p">{</span><span class="n">_bf</span><span class="o">.</span><span class="n">BF_SPACE_AUTO</span><span class="p">:</span>         <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
                    <span class="n">_bf</span><span class="o">.</span><span class="n">BF_SPACE_SYSTEM</span><span class="p">:</span>       <span class="s1">&#39;system&#39;</span><span class="p">,</span>
@@ -75,7 +75,7 @@
                      <span class="s1">&#39;cuda_managed&#39;</span><span class="p">:</span> <span class="n">_bf</span><span class="o">.</span><span class="n">BF_SPACE_CUDA_MANAGED</span><span class="p">}</span>
 
 <div class="viewcode-block" id="Space"><a class="viewcode-back" href="../../bifrost.html#bifrost.Space.Space">[docs]</a><span class="k">class</span> <span class="nc">Space</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span>
                              <span class="s1">&#39;cuda&#39;</span><span class="p">,</span> <span class="s1">&#39;cuda_host&#39;</span><span class="p">,</span> <span class="s1">&#39;cuda_managed&#39;</span><span class="p">]):</span>
@@ -90,7 +90,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> is not a space&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
 <div class="viewcode-block" id="Space.as_BFspace"><a class="viewcode-back" href="../../bifrost.html#bifrost.Space.Space.as_BFspace">[docs]</a>    <span class="k">def</span> <span class="nf">as_BFspace</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">SPACEMAP_FROM_STR</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_space</span><span class="p">]</span></div>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_space</span></div>
 </pre></div>
 

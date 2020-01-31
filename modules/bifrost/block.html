@@ -67,19 +67,19 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">nested</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">nested</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">bifrost</span>
-<span class="kn">from</span> <span class="nn">bifrost</span> <span class="k">import</span> <span class="n">affinity</span>
-<span class="kn">from</span> <span class="nn">bifrost.ring</span> <span class="k">import</span> <span class="n">Ring</span>
-<span class="kn">from</span> <span class="nn">bifrost.sigproc</span> <span class="k">import</span> <span class="n">SigprocFile</span><span class="p">,</span> <span class="n">unpack</span>
+<span class="kn">from</span> <span class="nn">bifrost</span> <span class="kn">import</span> <span class="n">affinity</span>
+<span class="kn">from</span> <span class="nn">bifrost.ring</span> <span class="kn">import</span> <span class="n">Ring</span>
+<span class="kn">from</span> <span class="nn">bifrost.sigproc</span> <span class="kn">import</span> <span class="n">SigprocFile</span><span class="p">,</span> <span class="n">unpack</span>
 
 <div class="viewcode-block" id="Pipeline"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.Pipeline">[docs]</a><span class="k">class</span> <span class="nc">Pipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class which connects blocks linearly, with</span>
 <span class="sd">        one ring between each block. Does this by creating</span>
 <span class="sd">        one ring for each input/output &#39;port&#39; of each block,</span>
 <span class="sd">        and running data through the rings.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocks</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocks</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">blocks</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rings</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_ring_names</span><span class="p">():</span>
@@ -164,7 +164,7 @@
     <span class="k">return</span> <span class="n">output_data</span></div>
 <div class="viewcode-block" id="TransformBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.TransformBlock">[docs]</a><span class="k">class</span> <span class="nc">TransformBlock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Defines the structure for a transform block&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span> <span class="o">=</span> <span class="n">gulp_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">out_gulp_size</span> <span class="o">=</span> <span class="kc">None</span>
@@ -218,7 +218,7 @@
 
 <div class="viewcode-block" id="SourceBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.SourceBlock">[docs]</a><span class="k">class</span> <span class="nc">SourceBlock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Defines the structure for a source block&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SourceBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span> <span class="o">=</span> <span class="n">gulp_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_header</span> <span class="o">=</span> <span class="p">{}</span>
@@ -242,7 +242,7 @@
                         <span class="k">yield</span> <span class="n">span</span></div></div>
 <div class="viewcode-block" id="SinkBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.SinkBlock">[docs]</a><span class="k">class</span> <span class="nc">SinkBlock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Defines the structure for a sink block&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SinkBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span> <span class="o">=</span> <span class="n">gulp_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="p">{}</span>
@@ -260,7 +260,7 @@
                 <span class="k">yield</span> <span class="n">span</span></div></div>
 <div class="viewcode-block" id="MultiTransformBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.MultiTransformBlock">[docs]</a><span class="k">class</span> <span class="nc">MultiTransformBlock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Defines functions and attributes for a block with multi input/output&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set up dictionaries for holding ring settings</span>
 
@@ -382,7 +382,7 @@
         <span class="s1">&#39;in&#39;</span><span class="p">:</span> <span class="s1">&#39;Input to split. List of floats&#39;</span><span class="p">,</span>
         <span class="s1">&#39;out_1&#39;</span><span class="p">:</span> <span class="s1">&#39;Gets first share of the ring. List of floats&#39;</span><span class="p">,</span>
         <span class="s1">&#39;out_2&#39;</span><span class="p">:</span> <span class="s1">&#39;Gets second share of the ring. List of floats&#39;</span><span class="p">}</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sections</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sections</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;@param[in] sections List of two lists - each list is a</span>
 <span class="sd">                1D array of integers indicating sections of the ring</span>
 <span class="sd">                to cut. Like numpy slicing indices.&quot;&quot;&quot;</span>
@@ -417,7 +417,7 @@
         <span class="s1">&#39;in_1&#39;</span><span class="p">:</span> <span class="s1">&#39;First input to add. List of floats&#39;</span><span class="p">,</span>
         <span class="s1">&#39;in_2&#39;</span><span class="p">:</span> <span class="s1">&#39;Second input to add. List of floats&#39;</span><span class="p">,</span>
         <span class="s1">&#39;out_sum&#39;</span><span class="p">:</span> <span class="s1">&#39;Result of add. List of floats.&#39;</span><span class="p">}</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># can hard code these, or calculate them during load_settings</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MultiAddBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span><span class="p">[</span><span class="s1">&#39;in_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span>
@@ -437,7 +437,7 @@
     <span class="sd">&quot;&quot;&quot;Block for debugging purposes.</span>
 <span class="sd">    Allows you to pass arbitrary N-dimensional arrays in initialization,</span>
 <span class="sd">    which will be outputted into a ring buffer&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_array</span><span class="p">,</span> <span class="n">complex_numbers</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_array</span><span class="p">,</span> <span class="n">complex_numbers</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Figure out data settings from the test array.</span>
 <span class="sd">        @param[in] test_array A list or numpy array containing test data&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestingBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -468,7 +468,7 @@
             <span class="k">break</span></div></div>
 <div class="viewcode-block" id="WriteHeaderBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.WriteHeaderBlock">[docs]</a><span class="k">class</span> <span class="nc">WriteHeaderBlock</span><span class="p">(</span><span class="n">SinkBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Prints the header of a ring to a file&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;@param[in] test_array A list or numpy array containing test data&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">WriteHeaderBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
@@ -485,7 +485,7 @@
         <span class="n">span_dummy_generator</span><span class="o">.</span><span class="n">next</span><span class="p">()</span></div></div>
 <div class="viewcode-block" id="FFTBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.FFTBlock">[docs]</a><span class="k">class</span> <span class="nc">FFTBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Performs complex to complex 1D FFT on input ring data&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FFTBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbit</span> <span class="o">=</span> <span class="mi">8</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
@@ -525,7 +525,7 @@
         <span class="n">ospan</span><span class="o">.</span><span class="n">data_view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span></div></div>
 <div class="viewcode-block" id="IFFTBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.IFFTBlock">[docs]</a><span class="k">class</span> <span class="nc">IFFTBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Performs complex to complex 1D IFFT on input ring data&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">IFFTBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gulp_size</span> <span class="o">=</span> <span class="n">gulp_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbit</span> <span class="o">=</span> <span class="mi">8</span>
@@ -566,7 +566,7 @@
 <div class="viewcode-block" id="WriteAsciiBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.WriteAsciiBlock">[docs]</a><span class="k">class</span> <span class="nc">WriteAsciiBlock</span><span class="p">(</span><span class="n">SinkBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Copies input ring&#39;s data into ascii format</span>
 <span class="sd">        in a text file.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">1048576</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">1048576</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;@param[in] filename Name of file to write ascii to</span>
 <span class="sd">        @param[out] gulp_size How much of the file to write at once&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">WriteAsciiBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -609,7 +609,7 @@
         <span class="n">text_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
 <div class="viewcode-block" id="CopyBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.CopyBlock">[docs]</a><span class="k">class</span> <span class="nc">CopyBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Copies input ring&#39;s data to the output ring&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">1048576</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">1048576</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CopyBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">gulp_size</span><span class="o">=</span><span class="n">gulp_size</span><span class="p">)</span>
 <div class="viewcode-block" id="CopyBlock.main"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.CopyBlock.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_rings</span><span class="p">,</span> <span class="n">output_rings</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Iterate through first ring, copying to each output ring&quot;&quot;&quot;</span>
@@ -620,7 +620,7 @@
 <div class="viewcode-block" id="SigprocReadBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.SigprocReadBlock">[docs]</a><span class="k">class</span> <span class="nc">SigprocReadBlock</span><span class="p">(</span><span class="n">SourceBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This block reads in a sigproc filterbank</span>
 <span class="sd">    (.fil) file into a ring buffer&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span>
             <span class="n">gulp_nframe</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">core</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -663,7 +663,7 @@
 <div class="viewcode-block" id="KurtosisBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.KurtosisBlock">[docs]</a><span class="k">class</span> <span class="nc">KurtosisBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This block performs spectral kurtosis and cleaning</span>
 <span class="sd">        on sigproc-formatted data in rings&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">1048576</span><span class="p">,</span> <span class="n">core</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gulp_size</span><span class="o">=</span><span class="mi">1048576</span><span class="p">,</span> <span class="n">core</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        @param[in] input_ring Ring containing a 1d</span>
 <span class="sd">            timeseries</span>
@@ -721,7 +721,7 @@
     <span class="sd">&quot;&quot;&quot;This block calculates the dedispersion of</span>
 <span class="sd">        sigproc-formatted data in a ring, and tags</span>
 <span class="sd">        it in the headers&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">core</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -748,7 +748,7 @@
 
 <div class="viewcode-block" id="FoldBlock"><a class="viewcode-back" href="../../bifrost.html#bifrost.block.FoldBlock">[docs]</a><span class="k">class</span> <span class="nc">FoldBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This block folds a signal into a histogram&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
             <span class="n">gulp_size</span><span class="o">=</span><span class="mi">4096</span> <span class="o">*</span> <span class="mi">256</span><span class="p">,</span> <span class="n">dispersion_measure</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">core</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
@@ -839,7 +839,7 @@
     <span class="sd">&quot;&quot;&quot;This block creates a waterfall block</span>
 <span class="sd">        based on the data in a ring, and stores it</span>
 <span class="sd">        in the headers&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">imagename</span><span class="p">,</span>
             <span class="n">core</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="o">=</span><span class="mi">4096</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -873,7 +873,7 @@
         <span class="kn">import</span> <span class="nn">matplotlib</span>
         <span class="c1"># Use a graphical backend which supports threading</span>
         <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>
-        <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+        <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
         <span class="nb">print</span> <span class="s2">&quot;Interactive mode off&quot;</span>
         <span class="nb">print</span> <span class="n">waterfall_matrix</span><span class="o">.</span><span class="n">shape</span>
@@ -928,7 +928,7 @@
     <span class="sd">&quot;&quot;&quot;Perform an arbitrary N ndarray -&gt; M ndarray numpy function</span>
 <span class="sd">        Inside of a pipeline. This block will calculate all of the</span>
 <span class="sd">        necessary information for Bifrost based on the passed function.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Based on the number of inputs/outputs, set up enough ring_names</span>
 <span class="sd">            for the pipeline to call.</span>
 <span class="sd">            @param[in] function Python function object taking in numpy arrays</span>
@@ -1030,7 +1030,7 @@
     <span class="sd">&quot;&quot;&quot;Simulate an incoming stream of data on a ring using an arbitrary generator.</span>
 <span class="sd">        This block will calculate all of the</span>
 <span class="sd">        necessary information for Bifrost based on the passed function.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">grab_headers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">changing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">grab_headers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">changing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Based on the number of inputs/outputs, set up enough ring_names</span>
 <span class="sd">            for the pipeline to call.</span>
 <span class="sd">            @param[in] generator A function which generates numpy arrays</span>

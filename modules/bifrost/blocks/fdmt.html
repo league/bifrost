@@ -60,17 +60,17 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
-<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">TransformBlock</span>
-<span class="kn">from</span> <span class="nn">bifrost.fdmt</span> <span class="k">import</span> <span class="n">Fdmt</span>
-<span class="kn">from</span> <span class="nn">bifrost.units</span> <span class="k">import</span> <span class="n">convert_units</span>
+<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="kn">import</span> <span class="n">TransformBlock</span>
+<span class="kn">from</span> <span class="nn">bifrost.fdmt</span> <span class="kn">import</span> <span class="n">Fdmt</span>
+<span class="kn">from</span> <span class="nn">bifrost.units</span> <span class="kn">import</span> <span class="n">convert_units</span>
 
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <div class="viewcode-block" id="FdmtBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fdmt.FdmtBlock">[docs]</a><span class="k">class</span> <span class="nc">FdmtBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_delay</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_diagonal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">max_dm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_delay</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_diagonal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">exponent</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">negative_delays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FdmtBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

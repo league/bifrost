@@ -60,9 +60,9 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
-<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">SinkBlock</span><span class="p">,</span> <span class="n">SourceBlock</span>
+<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="kn">import</span> <span class="n">SinkBlock</span><span class="p">,</span> <span class="n">SourceBlock</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">simplejson</span> <span class="k">as</span> <span class="nn">json</span>
@@ -78,7 +78,7 @@
     <span class="k">return</span> <span class="n">frame0</span><span class="p">,</span> <span class="n">ringlet_inds</span>
 
 <div class="viewcode-block" id="BifrostReader"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.BifrostReader">[docs]</a><span class="k">class</span> <span class="nc">BifrostReader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basename</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basename</span><span class="p">):</span>
         <span class="k">assert</span><span class="p">(</span><span class="n">basename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.bf&#39;</span><span class="p">))</span>
         <span class="n">hdr_filename</span> <span class="o">=</span> <span class="n">basename</span> <span class="o">+</span> <span class="s1">&#39;.json&#39;</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">hdr_filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdr_file</span><span class="p">:</span>
@@ -107,9 +107,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">data_filenames</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nfile</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cur_file</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
-    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nringlet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">ringlet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ringlet_files</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">ringlet</span><span class="p">:</span>
@@ -148,7 +148,7 @@
         <span class="k">return</span> <span class="n">nframe_read</span></div></div>
 
 <div class="viewcode-block" id="DeserializeBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.DeserializeBlock">[docs]</a><span class="k">class</span> <span class="nc">DeserializeBlock</span><span class="p">(</span><span class="n">SourceBlock</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DeserializeBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">gulp_nframe</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <div class="viewcode-block" id="DeserializeBlock.create_reader"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.DeserializeBlock.create_reader">[docs]</a>    <span class="k">def</span> <span class="nf">create_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourcename</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">BifrostReader</span><span class="p">(</span><span class="n">sourcename</span><span class="p">)</span></div>
@@ -199,7 +199,7 @@
 
 <span class="c1"># **TODO: Write a DeserializeBlock that does the inverse of this</span>
 <div class="viewcode-block" id="SerializeBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.serialize.SerializeBlock">[docs]</a><span class="k">class</span> <span class="nc">SerializeBlock</span><span class="p">(</span><span class="n">SinkBlock</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">max_file_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">max_file_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SerializeBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>

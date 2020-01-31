@@ -60,12 +60,12 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">libbifrost</span> <span class="k">import</span> <span class="n">_bf</span><span class="p">,</span> <span class="n">_check</span><span class="p">,</span> <span class="n">_get</span><span class="p">,</span> <span class="n">BifrostObject</span>
+<span class="kn">from</span> <span class="nn">libbifrost</span> <span class="kn">import</span> <span class="n">_bf</span><span class="p">,</span> <span class="n">_check</span><span class="p">,</span> <span class="n">_get</span><span class="p">,</span> <span class="n">BifrostObject</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
-<span class="kn">from</span> <span class="nn">ndarray</span> <span class="k">import</span> <span class="n">asarray</span>
+<span class="kn">from</span> <span class="nn">ndarray</span> <span class="kn">import</span> <span class="n">asarray</span>
 
 <div class="viewcode-block" id="LinAlg"><a class="viewcode-back" href="../../bifrost.html#bifrost.linalg.LinAlg">[docs]</a><span class="k">class</span> <span class="nc">LinAlg</span><span class="p">(</span><span class="n">BifrostObject</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">BifrostObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfLinAlgCreate</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfLinAlgDestroy</span><span class="p">)</span>
 <div class="viewcode-block" id="LinAlg.matmul"><a class="viewcode-back" href="../../bifrost.html#bifrost.linalg.LinAlg.matmul">[docs]</a>    <span class="k">def</span> <span class="nf">matmul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Computes:</span>

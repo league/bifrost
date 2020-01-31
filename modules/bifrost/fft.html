@@ -60,12 +60,12 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">libbifrost</span> <span class="k">import</span> <span class="n">_bf</span><span class="p">,</span> <span class="n">_check</span><span class="p">,</span> <span class="n">_get</span><span class="p">,</span> <span class="n">BifrostObject</span><span class="p">,</span> <span class="n">_string2space</span>
-<span class="kn">from</span> <span class="nn">ndarray</span> <span class="k">import</span> <span class="n">asarray</span>
+<span class="kn">from</span> <span class="nn">libbifrost</span> <span class="kn">import</span> <span class="n">_bf</span><span class="p">,</span> <span class="n">_check</span><span class="p">,</span> <span class="n">_get</span><span class="p">,</span> <span class="n">BifrostObject</span><span class="p">,</span> <span class="n">_string2space</span>
+<span class="kn">from</span> <span class="nn">ndarray</span> <span class="kn">import</span> <span class="n">asarray</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
 
 <div class="viewcode-block" id="Fft"><a class="viewcode-back" href="../../bifrost.html#bifrost.fft.Fft">[docs]</a><span class="k">class</span> <span class="nc">Fft</span><span class="p">(</span><span class="n">BifrostObject</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">BifrostObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfFftCreate</span><span class="p">,</span> <span class="n">_bf</span><span class="o">.</span><span class="n">bfFftDestroy</span><span class="p">)</span>
 <div class="viewcode-block" id="Fft.init"><a class="viewcode-back" href="../../bifrost.html#bifrost.fft.Fft.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iarray</span><span class="p">,</span> <span class="n">oarray</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_fftshift</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>

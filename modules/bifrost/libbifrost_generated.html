@@ -36,7 +36,7 @@
 <span></span><span class="sd">&#39;&#39;&#39;Wrapper for address.h</span>
 
 <span class="sd">Generated with:</span>
-<span class="sd">/usr/local/bin/ctypesgen.py -lbifrost -I../src ../src/bifrost/address.h ../src/bifrost/affinity.h ../src/bifrost/array.h ../src/bifrost/common.h ../src/bifrost/cuda.h ../src/bifrost/fdmt.h ../src/bifrost/fft.h ../src/bifrost/fir.h ../src/bifrost/linalg.h ../src/bifrost/map.h ../src/bifrost/memory.h ../src/bifrost/proclog.h ../src/bifrost/quantize.h ../src/bifrost/reduce.h ../src/bifrost/ring.h ../src/bifrost/transpose.h ../src/bifrost/udp_capture.h ../src/bifrost/udp_socket.h ../src/bifrost/udp_transmit.h ../src/bifrost/unpack.h -o bifrost/libbifrost_generated.py</span>
+<span class="sd">/usr/local/bin/ctypesgen.py -lbifrost -I../src ../src/bifrost/address.h ../src/bifrost/affinity.h ../src/bifrost/array.h ../src/bifrost/common.h ../src/bifrost/cuda.h ../src/bifrost/fdmt.h ../src/bifrost/fft.h ../src/bifrost/fir.h ../src/bifrost/linalg.h ../src/bifrost/map.h ../src/bifrost/memory.h ../src/bifrost/proclog.h ../src/bifrost/quantize.h ../src/bifrost/reduce.h ../src/bifrost/ring.h ../src/bifrost/romein.h ../src/bifrost/transpose.h ../src/bifrost/udp_capture.h ../src/bifrost/udp_socket.h ../src/bifrost/udp_transmit.h ../src/bifrost/unpack.h -o bifrost/libbifrost_generated.py</span>
 
 <span class="sd">Do not modify this file.</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -46,7 +46,7 @@
 <span class="c1"># Begin preamble</span>
 
 <span class="kn">import</span> <span class="nn">ctypes</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">ctypes</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">_int_types</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_int16</span><span class="p">,</span> <span class="n">c_int32</span><span class="p">)</span>
 <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ctypes</span><span class="p">,</span> <span class="s1">&#39;c_int64&#39;</span><span class="p">):</span>
@@ -82,51 +82,51 @@
     <span class="k">return</span> <span class="n">p</span></div>
 
 <div class="viewcode-block" id="UserString"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.UserString">[docs]</a><span class="k">class</span> <span class="nc">UserString</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">seq</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">UserString</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">__long__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">long</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__complex__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__complex__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">UserString</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">char</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
     <span class="k">def</span> <span class="nf">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
         <span class="n">start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">UserString</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
-    <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">other</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
     <span class="fm">__rmul__</span> <span class="o">=</span> <span class="fm">__mul__</span>
-    <span class="k">def</span> <span class="nf">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">%</span> <span class="n">args</span><span class="p">)</span>
 
     <span class="c1"># the following methods are defined in alphabetical order:</span>
@@ -216,16 +216,16 @@
 <span class="sd">    errors that would be very hard to track down.</span>
 
 <span class="sd">    A faster and better solution is to rewrite your program using lists.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">string</span>
-    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;unhashable type (it is mutable)&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">sub</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">sub</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">IndexError</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">sub</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">IndexError</span>
@@ -243,7 +243,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">end</span><span class="p">:]</span>
 <div class="viewcode-block" id="MutableString.immutable"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.MutableString.immutable">[docs]</a>    <span class="k">def</span> <span class="nf">immutable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">UserString</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
-    <span class="k">def</span> <span class="nf">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">UserString</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
@@ -251,7 +251,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
-    <span class="k">def</span> <span class="nf">__imul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__imul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">*=</span> <span class="n">n</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
@@ -261,13 +261,13 @@
     <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">c_char_p</span><span class="p">),</span>
                 <span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">c_char_p</span><span class="p">)]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">,</span> <span class="n">UserString</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">raw</span> <span class="o">=</span> <span class="n">obj</span>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span>
 
 <div class="viewcode-block" id="String_not_used.from_param"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.String_not_used.from_param">[docs]</a>    <span class="k">def</span> <span class="nf">from_param</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
@@ -321,14 +321,14 @@
 <span class="c1"># ctypes doesn&#39;t have direct support for variadic functions, so we have to write</span>
 <span class="c1"># our own wrapper class</span>
 <span class="k">class</span> <span class="nc">_variadic_function</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">func</span><span class="p">,</span><span class="n">restype</span><span class="p">,</span><span class="n">argtypes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">func</span><span class="p">,</span><span class="n">restype</span><span class="p">,</span><span class="n">argtypes</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">=</span><span class="n">func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">restype</span><span class="o">=</span><span class="n">restype</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">argtypes</span><span class="o">=</span><span class="n">argtypes</span>
     <span class="k">def</span> <span class="nf">_as_parameter_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># So we can pass this variadic function as a function pointer</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="n">fixed_args</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
         <span class="k">for</span> <span class="n">argtype</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">argtypes</span><span class="p">:</span>
@@ -390,7 +390,7 @@
         <span class="k">return</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="LibraryLoader"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.LibraryLoader">[docs]</a><span class="k">class</span> <span class="nc">LibraryLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">other_dirs</span><span class="o">=</span><span class="p">[]</span>
 
 <div class="viewcode-block" id="LibraryLoader.load_library"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.LibraryLoader.load_library">[docs]</a>    <span class="k">def</span> <span class="nf">load_library</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">libname</span><span class="p">):</span>
@@ -566,11 +566,11 @@
 <span class="c1"># Windows</span>
 
 <span class="k">class</span> <span class="nc">_WindowsLibrary</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cdll</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cdll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">windll</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cdll</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windll</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
@@ -1911,6 +1911,75 @@
     <span class="n">bfRingSpanGetInfo</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
     <span class="k">break</span>
 
+<span class="c1"># /bifrost/src/bifrost/romein.h: 13</span>
+<div class="viewcode-block" id="struct_BFromein_impl"><a class="viewcode-back" href="../../bifrost.html#bifrost.libbifrost_generated.struct_BFromein_impl">[docs]</a><span class="k">class</span> <span class="nc">struct_BFromein_impl</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+<span class="n">BFromein</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">struct_BFromein_impl</span><span class="p">)</span> <span class="c1"># /bifrost/src/bifrost/romein.h: 13</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 15</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinCreate&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinCreate</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinCreate</span>
+    <span class="n">bfRomeinCreate</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">BFromein</span><span class="p">)]</span>
+    <span class="n">bfRomeinCreate</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 16</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinInit&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinInit</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinInit</span>
+    <span class="n">bfRomeinInit</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFromein</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">),</span> <span class="n">BFsize</span><span class="p">,</span> <span class="n">BFbool</span><span class="p">]</span>
+    <span class="n">bfRomeinInit</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 21</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinSetStream&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinSetStream</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinSetStream</span>
+    <span class="n">bfRomeinSetStream</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFromein</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span>
+    <span class="n">bfRomeinSetStream</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 23</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinSetPositions&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinSetPositions</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinSetPositions</span>
+    <span class="n">bfRomeinSetPositions</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFromein</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">)]</span>
+    <span class="n">bfRomeinSetPositions</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 25</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinSetKernels&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinSetKernels</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinSetKernels</span>
+    <span class="n">bfRomeinSetKernels</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFromein</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">)]</span>
+    <span class="n">bfRomeinSetKernels</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 27</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinExecute&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinExecute</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinExecute</span>
+    <span class="n">bfRomeinExecute</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFromein</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">BFarray</span><span class="p">)]</span>
+    <span class="n">bfRomeinExecute</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
+<span class="c1"># /bifrost/src/bifrost/romein.h: 30</span>
+<span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfRomeinDestroy&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">bfRomeinDestroy</span> <span class="o">=</span> <span class="n">_lib</span><span class="o">.</span><span class="n">bfRomeinDestroy</span>
+    <span class="n">bfRomeinDestroy</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BFromein</span><span class="p">]</span>
+    <span class="n">bfRomeinDestroy</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">BFstatus</span>
+    <span class="k">break</span>
+
 <span class="c1"># /bifrost/src/bifrost/transpose.h: 40</span>
 <span class="k">for</span> <span class="n">_lib</span> <span class="ow">in</span> <span class="n">_libs</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_lib</span><span class="p">,</span> <span class="s1">&#39;bfTranspose&#39;</span><span class="p">):</span>
@@ -2185,6 +2254,8 @@
 <span class="n">BFsequence_info_</span> <span class="o">=</span> <span class="n">struct_BFsequence_info_</span> <span class="c1"># /bifrost/src/bifrost/ring.h: 188</span>
 
 <span class="n">BFspan_info_</span> <span class="o">=</span> <span class="n">struct_BFspan_info_</span> <span class="c1"># /bifrost/src/bifrost/ring.h: 226</span>
+
+<span class="n">BFromein_impl</span> <span class="o">=</span> <span class="n">struct_BFromein_impl</span> <span class="c1"># /bifrost/src/bifrost/romein.h: 13</span>
 
 <span class="n">BFudpcapture_impl</span> <span class="o">=</span> <span class="n">struct_BFudpcapture_impl</span> <span class="c1"># /bifrost/src/bifrost/udp_capture.h: 39</span>
 

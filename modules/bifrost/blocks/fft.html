@@ -60,14 +60,14 @@
 <span class="c1"># (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="c1"># OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
-<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="k">import</span> <span class="n">TransformBlock</span>
-<span class="kn">from</span> <span class="nn">bifrost.fft</span> <span class="k">import</span> <span class="n">Fft</span>
-<span class="kn">from</span> <span class="nn">bifrost.units</span> <span class="k">import</span> <span class="n">transform_units</span>
-<span class="kn">from</span> <span class="nn">bifrost.DataType</span> <span class="k">import</span> <span class="n">DataType</span>
+<span class="kn">from</span> <span class="nn">bifrost.pipeline</span> <span class="kn">import</span> <span class="n">TransformBlock</span>
+<span class="kn">from</span> <span class="nn">bifrost.fft</span> <span class="kn">import</span> <span class="n">Fft</span>
+<span class="kn">from</span> <span class="nn">bifrost.units</span> <span class="kn">import</span> <span class="n">transform_units</span>
+<span class="kn">from</span> <span class="nn">bifrost.DataType</span> <span class="kn">import</span> <span class="n">DataType</span>
 
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <div class="viewcode-block" id="FftBlock"><a class="viewcode-back" href="../../../bifrost.blocks.html#bifrost.blocks.fft.FftBlock">[docs]</a><span class="k">class</span> <span class="nc">FftBlock</span><span class="p">(</span><span class="n">TransformBlock</span><span class="p">):</span>
@@ -75,7 +75,7 @@
     <span class="c1">#         length in each dimension (i.e., cropped/padded transforms).</span>
     <span class="c1">#         Should be able to do this using an input callback and padded</span>
     <span class="c1">#           output dims.</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">real_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iring</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">real_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">axis_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_fftshift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FftBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">iring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
