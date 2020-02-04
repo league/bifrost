@@ -108,14 +108,6 @@ bifrost.fft module
     :undoc-members:
     :show-inheritance:
 
-bifrost.fft\_shift module
--------------------------
-
-.. automodule:: bifrost.fft_shift
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 bifrost.fir module
 ------------------
 
