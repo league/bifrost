@@ -39,70 +39,11 @@
 <div class="section" id="submodules">
 <h2>11.1.1.1. Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-bifrost.views.basic_views">
-<span id="bifrost-views-basic-views-module"></span><h2>11.1.1.2. bifrost.views.basic_views module<a class="headerlink" href="#module-bifrost.views.basic_views" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="bifrost.views.basic_views.add_axis">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">add_axis</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em>, <em>label=None</em>, <em>scale=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#add_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.add_axis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add an extra dimension to the frame at position ‘axis’</p>
-<p>E.g., if the shape is [-1, 3, 2], then
-selecting axis=1 would change the shape to be
-[-1, 1, 3, 2].</p>
-<p>Axis may be negative, or a string corresponding to an existing axis label,
-in which case the new axis is inserted after the referenced axis.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.astype">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">astype</code><span class="sig-paren">(</span><em>block</em>, <em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#astype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.astype" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.custom">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">custom</code><span class="sig-paren">(</span><em>block</em>, <em>hdr_transform</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#custom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.custom" title="Permalink to this definition">¶</a></dt>
-<dd><p>An alias to <cite>bifrost.pipeline.block_view</cite></p>
-</dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.delete_axis">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">delete_axis</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#delete_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.delete_axis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove a unitary dimension from the frame</p>
-<p>E.g., if the shape is [-1, 1, 3, 2], then
-selecting axis=1 would change the shape to be
-[-1, 3, 2].</p>
-<p>Axis may be negative, or a string corresponding to an existing axis label.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.merge_axes">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">merge_axes</code><span class="sig-paren">(</span><em>block</em>, <em>axis1</em>, <em>axis2</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#merge_axes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.merge_axes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.reinterpret_axis">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">reinterpret_axis</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em>, <em>label</em>, <em>scale=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#reinterpret_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.reinterpret_axis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Manually reinterpret the scale and/or units on an axis</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.rename_axis">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">rename_axis</code><span class="sig-paren">(</span><em>block</em>, <em>old</em>, <em>new</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#rename_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.rename_axis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.reverse_scale">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">reverse_scale</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#reverse_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.reverse_scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Manually reverse the scale factor on a given axis</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="bifrost.views.basic_views.split_axis">
-<code class="descclassname">bifrost.views.basic_views.</code><code class="descname">split_axis</code><span class="sig-paren">(</span><em>block</em>, <em>axis</em>, <em>n</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/views/basic_views.html#split_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bifrost.views.basic_views.split_axis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="bifrost-views-basic-views-module">
+<h2>11.1.1.2. bifrost.views.basic_views module<a class="headerlink" href="#bifrost-views-basic-views-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-bifrost.views">
-<span id="module-contents"></span><h2>11.1.1.3. Module contents<a class="headerlink" href="#module-bifrost.views" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-contents">
+<h2>11.1.1.3. Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -138,47 +79,47 @@ selecting axis=1 would change the shape to be
 <li class="toctree-l1 current"><a class="reference internal" href="bifrost.html">11. Python Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="bifrost.html#subpackages">11.1. Subpackages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bifrost.html#submodules">11.2. Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.DataType">11.3. bifrost.DataType module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-datatype-module">11.3. bifrost.DataType module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-gpuarray-module">11.4. bifrost.GPUArray module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.Space">11.5. bifrost.Space module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.address">11.6. bifrost.address module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.affinity">11.7. bifrost.affinity module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.block">11.8. bifrost.block module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.block_chainer">11.9. bifrost.block_chainer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.core">11.10. bifrost.core module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.device">11.11. bifrost.device module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.dtype">11.12. bifrost.dtype module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.fdmt">11.13. bifrost.fdmt module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.fft">11.14. bifrost.fft module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.fir">11.15. bifrost.fir module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.guppi_raw">11.16. bifrost.guppi_raw module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.header_standard">11.17. bifrost.header_standard module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.libbifrost">11.18. bifrost.libbifrost module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.libbifrost_generated">11.19. bifrost.libbifrost_generated module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.linalg">11.20. bifrost.linalg module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.map">11.21. bifrost.map module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.memory">11.22. bifrost.memory module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.ndarray">11.23. bifrost.ndarray module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.pipeline">11.24. bifrost.pipeline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-space-module">11.5. bifrost.Space module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-address-module">11.6. bifrost.address module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-affinity-module">11.7. bifrost.affinity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-block-module">11.8. bifrost.block module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-block-chainer-module">11.9. bifrost.block_chainer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-core-module">11.10. bifrost.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-device-module">11.11. bifrost.device module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-dtype-module">11.12. bifrost.dtype module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-fdmt-module">11.13. bifrost.fdmt module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-fft-module">11.14. bifrost.fft module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-fir-module">11.15. bifrost.fir module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-guppi-raw-module">11.16. bifrost.guppi_raw module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-header-standard-module">11.17. bifrost.header_standard module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-libbifrost-module">11.18. bifrost.libbifrost module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-libbifrost-generated-module">11.19. bifrost.libbifrost_generated module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-linalg-module">11.20. bifrost.linalg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-map-module">11.21. bifrost.map module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-memory-module">11.22. bifrost.memory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-ndarray-module">11.23. bifrost.ndarray module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-pipeline-module">11.24. bifrost.pipeline module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-portaudio-module">11.25. bifrost.portaudio module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.proclog">11.26. bifrost.proclog module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-proclog-module">11.26. bifrost.proclog module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-psrdada-module">11.27. bifrost.psrdada module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.quantize">11.28. bifrost.quantize module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.reduce">11.29. bifrost.reduce module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.ring">11.30. bifrost.ring module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.ring2">11.31. bifrost.ring2 module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.romein">11.32. bifrost.romein module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.sigproc">11.33. bifrost.sigproc module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.sigproc2">11.34. bifrost.sigproc2 module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.temp_storage">11.35. bifrost.temp_storage module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.transpose">11.36. bifrost.transpose module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.udp_capture">11.37. bifrost.udp_capture module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.udp_socket">11.38. bifrost.udp_socket module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.udp_transmit">11.39. bifrost.udp_transmit module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.units">11.40. bifrost.units module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.unpack">11.41. bifrost.unpack module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost.version">11.42. bifrost.version module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-bifrost">11.43. Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-quantize-module">11.28. bifrost.quantize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-reduce-module">11.29. bifrost.reduce module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-ring-module">11.30. bifrost.ring module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-ring2-module">11.31. bifrost.ring2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-romein-module">11.32. bifrost.romein module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-sigproc-module">11.33. bifrost.sigproc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-sigproc2-module">11.34. bifrost.sigproc2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-temp-storage-module">11.35. bifrost.temp_storage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-transpose-module">11.36. bifrost.transpose module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-udp-capture-module">11.37. bifrost.udp_capture module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-udp-socket-module">11.38. bifrost.udp_socket module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-udp-transmit-module">11.39. bifrost.udp_transmit module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-units-module">11.40. bifrost.units module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-unpack-module">11.41. bifrost.unpack module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#bifrost-version-module">11.42. bifrost.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.html#module-contents">11.43. Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Cpp-Development.html">12. C++ Developement</a></li>
