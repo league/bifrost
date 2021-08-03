@@ -267,7 +267,10 @@ class ReadSequence(SequenceBase):
         #self._check( self.lib.bfRingSequenceNext(pointer(self.obj)) )
         _check(_bf.bfRingSequenceNext(self.obj))
     def acquire(self, offset, size):
-        return ReadSpan(self, offset, size)
+        try:
+            return ReadSpan(self, offset, size)
+        except StopIteration:
+            return
     def read(self, span_size, stride=None, begin=0):
         if stride is None:
             stride = span_size
