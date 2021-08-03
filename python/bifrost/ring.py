@@ -269,7 +269,7 @@ class ReadSequence(SequenceBase):
     def acquire(self, offset, size):
         try:
             return ReadSpan(self, offset, size)
-        except StopIteration:
+        except RuntimeError:
             return
     def read(self, span_size, stride=None, begin=0):
         if stride is None:
