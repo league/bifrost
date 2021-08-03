@@ -313,7 +313,7 @@ class ReadSequence(SequenceBase):
     def acquire(self, frame_offset, nframe):
         try:
             return ReadSpan(self, frame_offset, nframe)
-        except StopIteration:
+        except RuntimeError:
             return
     def read(self, nframe, stride=None, begin=0):
         if stride is None:
