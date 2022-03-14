@@ -15,7 +15,7 @@
     <script src="static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11.1.1. bifrost.views package" href="bifrost.views.html" />
+    <link rel="next" title="11.1.1. bifrost.telemetry package" href="bifrost.telemetry.html" />
     <link rel="prev" title="10. Block Library Reference" href="bifrost.blocks.html" />
    
   <link rel="stylesheet" href="static/custom.css" type="text/css" />
@@ -66,10 +66,14 @@
 <li class="toctree-l2"><a class="reference internal" href="bifrost.blocks.html#module-bifrost.blocks">10.24. Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bifrost.views.html">11.1.1. bifrost.views package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.views.html#submodules">11.1.1.1. Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.views.html#module-bifrost.views.basic_views">11.1.1.2. bifrost.views.basic_views module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bifrost.views.html#module-bifrost.views">11.1.1.3. Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bifrost.telemetry.html">11.1.1. bifrost.telemetry package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.telemetry.html#module-bifrost.telemetry">11.1.1.1. Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bifrost.views.html">11.1.2. bifrost.views package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.views.html#submodules">11.1.2.1. Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.views.html#module-bifrost.views.basic_views">11.1.2.2. bifrost.views.basic_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bifrost.views.html#module-bifrost.views">11.1.2.3. Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -2752,70 +2756,8 @@ data:          [time][pol][nbit] (General case: [time][if/pol][chan][nbit])</p>
 <dd></dd></dl>
 
 </section>
-<section id="module-bifrost.telemetry">
-<span id="bifrost-telemetry-module"></span><h2><span class="section-number">11.34. </span>bifrost.telemetry module<a class="headerlink" href="#module-bifrost.telemetry" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.disable">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#disable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.disable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Disable logging of usage data via the Bifrost telemetry client.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This function disables in a global way that persists across
-invocations.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.enable">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#enable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.enable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable logging of usage data via the Bifrost telemetry client.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.is_active">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">is_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#is_active"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.is_active" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a boolean of whether or not the Bifrost telemetry client is active.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.track_function">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">track_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#track_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.track_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record the use of a function in Bifrost without execution time information.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.track_function_timed">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">track_function_timed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#track_function_timed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.track_function_timed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record the use of a function in Bifrost with execution time information.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.track_method">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">track_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_method</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#track_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.track_method" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record the use of a method in Bifrost with execution time information.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.track_method_timed">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">track_method_timed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_method</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#track_method_timed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.track_method_timed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record the use of a method in Bifrost with execution time information.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.track_module">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">track_module</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#track_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.track_module" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record the import of an Bifrost module.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bifrost.telemetry.track_script">
-<span class="sig-prename descclassname"><span class="pre">bifrost.telemetry.</span></span><span class="sig-name descname"><span class="pre">track_script</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/telemetry.html#track_script"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.telemetry.track_script" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record the use of a Bifrost script.</p>
-</dd></dl>
-
-</section>
 <section id="module-bifrost.temp_storage">
-<span id="bifrost-temp-storage-module"></span><h2><span class="section-number">11.35. </span>bifrost.temp_storage module<a class="headerlink" href="#module-bifrost.temp_storage" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-temp-storage-module"></span><h2><span class="section-number">11.34. </span>bifrost.temp_storage module<a class="headerlink" href="#module-bifrost.temp_storage" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bifrost.temp_storage.TempStorage">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bifrost.temp_storage.</span></span><span class="sig-name descname"><span class="pre">TempStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/temp_storage.html#TempStorage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.temp_storage.TempStorage" title="Permalink to this definition">¶</a></dt>
@@ -2840,7 +2782,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost.transpose">
-<span id="bifrost-transpose-module"></span><h2><span class="section-number">11.36. </span>bifrost.transpose module<a class="headerlink" href="#module-bifrost.transpose" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-transpose-module"></span><h2><span class="section-number">11.35. </span>bifrost.transpose module<a class="headerlink" href="#module-bifrost.transpose" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="bifrost.transpose.transpose">
 <span class="sig-prename descclassname"><span class="pre">bifrost.transpose.</span></span><span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/transpose.html#transpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.transpose.transpose" title="Permalink to this definition">¶</a></dt>
@@ -2848,7 +2790,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost.udp_capture">
-<span id="bifrost-udp-capture-module"></span><h2><span class="section-number">11.37. </span>bifrost.udp_capture module<a class="headerlink" href="#module-bifrost.udp_capture" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-udp-capture-module"></span><h2><span class="section-number">11.36. </span>bifrost.udp_capture module<a class="headerlink" href="#module-bifrost.udp_capture" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bifrost.udp_capture.UDPCapture">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bifrost.udp_capture.</span></span><span class="sig-name descname"><span class="pre">UDPCapture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsrc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_payload_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_ntime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slot_ntime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/udp_capture.html#UDPCapture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.udp_capture.UDPCapture" title="Permalink to this definition">¶</a></dt>
@@ -2872,7 +2814,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost.udp_socket">
-<span id="bifrost-udp-socket-module"></span><h2><span class="section-number">11.38. </span>bifrost.udp_socket module<a class="headerlink" href="#module-bifrost.udp_socket" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-udp-socket-module"></span><h2><span class="section-number">11.37. </span>bifrost.udp_socket module<a class="headerlink" href="#module-bifrost.udp_socket" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bifrost.udp_socket.UDPSocket">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bifrost.udp_socket.</span></span><span class="sig-name descname"><span class="pre">UDPSocket</span></span><a class="reference internal" href="modules/bifrost/udp_socket.html#UDPSocket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.udp_socket.UDPSocket" title="Permalink to this definition">¶</a></dt>
@@ -2916,7 +2858,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost.udp_transmit">
-<span id="bifrost-udp-transmit-module"></span><h2><span class="section-number">11.39. </span>bifrost.udp_transmit module<a class="headerlink" href="#module-bifrost.udp_transmit" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-udp-transmit-module"></span><h2><span class="section-number">11.38. </span>bifrost.udp_transmit module<a class="headerlink" href="#module-bifrost.udp_transmit" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bifrost.udp_transmit.UDPTransmit">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bifrost.udp_transmit.</span></span><span class="sig-name descname"><span class="pre">UDPTransmit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/udp_transmit.html#UDPTransmit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.udp_transmit.UDPTransmit" title="Permalink to this definition">¶</a></dt>
@@ -2935,7 +2877,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost.units">
-<span id="bifrost-units-module"></span><h2><span class="section-number">11.40. </span>bifrost.units module<a class="headerlink" href="#module-bifrost.units" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-units-module"></span><h2><span class="section-number">11.39. </span>bifrost.units module<a class="headerlink" href="#module-bifrost.units" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="bifrost.units.convert_units">
 <span class="sig-prename descclassname"><span class="pre">bifrost.units.</span></span><span class="sig-name descname"><span class="pre">convert_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_units</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_units</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/units.html#convert_units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.units.convert_units" title="Permalink to this definition">¶</a></dt>
@@ -2948,7 +2890,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost.unpack">
-<span id="bifrost-unpack-module"></span><h2><span class="section-number">11.41. </span>bifrost.unpack module<a class="headerlink" href="#module-bifrost.unpack" title="Permalink to this headline">¶</a></h2>
+<span id="bifrost-unpack-module"></span><h2><span class="section-number">11.40. </span>bifrost.unpack module<a class="headerlink" href="#module-bifrost.unpack" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="bifrost.unpack.unpack">
 <span class="sig-prename descclassname"><span class="pre">bifrost.unpack.</span></span><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_msb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/bifrost/unpack.html#unpack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bifrost.unpack.unpack" title="Permalink to this definition">¶</a></dt>
@@ -2956,7 +2898,7 @@ invocations.</p>
 
 </section>
 <section id="module-bifrost">
-<span id="module-contents"></span><h2><span class="section-number">11.42. </span>Module contents<a class="headerlink" href="#module-bifrost" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2><span class="section-number">11.41. </span>Module contents<a class="headerlink" href="#module-bifrost" title="Permalink to this headline">¶</a></h2>
 <p>Bifrost pipeline processing library</p>
 </section>
 </section>
@@ -3024,15 +2966,14 @@ invocations.</p>
 <li class="toctree-l2"><a class="reference internal" href="#module-bifrost.romein">11.31. bifrost.romein module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-bifrost.sigproc">11.32. bifrost.sigproc module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-bifrost.sigproc2">11.33. bifrost.sigproc2 module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.telemetry">11.34. bifrost.telemetry module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.temp_storage">11.35. bifrost.temp_storage module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.transpose">11.36. bifrost.transpose module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.udp_capture">11.37. bifrost.udp_capture module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.udp_socket">11.38. bifrost.udp_socket module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.udp_transmit">11.39. bifrost.udp_transmit module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.units">11.40. bifrost.units module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.unpack">11.41. bifrost.unpack module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-bifrost">11.42. Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.temp_storage">11.34. bifrost.temp_storage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.transpose">11.35. bifrost.transpose module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.udp_capture">11.36. bifrost.udp_capture module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.udp_socket">11.37. bifrost.udp_socket module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.udp_transmit">11.38. bifrost.udp_transmit module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.units">11.39. bifrost.units module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost.unpack">11.40. bifrost.unpack module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bifrost">11.41. Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Cpp-Development.html">12. C++ Developement</a></li>
@@ -3044,7 +2985,7 @@ invocations.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="bifrost.blocks.html" title="previous chapter"><span class="section-number">10. </span>Block Library Reference</a></li>
-      <li>Next: <a href="bifrost.views.html" title="next chapter"><span class="section-number">11.1.1. </span>bifrost.views package</a></li>
+      <li>Next: <a href="bifrost.telemetry.html" title="next chapter"><span class="section-number">11.1.1. </span>bifrost.telemetry package</a></li>
   </ul></li>
 </ul>
 </div>

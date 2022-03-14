@@ -248,7 +248,7 @@
 
 
 <span class="c1"># Telemetry control</span>
-<div class="viewcode-block" id="is_active"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.is_active">[docs]</a><span class="k">def</span> <span class="nf">is_active</span><span class="p">():</span>
+<div class="viewcode-block" id="is_active"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.is_active">[docs]</a><span class="k">def</span> <span class="nf">is_active</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a boolean of whether or not the Bifrost telemetry client is active.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -257,7 +257,7 @@
     <span class="k">return</span> <span class="n">_telemetry_client</span><span class="o">.</span><span class="n">is_active</span></div>
 
 
-<div class="viewcode-block" id="enable"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.enable">[docs]</a><span class="k">def</span> <span class="nf">enable</span><span class="p">():</span>
+<div class="viewcode-block" id="enable"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.enable">[docs]</a><span class="k">def</span> <span class="nf">enable</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enable logging of usage data via the Bifrost telemetry client.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -266,7 +266,7 @@
     <span class="n">_telemetry_client</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="disable"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.disable">[docs]</a><span class="k">def</span> <span class="nf">disable</span><span class="p">():</span>
+<div class="viewcode-block" id="disable"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.disable">[docs]</a><span class="k">def</span> <span class="nf">disable</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Disable logging of usage data via the Bifrost telemetry client.</span>
 <span class="sd">    </span>
@@ -279,7 +279,7 @@
     <span class="n">_telemetry_client</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="track_script"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.track_script">[docs]</a><span class="k">def</span> <span class="nf">track_script</span><span class="p">():</span>
+<div class="viewcode-block" id="track_script"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.track_script">[docs]</a><span class="k">def</span> <span class="nf">track_script</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Record the use of a Bifrost script.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -291,7 +291,7 @@
     <span class="n">_telemetry_client</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="s1">&#39;bifrost.tools.&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="track_module"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.track_module">[docs]</a><span class="k">def</span> <span class="nf">track_module</span><span class="p">():</span>
+<div class="viewcode-block" id="track_module"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.track_module">[docs]</a><span class="k">def</span> <span class="nf">track_module</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Record the import of an Bifrost module.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -302,7 +302,7 @@
     <span class="n">_telemetry_client</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">caller</span><span class="o">.</span><span class="n">f_globals</span><span class="p">[</span><span class="s1">&#39;__name__&#39;</span><span class="p">])</span></div>
 
 
-<div class="viewcode-block" id="track_function"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.track_function">[docs]</a><span class="k">def</span> <span class="nf">track_function</span><span class="p">(</span><span class="n">user_function</span><span class="p">):</span>
+<div class="viewcode-block" id="track_function"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.track_function">[docs]</a><span class="k">def</span> <span class="nf">track_function</span><span class="p">(</span><span class="n">user_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Record the use of a function in Bifrost without execution time information.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -325,7 +325,7 @@
     <span class="k">return</span> <span class="n">wrapper</span></div>
 
 
-<div class="viewcode-block" id="track_function_timed"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.track_function_timed">[docs]</a><span class="k">def</span> <span class="nf">track_function_timed</span><span class="p">(</span><span class="n">user_function</span><span class="p">):</span>
+<div class="viewcode-block" id="track_function_timed"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.track_function_timed">[docs]</a><span class="k">def</span> <span class="nf">track_function_timed</span><span class="p">(</span><span class="n">user_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Record the use of a function in Bifrost with execution time information.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -350,7 +350,7 @@
     <span class="k">return</span> <span class="n">wrapper</span></div>
 
 
-<div class="viewcode-block" id="track_method"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.track_method">[docs]</a><span class="k">def</span> <span class="nf">track_method</span><span class="p">(</span><span class="n">user_method</span><span class="p">):</span>
+<div class="viewcode-block" id="track_method"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.track_method">[docs]</a><span class="k">def</span> <span class="nf">track_method</span><span class="p">(</span><span class="n">user_method</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Record the use of a method in Bifrost with execution time information.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -375,7 +375,7 @@
     <span class="k">return</span> <span class="n">wrapper</span></div>
 
 
-<div class="viewcode-block" id="track_method_timed"><a class="viewcode-back" href="../../bifrost.html#bifrost.telemetry.track_method_timed">[docs]</a><span class="k">def</span> <span class="nf">track_method_timed</span><span class="p">(</span><span class="n">user_method</span><span class="p">):</span>
+<div class="viewcode-block" id="track_method_timed"><a class="viewcode-back" href="../../bifrost.telemetry.html#bifrost.telemetry.track_method_timed">[docs]</a><span class="k">def</span> <span class="nf">track_method_timed</span><span class="p">(</span><span class="n">user_method</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Record the use of a method in Bifrost with execution time information.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

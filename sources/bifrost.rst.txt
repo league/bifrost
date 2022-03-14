@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 5
 
    bifrost.blocks
+   bifrost.telemetry
    bifrost.views
 
 Submodules
@@ -257,14 +258,6 @@ bifrost.sigproc2 module
 -----------------------
 
 .. automodule:: bifrost.sigproc2
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bifrost.telemetry module
-------------------------
-
-.. automodule:: bifrost.telemetry
    :members:
    :undoc-members:
    :show-inheritance:
